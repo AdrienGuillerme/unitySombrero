@@ -5,11 +5,13 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = 6f;            // The speed that the player will move at.
     public string controllerName = "Joy1";
+    public int hp = 100;                // The current number of health points the player has.
 
     Vector3 movement;                   // The vector to store the direction of the player's movement.
     Animator anim;                      // Reference to the animator component.
     Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
     int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
+    string state;                       // The current state of the character (dead, resurrecting a mate...).
     float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 
     Vector3 rotationAxe = new Vector3(0, 1, 0);
@@ -22,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
         // Set up references.
         anim = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
+
+        // Initiate some stuffs.
+        state = "movable";
     }
 
 
@@ -60,15 +65,19 @@ public class PlayerMovement : MonoBehaviour
 
     void Move(float h, float v)
     {
-        // Set the movement vector based on the axis input.
-        movement.Set(h, 0f, v);
+        if(state == "movable")
+        {
+            // Set the movement vector based on the axis input.
+            movement.Set(h, 0f, v);
 
-        // Normalise the movement vector and make it proportional to the speed per second.
-        movement = movement.normalized * speed * Time.deltaTime;
+            // Normalise the movement vector and make it proportional to the speed per second.
+            movement = movement.normalized * speed * Time.deltaTime;
 
-        // Move the player to it's current position plus the movement.
-        playerRigidbody.MovePosition(transform.position + movement);
+            // Move the player to it's current position plus the movement.
+            playerRigidbody.MovePosition(transform.position + movement);
+        }
     }
+
     void Turning(Quaternion stickAngle)
     {
         // Set the player's rotation to this new rotation.
@@ -102,10 +111,29 @@ public class PlayerMovement : MonoBehaviour
 
     void Animating(float h, float v)
     {
-        // Create a boolean that is true if either of the input axes is non-zero.
-        bool walking = h != 0f || v != 0f;
+        if (state == "dead")
+            anim.SetBool("Die", true);
+        else
+        {
+            // Create a boolean that is true if either of the input axes is non-zero.
+            bool walking = h != 0f || v != 0f;
 
-        // Tell the animator whether or not the player is walking.
-        anim.SetBool("IsWalking", walking);
+            // Tell the animator whether or not the player is walking.
+            anim.SetBool("IsWalking", walking);
+        }
+    }
+
+    // Use this method when the player takes an action that reduces their life points.
+    public void GetHurt(int i)
+    {
+        // Reduce i from the life points remaining to the player.
+        // If this action kill the character, then state him as "dead".
+        if (i > hp)
+        {
+            hp = 0;
+            state = "dead";
+        }
+        else
+            hp -= i;
     }
 }
