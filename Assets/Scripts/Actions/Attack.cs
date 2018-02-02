@@ -11,7 +11,6 @@ public class Attack : MonoBehaviour {
     private int amp;
     private Vector3 target;
 
-    // Use this for initialization
     void Start () {
         isAttacking = false;
         isPressingTrigger = false;
@@ -19,12 +18,10 @@ public class Attack : MonoBehaviour {
         amp = 1;
     }
 
-    // Update is called once per frame
     void Update () {
         Move(weapon.parent.position + Vector3.RotateTowards(weapon.parent.forward, weapon.forward, 100, 100) * amp);
         if (Input.GetAxis(controllerName + "Stick3") < -0.8f && !isAttacking && !isPressingTrigger)
         {
-            Debug.Log("input on");
             isAttacking = true;
             isPressingTrigger = true;
             amp = 3;
