@@ -5,6 +5,8 @@ using UnityEngine;
 public class Attack : MonoBehaviour {
     public Transform weapon;
     public bool isAttacking;
+    public string controllerName = "Joy1";
+
     private bool isPressingTrigger;
     private int amp;
     private Vector3 target;
@@ -20,7 +22,7 @@ public class Attack : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         Move(weapon.parent.position + Vector3.RotateTowards(weapon.parent.forward, weapon.forward, 100, 100) * amp);
-        if (Input.GetAxis("Joy1Stick3") < -0.8f && !isAttacking && !isPressingTrigger)
+        if (Input.GetAxis(controllerName + "Stick3") < -0.8f && !isAttacking && !isPressingTrigger)
         {
             Debug.Log("input on");
             isAttacking = true;
@@ -28,7 +30,7 @@ public class Attack : MonoBehaviour {
             amp = 3;
             StartCoroutine(WaitAttackEnd(0.2f));
         }
-        else if (Input.GetAxis("Joy1Stick3") > -0.7f && isPressingTrigger)
+        else if (Input.GetAxis(controllerName + "Stick3") > -0.7f && isPressingTrigger)
         {
             isPressingTrigger = false;
         }
