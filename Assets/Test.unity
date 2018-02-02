@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -810,6 +810,16 @@ Prefab:
       propertyPath: m_Height
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 54326314006278078, guid: 9f69ec1a0e6bf5344a30fd9a31a6a0ba,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54326314006278078, guid: 9f69ec1a0e6bf5344a30fd9a31a6a0ba,
+        type: 2}
+      propertyPath: m_Drag
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9f69ec1a0e6bf5344a30fd9a31a6a0ba, type: 2}
   m_IsPrefabParent: 0
@@ -853,7 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d7acc346d137be4e9a253f3bfccb959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerName: Joy2
+  controllerName: Joy0
   shield: {fileID: 1017953338}
 --- !u!114 &1481130709
 MonoBehaviour:

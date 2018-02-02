@@ -24,7 +24,8 @@ public class PlayerHealth : MonoBehaviour {
 
     void KnockBack(Vector3 k)
     {
-        k = k.normalized * 100 * Time.deltaTime;
+        k = k * 1000;
+        Debug.Log(k);
         playerRigidbody.AddForce(k);
     }
 }
