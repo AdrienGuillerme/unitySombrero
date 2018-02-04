@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 730053cb963d7d34a822def87f0681c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repulsivePower: 0
+  repulsivePower: 0.08
   repulsiveRadius: 6
 --- !u!1001 &1885022210
 Prefab:

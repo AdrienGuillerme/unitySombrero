@@ -13,21 +13,18 @@ public class RepulseCapacity : MonoBehaviour {
     private void Start()
     {
        controllerName = GetComponent<PlayerMovement>().controllerName;
-        Debug.Log("start");
     }
 
     private void Update()
     {
-        if(Input.GetButtonDown(controllerName + "A"))
+        if(Input.GetButton(controllerName + "A"))
         {
-            Debug.Log("buttonA");
             Repulsive();
         }
     }
 
     private void Repulsive()
     {
-        Debug.Log("répulsion");
         Collider[] colliders = Physics.OverlapSphere(transform.position, repulsiveRadius);
         int i = 0;
         while(i < colliders.Length)
@@ -35,9 +32,10 @@ public class RepulseCapacity : MonoBehaviour {
             GameObject target = colliders[i].gameObject;
             if(target.GetComponent<Rigidbody>() != null && target != gameObject)
             {
-                Debug.Log("gameObject" + colliders[i].gameObject);
-                repulsiveDir = colliders[i].transform.position - transform.position;
-                colliders[i].transform.Translate(repulsiveDir);
+                Debug.Log("gameObject" + target);
+                repulsiveDir = (target.transform.position - transform.position).normalized;
+                target.transform.Translate(repulsiveDir*repulsivePower);
+                
             }
             i++;
         }
