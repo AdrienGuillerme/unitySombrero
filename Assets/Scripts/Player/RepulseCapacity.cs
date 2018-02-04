@@ -6,6 +6,12 @@ public class RepulseCapacity : MonoBehaviour {
 
     public float repulsivePower;
     public float repulsiveRadius;
+    public float repulsiveDuration;
+    public float cooldownTime;
+
+    bool inCooldown = false;
+    bool inUse = false;
+    float timeStamp;
 
     Vector3 repulsiveDir;
     string controllerName;
@@ -17,10 +23,32 @@ public class RepulseCapacity : MonoBehaviour {
 
     private void Update()
     {
-        if(Input.GetButton(controllerName + "A"))
+        if (inCooldown)
+        {
+            if(Time.time >= timeStamp)
+            {
+                inCooldown = false;
+            }
+        }
+        else if(inUse) 
         {
             Repulsive();
+            if (Time.time >= timeStamp)
+            {
+                inUse = false;
+                timeStamp = Time.time + cooldownTime;
+                inCooldown = true;
+            }
+
         }
+        else
+        {
+                if (Input.GetButton(controllerName + "A"))
+                {
+                    timeStamp = Time.time + repulsiveDuration;
+                    inUse = true;
+                }
+         }
     }
 
     private void Repulsive()
