@@ -713,7 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d7acc346d137be4e9a253f3bfccb959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerName: Joy2
+  controllerName: Joy0
   shield: {fileID: 1017953338}
   movement: {fileID: 1458736669}
   isCountering: 0
@@ -742,8 +742,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1300712899}
   m_LocalRotation: {x: -0.44829786, y: -0.44829786, z: 0.5468355, w: 0.5468355}
-  m_LocalPosition: {x: -0.8, y: -0.2, z: 0.1}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalPosition: {x: -0.2, y: -0.2, z: 0.1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1481130705}
   m_RootOrder: 0
@@ -826,8 +826,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1311672604}
   m_LocalRotation: {x: -0.44829786, y: -0.44829786, z: 0.5468355, w: 0.5468355}
-  m_LocalPosition: {x: -0.8, y: -0.2, z: 0.1}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalPosition: {x: -0.2, y: -0.2, z: 0.1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.5}
   m_Children: []
   m_Father: {fileID: 667648027}
   m_RootOrder: 0

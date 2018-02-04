@@ -7,15 +7,15 @@ public class Attack : MonoBehaviour {
     public bool isAttacking;
     public string controllerName = "Joy1";
 
+    private Transform weaponTransform;
     private bool isPressingTrigger;
-    private int amp;
     private Vector3 target;
 
     void Start () {
+        weaponTransform = weapon.GetComponent<Transform>();
         isAttacking = false;
         isPressingTrigger = false;
         target = Vector3.zero;
-        amp = 1;
     }
 
     void Update () {
@@ -24,7 +24,6 @@ public class Attack : MonoBehaviour {
         {
             isAttacking = true;
             isPressingTrigger = true;
-            amp = 3;
             StartCoroutine(WaitAttackEnd(0.2f));
         }
         else if (Input.GetAxis(controllerName + "Stick3") > -0.7f && isPressingTrigger)
@@ -35,8 +34,13 @@ public class Attack : MonoBehaviour {
 
     IEnumerator WaitAttackEnd(float delay)
     {
+        target = new Vector3(0, 0, 0.1f);
+        for(float f = 0; f < 9; f += 1)
+        {
+            weaponTransform.Translate(target);
+        }
         yield return new WaitForSeconds(delay);
         isAttacking = false;
-        amp = 1;
+        weaponTransform.Translate(new Vector3(0, 0, -0.9f));
     }
 }
