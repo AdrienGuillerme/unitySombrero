@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Attack : MonoBehaviour {
-    public Transform weapon;
+    public GameObject weapon;
     public bool isAttacking;
     public string controllerName = "Joy1";
 
@@ -19,7 +19,7 @@ public class Attack : MonoBehaviour {
     }
 
     void Update () {
-        Move(weapon.parent.position + Vector3.RotateTowards(weapon.parent.forward, weapon.forward, 100, 100) * amp);
+        weapon.SetActive(isAttacking);
         if (Input.GetAxis(controllerName + "Stick3") < -0.8f && !isAttacking && !isPressingTrigger)
         {
             isAttacking = true;
@@ -39,15 +39,4 @@ public class Attack : MonoBehaviour {
         isAttacking = false;
         amp = 1;
     }
-
-    void Move(Vector3 pos)
-    {
-        weapon.position = pos;
-    }
-
-    void Hit()
-    {
-
-    }
-
 }

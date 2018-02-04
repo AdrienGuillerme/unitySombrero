@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour {
 
+    public Defense shield;
+
     Rigidbody playerRigidbody;
-    Shield shield;
     Vector3 knockback;
 
     void Awake()
     {
-        playerRigidbody = GetComponent<Rigidbody>();
-        shield = GetComponentInChildren<Shield>();
+        playerRigidbody = GetComponentInParent<Rigidbody>();
     }
 
     void OnTriggerEnter(Collider col)
@@ -34,7 +34,6 @@ public class PlayerHealth : MonoBehaviour {
     void KnockBack(Vector3 k)
     {
         k = k * 1000;
-        Debug.Log(k);
         playerRigidbody.AddForce(k);
     }
 }

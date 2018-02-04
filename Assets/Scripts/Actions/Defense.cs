@@ -6,20 +6,25 @@ public class Defense : MonoBehaviour
 {
     public string controllerName = "Joy1";
     public GameObject shield;
+    public PlayerMovement movement;
+    public bool isCountering;
 
-    Animator anim;
-    PlayerMovement movement;
-
+    Vector3 knockback;
+    Rigidbody playerRigidbody;
     private bool defending = false;
+    private float shieldTime;
+    private float hitTime;
 
     void Awake()
     {
-        anim = GetComponent<Animator>();
-        movement = GetComponent<PlayerMovement>();
+        playerRigidbody = GetComponentInParent<Rigidbody>();
+        isCountering = false;
+        shieldTime = Time.time;
     }
 
     void Update()
     {
+        shield.SetActive(defending);
         float lt = Input.GetAxisRaw(controllerName + "Stick3");
         if (defending)
         {
@@ -34,11 +39,32 @@ public class Defense : MonoBehaviour
             defending = true;
             movement.speed = 2;
         }
-        Animating();
     }
 
-    void Animating()
+    void OnTriggerEnter(Collider col)
     {
-        shield.SetActive(defending);
+        if (col.gameObject.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking)
+        {
+            isCountering = true;
+            hitTime = Time.time;
+            if (hitTime - shieldTime < 0.5)
+            {
+                Debug.Log("perfect counter");
+            }
+            Debug.Log("Attack blocked!");
+            knockback = col.transform.forward;
+            KnockBack(knockback);
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        isCountering = false;
+    }
+
+    void KnockBack(Vector3 k)
+    {
+        k = k * 500;
+        playerRigidbody.AddForce(k);
     }
 }
