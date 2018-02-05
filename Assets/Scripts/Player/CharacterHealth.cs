@@ -87,4 +87,16 @@ public class CharacterHealth : MonoBehaviour
         // Turn off the movement and shooting scripts.
         playerMovement.enabled = false;
     }
+    
+    public void Live()
+    {
+        isDead = false;
+
+        playerMovement.enabled = true;
+    }
+
+    public bool IsDead()
+    {
+        return this.isDead;
+    }
 }
