@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour {
 
-    public Defense shield;
+    public GameObject shield;
+    private Defense defense;
 
     Rigidbody playerRigidbody;
     Vector3 knockback;
@@ -12,13 +13,14 @@ public class PlayerHealth : MonoBehaviour {
     void Awake()
     {
         playerRigidbody = GetComponentInParent<Rigidbody>();
+        defense = shield.GetComponent<Defense>();
     }
 
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking)
         {
-            if (shield.isCountering)
+            if (defense.isCountering)
             {
                 Debug.Log("I blocked an attack !");
             }

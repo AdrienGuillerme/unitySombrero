@@ -45,13 +45,13 @@ public class Defense : MonoBehaviour
     {
         if (col.gameObject.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking)
         {
+            Debug.Log("Attack blocked!");
             isCountering = true;
             hitTime = Time.time;
             if (hitTime - shieldTime < 0.5)
             {
                 Debug.Log("perfect counter");
             }
-            Debug.Log("Attack blocked!");
             knockback = col.transform.forward;
             KnockBack(knockback);
         }
