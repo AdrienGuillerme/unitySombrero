@@ -10,7 +10,7 @@ public class Resurection : MonoBehaviour {
     public AudioClip deathClip;                                 // The audio clip to play when the player dies.
     Animator anim;                                              // Reference to the Animator component.
     AudioSource playerAudio;                                    // Reference to the AudioSource component.
-    PlayerMovement playerMovement;                              // Reference to the player's movement.
+    CharacterMovement playerMovement;                              // Reference to the player's movement.
     CharacterHealth characterHealth;                            // Reference to the health
     Resurection resurrection;
     
@@ -25,7 +25,7 @@ public class Resurection : MonoBehaviour {
         // Setting up the references.
         anim = GetComponent<Animator>();
         //playerAudio = GetComponent<AudioSource>();
-        playerMovement = GetComponent<PlayerMovement>();
+        playerMovement = GetComponent<CharacterMovement>();
         characterHealth = GetComponent<CharacterHealth>();
 
 

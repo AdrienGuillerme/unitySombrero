@@ -6,7 +6,7 @@ public class Defense : MonoBehaviour
 {
     public string controllerName = "Joy1";
     public GameObject shield;
-    public PlayerMovement movement;
+    public CharacterMovement movement;
     public bool isCountering;
 
     Vector3 knockback;
