@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     Animator anim;                      // Reference to the animator component.
     Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
     int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
+
+    string state;                       // The current state of the character (dead, resurrecting a mate...).
+
     float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 
     Vector3 rotationAxe = new Vector3(0, 1, 0);
@@ -23,8 +26,9 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
 
-        // Initiate some stuffs.
+      
         enabled = true;
+        state = "movable";
     }
 
 
@@ -53,7 +57,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev_ad_flo
         // Move the player around the scene.
         Move(h, v);
 
@@ -63,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move(float h, float v)
     {
+
         if(enabled)
         {
             // Set the movement vector based on the axis input.
@@ -104,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
 
             // Set the player's rotation to this new rotation.
             playerRigidbody.MoveRotation(newRotation);
+
         }
     }
 
@@ -115,4 +124,5 @@ public class PlayerMovement : MonoBehaviour
         // Tell the animator whether or not the player is walking.
         anim.SetBool("IsWalking", walking);
     }
+
 }
