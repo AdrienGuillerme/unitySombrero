@@ -13,7 +13,7 @@ public class CharacterHealth : MonoBehaviour
 
     Animator anim;                                              // Reference to the Animator component.
     AudioSource playerAudio;                                    // Reference to the AudioSource component.
-    PlayerMovement playerMovement;                              // Reference to the player's movement.
+    CharacterMovement characterMovement;                              // Reference to the player's movement.
     bool isDead;                                                // Whether the player is dead.
     bool damaged;                                               // True when the player gets damaged.
 
@@ -23,7 +23,7 @@ public class CharacterHealth : MonoBehaviour
         // Setting up the references.
         anim = GetComponent<Animator>();
         //playerAudio = GetComponent<AudioSource>();
-        playerMovement = GetComponent<PlayerMovement>();
+        characterMovement = GetComponent<CharacterMovement>();
 
         // Set the initial health of the player.
         currentHealth = maxHealth;
@@ -85,6 +85,6 @@ public class CharacterHealth : MonoBehaviour
         //playerAudio.Play();
 
         // Turn off the movement and shooting scripts.
-        playerMovement.enabled = false;
+        characterMovement.enabled = false;
     }
 }
