@@ -20,8 +20,8 @@ public class CharacterMovement: MonoBehaviour
         floorMask = LayerMask.GetMask("Floor");
 
         // Set up references.
-        anim = GetComponent<Animator>();
-        playerRigidbody = GetComponent<Rigidbody>();
+        anim = GetComponentInParent<Animator>();
+        playerRigidbody = GetComponentInParent<Rigidbody>();
 
         // Initiate some stuffs.
         enabled = true;

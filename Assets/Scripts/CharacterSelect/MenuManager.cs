@@ -82,7 +82,7 @@ public class MenuManager : MonoBehaviour {
                     {
                        GameObject newCharacter =  Instantiate(character1, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
                         newCharacter.transform.parent = newPlayer.transform;
-                        CharacterMovement myMovement = newCharacter.GetComponent<CharacterMovement>();
+                        CharacterMovement myMovement = newCharacter.GetComponentInChildren<CharacterMovement>();
                         myMovement.controllerName = listControllerInArray[cpt];
                         cpt++;
                     }
