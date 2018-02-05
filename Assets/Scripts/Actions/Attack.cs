@@ -9,13 +9,20 @@ public class Attack : MonoBehaviour {
 
     private Transform weaponTransform;
     private bool isPressingTrigger;
+    private Vector3 initPos;
+    private Vector3 targetPos;
     private Vector3 target;
+
+    private float smoothTime = 0.05F;
+    private Vector3 velocity = Vector3.zero;
 
     void Start () {
         weaponTransform = weapon.GetComponent<Transform>();
         isAttacking = false;
         isPressingTrigger = false;
-        target = Vector3.zero;
+        initPos = weaponTransform.localPosition;
+        targetPos = new Vector3(-1, 0, 0);
+        target = initPos;
     }
 
     void Update () {
@@ -30,17 +37,21 @@ public class Attack : MonoBehaviour {
         {
             isPressingTrigger = false;
         }
+        weaponTransform.localPosition = Vector3.SmoothDamp(weaponTransform.localPosition, target, ref velocity, smoothTime);
     }
 
     IEnumerator WaitAttackEnd(float delay)
     {
-        target = new Vector3(0, 0, 0.1f);
-        for(float f = 0; f < 9; f += 1)
-        {
-            weaponTransform.Translate(target);
-        }
+        target = initPos + targetPos;
         yield return new WaitForSeconds(delay);
+        target = initPos;
         isAttacking = false;
-        weaponTransform.Translate(new Vector3(0, 0, -0.9f));
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        target = initPos;
+        isAttacking = false;
+        //weapon.SetActive(isAttacking);
     }
 }
