@@ -21,7 +21,7 @@ public class RepulseCapacity : MonoBehaviour {
        controllerName = GetComponent<PlayerMovement>().controllerName;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (inCooldown)
         {
@@ -60,10 +60,10 @@ public class RepulseCapacity : MonoBehaviour {
             GameObject target = colliders[i].gameObject;
             if(target.GetComponent<Rigidbody>() != null && target != gameObject)
             {
+                Debug.Log(target.GetComponent<Rigidbody>().velocity);
                 Debug.Log("gameObject" + target);
                 repulsiveDir = (target.transform.position - transform.position).normalized;
-                target.transform.Translate(repulsiveDir*repulsivePower);
-                
+                target.GetComponent<Rigidbody>().AddForce(repulsiveDir * repulsivePower, ForceMode.Impulse);
             }
             i++;
         }

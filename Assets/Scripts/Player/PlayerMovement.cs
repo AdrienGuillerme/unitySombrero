@@ -3,7 +3,8 @@
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float speed = 6f;            // The speed that the player will move at.
+    public float speed = 6f;     // The speed that the player will move at.
+    public float speedRotation = 0.5f;
     public string controllerName = "Joy1";
 
     Vector3 movement;                   // The vector to store the direction of the player's movement.
@@ -79,7 +80,10 @@ public class PlayerMovement : MonoBehaviour
     void Turning(Quaternion stickAngle)
     {
         // Set the player's rotation to this new rotation.
-        playerRigidbody.MoveRotation(stickAngle);
+        playerRigidbody.rotation = Quaternion.Slerp(playerRigidbody.rotation, stickAngle, Time.deltaTime*speedRotation);
+        //playerRigidbody.MoveRotation(stickAngle);
+        
+
     }
 
     void Turning()
