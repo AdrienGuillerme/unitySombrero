@@ -80,7 +80,7 @@ public class MenuManager : MonoBehaviour {
                     GameObject[] listPlayerInArray = listPlayer.ToArray();
                     foreach(GameObject newPlayer in listPlayerInArray)
                     {
-                       GameObject newCharacter =  Instantiate(character1, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+                       GameObject newCharacter =  Instantiate(character1, new Vector3(cpt, cpt, 0), new Quaternion(0, 0, 0, 0));
                         newCharacter.transform.parent = newPlayer.transform;
                         DontDestroy playerFunction = newPlayer.GetComponent<DontDestroy>();
                         playerFunction.controllerName = listControllerInArray[cpt];
