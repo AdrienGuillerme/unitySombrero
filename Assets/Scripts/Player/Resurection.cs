@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class Resurection : MonoBehaviour {
 
-    public string controllerName = "Joy1";
+    string controllerName;
     public Slider resSlider;                                 // Reference to the UI's health bar.
     public AudioClip deathClip;                                 // The audio clip to play when the player dies.
     Animator anim;                                              // Reference to the Animator component.
     AudioSource playerAudio;                                    // Reference to the AudioSource component.
-    CharacterMovement playerMovement;                              // Reference to the player's movement.
-    CharacterHealth characterHealth;                            // Reference to the health
+                
+    PlayerHealth characterHealth;                            // Reference to the health
     Resurection resurrection;
     
     public double revSpeed;                                     //Divise le nombre de point a atteindre par le nombre rentré
@@ -20,13 +20,19 @@ public class Resurection : MonoBehaviour {
     private int actualPoints;
     private bool isRevivable;
 
+    private void Start()
+    {
+        //init gameController
+        DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
+        controllerName = parentFunction.controllerName;
+    }
+
     void Awake()
     {
         // Setting up the references.
         anim = GetComponent<Animator>();
         //playerAudio = GetComponent<AudioSource>();
-        playerMovement = GetComponent<CharacterMovement>();
-        characterHealth = GetComponent<CharacterHealth>();
+        characterHealth = GetComponent<PlayerHealth>();
 
 
         actualPoints = 0;

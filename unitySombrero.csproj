@@ -287,7 +287,6 @@
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\MenuManager.cs" />
     <Compile Include="Assets\Scripts\InvisibleWall\WallFollow.cs" />
-    <Compile Include="Assets\Scripts\Player\CharacterHealth.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Player\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
