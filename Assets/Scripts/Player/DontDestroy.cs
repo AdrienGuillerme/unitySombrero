@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DontDestroy : MonoBehaviour {
+    public string controllerName;
 
 	// Use this for initialization
 	void Start () {

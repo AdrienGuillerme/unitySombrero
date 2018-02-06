@@ -1,17 +1,18 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Attack : MonoBehaviour {
     public GameObject weapon;
     public bool isAttacking;
-    public string controllerName = "Joy1";
+    
 
     private Transform weaponTransform;
     private bool isPressingTrigger;
     private Vector3 initPos;
     private Vector3 targetPos;
     private Vector3 target;
+    private string controllerName;
 
     private float smoothTime = 0.05F;
     private Vector3 velocity = Vector3.zero;
@@ -23,6 +24,10 @@ public class Attack : MonoBehaviour {
         initPos = weaponTransform.localPosition;
         targetPos = new Vector3(-1, 0, 0);
         target = initPos;
+
+       //init gameController
+        DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
+        controllerName = parentFunction.controllerName;
     }
 
     void Update () {

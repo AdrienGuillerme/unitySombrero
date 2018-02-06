@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Defense : MonoBehaviour
 {
-    public string controllerName = "Joy1";
+    
     public GameObject shield;
     public CharacterMovement movement;
     public bool isCountering;
@@ -14,12 +14,20 @@ public class Defense : MonoBehaviour
     private bool defending = false;
     private float shieldTime;
     private float hitTime;
+    private string controllerName;
+
+    private void Start()
+    {
+        //init gameController
+        DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
+        controllerName = parentFunction.controllerName;
+    }
 
     void Awake()
     {
         playerRigidbody = GetComponentInParent<Rigidbody>();
         isCountering = false;
-        shieldTime = Time.time;
+        shieldTime = Time.time;        
     }
 
     void Update()

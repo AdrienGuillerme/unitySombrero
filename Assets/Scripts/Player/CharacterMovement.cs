@@ -4,16 +4,22 @@ public class CharacterMovement: MonoBehaviour
 {
 
     public float speed = 6f;            // The speed that the player will move at.
-    public string controllerName = "Joy1";
+    
 
     Vector3 movement;                   // The vector to store the direction of the player's movement.
     Animator anim;                      // Reference to the animator component.
     Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
     int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
     float camRayLength = 100f;          // The length of the ray from the camera into the scene.
+    private string controllerName ;
 
     Vector3 rotationAxe = new Vector3(0, 1, 0);
-
+    private void Start()
+    {
+        //init gameController
+        DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
+        controllerName = parentFunction.controllerName;
+    }
     void Awake()
     {
         // Create a layer mask for the floor layer.
