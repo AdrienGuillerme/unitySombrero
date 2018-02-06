@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class RepulseCapacity : MonoBehaviour {
 
-    public float repulsivePower;
-    public float repulsiveRadius;
-    public float repulsiveDuration;
-    public float cooldownTime;
+    public float repulsivePower = 7f;
+    public float repulsiveRadius = 6f;
+    public float repulsiveDuration = 2f;
+    public float cooldownTime = 2f;
 
     bool inCooldown = false;
     bool inUse = false;
@@ -63,7 +63,7 @@ public class RepulseCapacity : MonoBehaviour {
                 Debug.Log(target.GetComponent<Rigidbody>().velocity);
                 Debug.Log("gameObject" + target);
                 repulsiveDir = (target.transform.position - transform.position).normalized;
-                target.GetComponent<Rigidbody>().AddForce(repulsiveDir * repulsivePower, ForceMode.Impulse);
+                target.GetComponent<Rigidbody>().AddForceAtPosition(repulsiveDir * repulsivePower / Mathf.Pow(Vector3.Distance(target.transform.position, transform.position),2f),transform.position, ForceMode.Impulse);
             }
             i++;
         }

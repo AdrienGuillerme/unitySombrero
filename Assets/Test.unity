@@ -320,6 +320,26 @@ Prefab:
       propertyPath: controllerName
       value: Joy1
       objectReference: {fileID: 0}
+    - target: {fileID: 54326314006278078, guid: 9f69ec1a0e6bf5344a30fd9a31a6a0ba,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54326314006278078, guid: 9f69ec1a0e6bf5344a30fd9a31a6a0ba,
+        type: 2}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54326314006278078, guid: 9f69ec1a0e6bf5344a30fd9a31a6a0ba,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114045783725267740, guid: 9f69ec1a0e6bf5344a30fd9a31a6a0ba,
+        type: 2}
+      propertyPath: speedRotation
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9f69ec1a0e6bf5344a30fd9a31a6a0ba, type: 2}
   m_IsPrefabParent: 0
@@ -362,6 +382,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 54326314006278078, guid: 9f69ec1a0e6bf5344a30fd9a31a6a0ba,
+        type: 2}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54326314006278078, guid: 9f69ec1a0e6bf5344a30fd9a31a6a0ba,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114045783725267740, guid: 9f69ec1a0e6bf5344a30fd9a31a6a0ba,
+        type: 2}
+      propertyPath: speedRotation
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9f69ec1a0e6bf5344a30fd9a31a6a0ba, type: 2}
   m_IsPrefabParent: 0
@@ -381,8 +416,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 730053cb963d7d34a822def87f0681c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repulsivePower: 0.08
+  repulsivePower: 7
   repulsiveRadius: 6
+  repulsiveDuration: 2
+  cooldownTime: 2
 --- !u!1001 &1885022210
 Prefab:
   m_ObjectHideFlags: 0
