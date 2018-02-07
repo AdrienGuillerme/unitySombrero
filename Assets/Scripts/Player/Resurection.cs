@@ -3,119 +3,83 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Resurection : MonoBehaviour {
+public class Resurection : MonoBehaviour
+{
 
     string controllerName;
-    public Slider resSlider;                                 // Reference to the UI's health bar.
-    public AudioClip deathClip;                                 // The audio clip to play when the player dies.
-    Animator anim;                                              // Reference to the Animator component.
-    AudioSource playerAudio;                                    // Reference to the AudioSource component.
-                
-    PlayerHealth characterHealth;                            // Reference to the health
-    Resurection resurrection;
-    
+    // public Slider resSlider;                                 // Reference to the UI's health bar.
+    //public AudioClip deathClip;                                 // The audio clip to play when the player dies.
+    //Animator anim;                                              // Reference to the Animator component.
+    //AudioSource playerAudio;                                    // Reference to the AudioSource component.
+
+    PlayerHealth tmpHealth; // Reference to an other character health
+    PlayerHealth myHealth;  // Reference to my own health function
+    PlayerHealth characterHealth; // Reference to a health function to keep
+
     public double revSpeed;                                     //Divise le nombre de point a atteindre par le nombre rentré
-    
-    private const int rezPoints = 1000;
-    private int actualPoints;
-    private bool isRevivable;
+
+    private bool couldRevive;
+    private Collider col;
 
     private void Start()
     {
         //init gameController
         DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
         controllerName = parentFunction.controllerName;
+        myHealth = GetComponentInParent<PlayerHealth>();
+
     }
 
     void Awake()
     {
         // Setting up the references.
-        anim = GetComponent<Animator>();
+        // anim = GetComponent<Animator>();
         //playerAudio = GetComponent<AudioSource>();
-        characterHealth = GetComponent<PlayerHealth>();
-
-
-        actualPoints = 0;
     }
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerStay(Collider col)
     {
-        if (characterHealth.IsDead() && col.gameObject.tag == "Player" && characterHealth.IsDead())
+        if ((col.gameObject.tag == "Player") && (!myHealth.IsDead()))
         {
-            isRevivable = true;
-            col.GetComponentInParent<Resurection>().resurrection = this;
+            tmpHealth = col.GetComponent<PlayerHealth>();
+            if ((tmpHealth.IsDead()) && (!tmpHealth.IsRevived()))
+            {
+                couldRevive = true;
+                characterHealth = tmpHealth;
+            }
         }
     }
+
     void OnTriggerExit(Collider col)
     {
         if (col.gameObject.tag == "Player")
         {
-            isRevivable = false;
-            col.GetComponentInParent<Resurection>().resurrection = null;
+            tmpHealth = col.GetComponent<PlayerHealth>();
+            if (tmpHealth == characterHealth)
+            {
+                couldRevive = false;
+                characterHealth = null;
+            }
         }
     }
 
+
     void Update()
     {
-        //Animation de resurection si en cours
-        //anim.SetTrigger("Res");
-        if(!characterHealth.IsDead())
+        if (couldRevive)
         {
-            actualPoints = 0;
-            resSlider.enabled = false;
-        }
-        else
-        {
-            if(actualPoints > 0)
+            if (Input.GetButton(controllerName + "Action"))
             {
-                resSlider.enabled = true;
+                Revive();
             }
         }
-        
-        if(Input.GetButton(controllerName + "_Revive"))
-        {
-            Revive();
-        }
-
-        if(!resurrection.IsRevivable())
-        {
-            resurrection = null;
-        }
-
     }
 
     void Revive()
     {
-        if (resurrection != null && resurrection.IsRevivable())
-        {
-            Debug.Log("I'm healing!");
-            resurrection.beRevived();
-            StartCoroutine(WaitForRez(0.01f));
-            
-        }
-    }
-    IEnumerator WaitForRez(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-    }
+        characterHealth.getRevive();
+        Debug.Log("I'm healing!");
 
-    void beRevived()
-    {
-        if(isRevivable)
-        {
-            if (actualPoints >= rezPoints)
-            {
-                characterHealth.Live();
-                isRevivable = false;
-            }
-            else
-            {
-                actualPoints++;
-                Debug.Log("Yay! Heal me!");
-                resSlider.value = (actualPoints / rezPoints) * 100;
-            }
-        }
     }
-
-    public bool IsRevivable() { return isRevivable; }
 }
+

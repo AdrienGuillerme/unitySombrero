@@ -24,7 +24,11 @@ public class PlayerHealth : MonoBehaviour {
     AudioSource playerAudio;                                    // Reference to the AudioSource component.
     CharacterMovement characterMovement;                              // Reference to the player's movement.
     bool isDead;                                                // Whether the player is dead.
+    bool isRevived;
     bool damaged;                                               // True when the player gets damaged.
+
+    private int actualResPoints = 0;
+    private int resPoints = 90;
 
     void Awake()
     {
@@ -43,9 +47,10 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     //Previously in CharacterHealth
-    /*void Update()
+    void Update()
     {
-        
+        isRevived = false;
+        /*
         // If the player has just been damaged...
         if (damaged)
         {
@@ -61,8 +66,8 @@ public class PlayerHealth : MonoBehaviour {
         
 
         // Reset the damaged flag.
-        damaged = false;
-    }*/
+        damaged = false;*/
+    }
 
 
     //Previously in CharacterHealth
@@ -106,14 +111,37 @@ public class PlayerHealth : MonoBehaviour {
     public void Live()
     {
         isDead = false;
-
+        actualResPoints = 0;
+        Debug.Log("Yay! I'm alive");
+        anim.SetTrigger("Revive");
         characterMovement.enabled = true;
     }
 
+    public void getRevive()
+    {
+        isRevived = true;
+        if (actualResPoints >= resPoints)
+        {
+            Live();
+            isRevived = false;
+        }
+        else
+        {
+            actualResPoints++;
+            Debug.Log("Yay! Heal me!");
+            //resSlider.value = (actualPoints / rezPoints) * 100;
+        }
+    }
+   
     //Previously in CharacterHealth
     public bool IsDead()
     {
         return this.isDead;
+    }
+
+    public bool IsRevived()
+    {
+        return this.isRevived;
     }
 
     void OnTriggerEnter(Collider col)

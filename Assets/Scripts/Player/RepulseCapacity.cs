@@ -18,7 +18,7 @@ public class RepulseCapacity : MonoBehaviour {
 
     private void Start()
     {
-       controllerName = GetComponent<PlayerMovement>().controllerName;
+       controllerName = GetComponentInParent<DontDestroy>().controllerName;
     }
 
     private void Update()

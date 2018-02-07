@@ -57,6 +57,6 @@ public class Attack : MonoBehaviour {
     {
         target = initPos;
         isAttacking = false;
-        //weapon.SetActive(isAttacking);
+        weapon.SetActive(isAttacking);
     }
 }
