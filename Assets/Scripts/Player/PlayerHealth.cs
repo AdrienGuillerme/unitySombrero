@@ -22,7 +22,9 @@ public class PlayerHealth : MonoBehaviour {
 
     Animator anim;                                              // Reference to the Animator component.
     AudioSource playerAudio;                                    // Reference to the AudioSource component.
-    CharacterMovement characterMovement;                              // Reference to the player's movement.
+    CharacterMovement characterMovement;                        // Reference to the player's movement.
+    Attack characterAttack;                                     // Reference to the player's attack.
+    Defense characterDefense;                                   // Reference to the player's defense.
     bool isDead;                                                // Whether the player is dead.
     bool isRevived;
     bool damaged;                                               // True when the player gets damaged.
@@ -37,6 +39,8 @@ public class PlayerHealth : MonoBehaviour {
         anim = GetComponentInParent<Animator>();
         //playerAudio = GetComponent<AudioSource>();
         characterMovement = GetComponent<CharacterMovement>();
+        characterAttack = transform.parent.GetComponentInChildren<Attack>();
+        characterDefense = transform.parent.GetComponentInChildren<Defense>();
 
         // Set the initial health of the player.
         currentHealth = maxHealth;
@@ -105,6 +109,8 @@ public class PlayerHealth : MonoBehaviour {
 
         // Turn off the movement and shooting scripts.
         characterMovement.enabled = false;
+        characterAttack.enabled = false;
+        characterDefense.enabled = false;
     }
 
     //Previously in CharacterHealth
@@ -115,6 +121,8 @@ public class PlayerHealth : MonoBehaviour {
         Debug.Log("Yay! I'm alive");
         anim.SetTrigger("Revive");
         characterMovement.enabled = true;
+        characterAttack.enabled = true;
+        characterDefense.enabled = true;
     }
 
     public void getRevive()

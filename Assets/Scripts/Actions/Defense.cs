@@ -26,8 +26,7 @@ public class Defense : MonoBehaviour
     void Awake()
     {
         playerRigidbody = GetComponentInParent<Rigidbody>();
-        isCountering = false;
-        shieldTime = Time.time;        
+        isCountering = false;        
     }
 
     void Update()
@@ -40,6 +39,7 @@ public class Defense : MonoBehaviour
             {
                 defending = false;
                 movement.speed = 6;
+                shieldTime = Time.time;
             }
         }
         else if (lt > 0.9)
@@ -56,7 +56,7 @@ public class Defense : MonoBehaviour
             Debug.Log("Attack blocked!");
             isCountering = true;
             hitTime = Time.time;
-            if (hitTime - shieldTime < 0.5)
+            if (hitTime - shieldTime < 2)
             {
                 Debug.Log("perfect counter");
             }
@@ -72,7 +72,7 @@ public class Defense : MonoBehaviour
 
     void KnockBack(Vector3 k)
     {
-        k = k * 500;
+        k = k * 250;
         playerRigidbody.AddForce(k);
     }
 }

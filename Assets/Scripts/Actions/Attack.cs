@@ -36,7 +36,7 @@ public class Attack : MonoBehaviour {
         {
             isAttacking = true;
             isPressingTrigger = true;
-            StartCoroutine(WaitAttackEnd(0.2f));
+            StartCoroutine(WaitAttackEnd(0.2f));        // Set attack cooldown here
         }
         else if (Input.GetAxis(controllerName + "Stick3") > -0.7f && isPressingTrigger)
         {
@@ -50,12 +50,14 @@ public class Attack : MonoBehaviour {
         target = initPos + targetPos;
         yield return new WaitForSeconds(delay);
         target = initPos;
+        weaponTransform.localPosition = target;
         isAttacking = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void ChildTriggerEnter(Collider other)
     {
         target = initPos;
+        weaponTransform.localPosition = target;
         isAttacking = false;
         weapon.SetActive(isAttacking);
     }

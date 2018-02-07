@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 33092230045661100}
   - component: {fileID: 65412755547911910}
   - component: {fileID: 23820412736883788}
-  m_Layer: 0
+  - component: {fileID: 114670147986577040}
+  m_Layer: 9
   m_Name: AttackTrigger
   m_TagString: Weapons
   m_Icon: {fileID: 0}
@@ -39,7 +40,7 @@ GameObject:
   - component: {fileID: 4798958240940754}
   - component: {fileID: 114008001148453316}
   - component: {fileID: 54553354667725940}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +59,7 @@ GameObject:
   - component: {fileID: 136642175536300460}
   - component: {fileID: 114322088785685220}
   - component: {fileID: 114301922563353060}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -93,7 +94,7 @@ GameObject:
   - component: {fileID: 4106104059598830}
   - component: {fileID: 135743912293327072}
   - component: {fileID: 114200408785797442}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ReviveCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +113,7 @@ GameObject:
   - component: {fileID: 23696517553402312}
   - component: {fileID: 65722122500854658}
   - component: {fileID: 64258788580367396}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +130,7 @@ GameObject:
   - component: {fileID: 4371500712222470}
   - component: {fileID: 137390118484071198}
   - component: {fileID: 114805644127565126}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,6 +458,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+--- !u!114 &114670147986577040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024044138868630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be52ff9e3a99c91468a6fb66ace06cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114805644127565126
 MonoBehaviour:
   m_ObjectHideFlags: 1
