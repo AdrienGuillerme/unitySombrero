@@ -440,7 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shield: {fileID: 1139874980421202}
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 100
   healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
   deathClip: {fileID: 0}
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec45203ae7a1a54c9d02c355f983833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 9
 --- !u!114 &114670147986577040
 MonoBehaviour:
   m_ObjectHideFlags: 1

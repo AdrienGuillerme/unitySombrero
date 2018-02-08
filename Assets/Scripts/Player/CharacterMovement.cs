@@ -12,6 +12,7 @@ public class CharacterMovement: MonoBehaviour
     int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
     float camRayLength = 100f;          // The length of the ray from the camera into the scene.
     private string controllerName ;
+    PlayerHealth myHealth;  // Reference to my own health function
 
     Vector3 rotationAxe = new Vector3(0, 1, 0);
     private void Start()
@@ -24,7 +25,7 @@ public class CharacterMovement: MonoBehaviour
     {
         // Create a layer mask for the floor layer.
         floorMask = LayerMask.GetMask("Floor");
-
+        myHealth = GetComponentInParent<PlayerHealth>();
         // Set up references.
         anim = GetComponentInParent<Animator>();
         playerRigidbody = GetComponentInParent<Rigidbody>();
@@ -64,7 +65,8 @@ public class CharacterMovement: MonoBehaviour
         Move(h, v);
 
         // Animate the player.
-        Animating(h, v);
+        //if(!myHealth.IsDead())
+            Animating(h, v);
     }
 
     void Move(float h, float v)

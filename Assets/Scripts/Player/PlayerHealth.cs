@@ -154,7 +154,7 @@ public class PlayerHealth : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking)
+        if (col.gameObject.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking && isDead == false)
         {
             if (defense.isCountering)
             {
@@ -163,7 +163,7 @@ public class PlayerHealth : MonoBehaviour {
             else
             {
                 Debug.Log("You hurt me!!!");
-                getHurt(100);
+                getHurt(10);
                 knockback = col.transform.forward;
                 KnockBack(knockback);
             }
