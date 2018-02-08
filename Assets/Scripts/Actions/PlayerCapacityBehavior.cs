@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerCapacityBehavior : MonoBehaviour {
 
-    public string controllerName = "Joy1";
+    public string controllerName;
 
     // Use this for initialization
     void Start () {
-		
-	}
+        DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
+        controllerName = parentFunction.controllerName;
+    }
 
     void FixedUpdate()
     {
