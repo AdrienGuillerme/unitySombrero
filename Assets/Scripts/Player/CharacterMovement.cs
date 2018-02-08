@@ -1,3 +1,4 @@
+<<<<<<< HEAD:Assets/Scripts/Player/CharacterMovement.cs
 ﻿using UnityEngine;
 
 public class CharacterMovement: MonoBehaviour
@@ -87,7 +88,8 @@ public class CharacterMovement: MonoBehaviour
     void Turning(Quaternion stickAngle)
     {
         // Set the player's rotation to this new rotation.
-        playerRigidbody.MoveRotation(stickAngle);
+        //playerRigidbody.MoveRotation(stickAngle);
+        playerRigidbody.rotation = Quaternion.Slerp(playerRigidbody.rotation, stickAngle, Time.deltaTime * speedRotation);
     }
 
     void Turning()
