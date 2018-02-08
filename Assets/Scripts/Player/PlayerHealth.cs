@@ -99,9 +99,9 @@ public class PlayerHealth : MonoBehaviour {
     {
         // Set the death flag so this function won't be called again.
         isDead = true;
-
+        Debug.Log("I'm Dead");
         // Tell the animator that the player is dead.
-        anim.SetTrigger("Die");
+        //anim.SetTrigger("Die");
 
         // Set the audiosource to play the death clip and play it (this will stop the hurt sound from playing).
         //playerAudio.clip = deathClip;
@@ -123,6 +123,7 @@ public class PlayerHealth : MonoBehaviour {
         characterMovement.enabled = true;
         characterAttack.enabled = true;
         characterDefense.enabled = true;
+        currentHealth = maxHealth;
     }
 
     public void getRevive()
@@ -154,7 +155,7 @@ public class PlayerHealth : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking && isDead == false)
+        if (col.gameObject.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking  && isDead == false)
         {
             if (defense.isCountering)
             {

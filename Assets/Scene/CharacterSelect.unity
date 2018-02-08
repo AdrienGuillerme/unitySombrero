@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   dL: {fileID: 1406798424}
   dR: {fileID: 163950657}
   player: {fileID: 1584186531774296, guid: 7f6bae7f08b6bfc4bad1b944db201ff3, type: 2}
-  character1: {fileID: 1321936132163516, guid: d4607b3c6b8424b47b52f344d8b3b14b, type: 2}
+  character1: {fileID: 1059512891779480, guid: d4607b3c6b8424b47b52f344d8b3b14b, type: 2}
 --- !u!4 &161467068
 Transform:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class Resurection : MonoBehaviour
 
     public double revSpeed;                                     //Divise le nombre de point a atteindre par le nombre rentré
 
-    private bool couldRevive;
+    private bool canRevive;
     private Collider col;
 
     private void Start()
@@ -44,8 +44,12 @@ public class Resurection : MonoBehaviour
             tmpHealth = col.GetComponent<PlayerHealth>();
             if ((tmpHealth.IsDead()) && (!tmpHealth.IsRevived()))
             {
-                couldRevive = true;
+                canRevive = true;
                 characterHealth = tmpHealth;
+            }
+            else
+            {
+                canRevive = false;
             }
         }
     }
@@ -57,7 +61,7 @@ public class Resurection : MonoBehaviour
             tmpHealth = col.GetComponent<PlayerHealth>();
             if (tmpHealth == characterHealth)
             {
-                couldRevive = false;
+                canRevive = false;
                 characterHealth = null;
             }
         }
@@ -66,7 +70,7 @@ public class Resurection : MonoBehaviour
 
     void Update()
     {
-        if (couldRevive)
+        if (canRevive)
         {
             if (Input.GetButton(controllerName + "Action"))
             {
