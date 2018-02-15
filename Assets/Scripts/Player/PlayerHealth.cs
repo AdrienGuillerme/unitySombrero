@@ -156,6 +156,7 @@ public class PlayerHealth : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
+        Debug.Log(col.name);
         if (col.gameObject.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking  && isDead == false)
         {
             if (defense.isCountering)

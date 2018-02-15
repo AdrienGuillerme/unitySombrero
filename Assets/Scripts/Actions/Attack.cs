@@ -56,9 +56,10 @@ public class Attack : MonoBehaviour {
 
     public void ChildTriggerEnter(Collider other)
     {
+        Debug.Log(other.gameObject.name);
         target = initPos;
         weaponTransform.localPosition = target;
-        isAttacking = false;
-        weapon.SetActive(isAttacking);
+        //isAttacking = false;
+        //weapon.SetActive(isAttacking);
     }
 }
