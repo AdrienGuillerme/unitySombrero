@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PlayerDetection : MonoBehaviour {
 
-    private Collider playerDetector;
     private Animator animator;
 
     void Start () {
-        playerDetector = GetComponent<CapsuleCollider>();
         animator = GetComponentInParent<Animator>();
     }
 
