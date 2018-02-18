@@ -39,7 +39,7 @@ public class Defense : MonoBehaviour
             {
                 defending = false;
                 movement.speed = 6;
-                shieldTime = Time.time;
+                shieldTime = Time.time * 1000;
             }
         }
         else if (lt > 0.9)
@@ -55,13 +55,13 @@ public class Defense : MonoBehaviour
         {
             Debug.Log("Attack blocked!");
             isCountering = true;
-            hitTime = Time.time;
-            if (hitTime - shieldTime < 2)
+            hitTime = Time.time * 1000;
+            if (hitTime - shieldTime < 2000)
             {
                 Debug.Log("perfect counter");
+                knockback = shield.transform.forward;
+                KnockBack(knockback, col.GetComponentInParent<Rigidbody>());
             }
-            knockback = col.transform.forward;
-            KnockBack(knockback);
         }
     }
 
@@ -70,9 +70,9 @@ public class Defense : MonoBehaviour
         isCountering = false;
     }
 
-    void KnockBack(Vector3 k)
+    void KnockBack(Vector3 k, Rigidbody target)
     {
-        k = k * 250;
-        playerRigidbody.AddForce(k);
+        k = k * 500;
+        target.AddForce(k);
     }
 }

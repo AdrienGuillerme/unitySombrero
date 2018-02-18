@@ -158,17 +158,10 @@ public class PlayerHealth : MonoBehaviour {
     {
         if (col.gameObject.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking  && isDead == false)
         {
-            if (defense.isCountering)
-            {
-                Debug.Log("I blocked an attack !");
-            }
-            else
-            {
-                Debug.Log("You hurt me!!!");
-                getHurt(10);
-                knockback = col.transform.forward;
-                KnockBack(knockback);
-            }
+            Debug.Log("You hurt me!!!");
+            getHurt(10);
+            knockback = col.transform.forward;
+            KnockBack(knockback);
         } 
     }
 
