@@ -18,9 +18,5 @@ public class PlayerDetection : MonoBehaviour {
             animator.SetTrigger("Pursuit");
 			enemyMove.SetTarget (col.gameObject.GetComponent<Transform>());
         }
-        //if (state.IsName("Pursuit") && target)
-        //{
-        //    animator.SetBool("IsPursuing", false);
-        //}
     }
 }

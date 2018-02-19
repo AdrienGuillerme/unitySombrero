@@ -505,6 +505,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: d265bb418a3d9574aaa5e7500d619208, type: 3}
+      propertyPath: m_TagString
+      value: Weapons
+      objectReference: {fileID: 0}
+    - target: {fileID: 100020, guid: d265bb418a3d9574aaa5e7500d619208, type: 3}
+      propertyPath: m_TagString
+      value: Weapons
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d265bb418a3d9574aaa5e7500d619208, type: 3}
   m_IsPrefabParent: 0
@@ -544,6 +552,10 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!1 &796535344 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100020, guid: d265bb418a3d9574aaa5e7500d619208, type: 3}
+  m_PrefabInternal: {fileID: 796535339}
 --- !u!114 &796535345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,6 +595,38 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!1 &796535347 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100014, guid: d265bb418a3d9574aaa5e7500d619208, type: 3}
+  m_PrefabInternal: {fileID: 796535339}
+--- !u!64 &796535348
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 796535344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300002, guid: d265bb418a3d9574aaa5e7500d619208, type: 3}
+--- !u!64 &796535349
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 796535347}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: d265bb418a3d9574aaa5e7500d619208, type: 3}
 --- !u!1 &1296943634 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 187638, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 2}

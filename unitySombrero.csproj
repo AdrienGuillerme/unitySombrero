@@ -282,10 +282,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BattleDragon\Dragons\Scripts\animator_controller.cs" />
-    <Compile Include="Assets\BattleDragon\Dragons\Scripts\animator_settor.cs" />
-    <Compile Include="Assets\BattleDragon\Dragons\Scripts\player_attack.cs" />
-    <Compile Include="Assets\BattleDragon\Dragons\Scripts\player_movement.cs" />
     <Compile Include="Assets\Scripts\Actions\Attack.cs" />
     <Compile Include="Assets\Scripts\Actions\AttackTriggerCollision.cs" />
     <Compile Include="Assets\Scripts\Actions\Defense.cs" />
@@ -296,6 +292,7 @@
     <Compile Include="Assets\Scripts\Capacities\RepulseCapacity.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\MenuManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyMove.cs" />
     <Compile Include="Assets\Scripts\Enemy\Patrol.cs" />
     <Compile Include="Assets\Scripts\Enemy\PlayerDetection.cs" />
     <Compile Include="Assets\Scripts\InvisibleWall\WallFollow.cs" />
