@@ -4,23 +4,44 @@ using UnityEngine;
 
 public class Patrol : StateMachineBehaviour {
 
-    public float patrolSpeed = 3f;
-    public float patrolDistance = 15f;
+    //public float patrolSpeed = 3f;
+    //public float patrolDistance = 15f;
 
-    private Rigidbody enemyRigidbody;
-    private Transform enemyTransform;
+    //private Transform enemyTransform;
 
-    private Vector3 movement;
-    private float distanceTraveled = 0f;
+    //private Vector3 movement;
+    //private float distanceTraveled = 0f;
+
+	public Vector3 patrolVector1, patrolVector2;
+	public EnemyMove enemyMove;
+
+	bool positionsChanged = false;
+	private Rigidbody enemyRigidbody;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         enemyRigidbody = animator.gameObject.GetComponent<Rigidbody>();
-        movement = enemyRigidbody.transform.forward;
+		enemyMove = animator.gameObject.GetComponent<EnemyMove> ();
+        //movement = enemyRigidbody.transform.forward;
+
+		patrolVector1 = enemyRigidbody.transform.position;
+		patrolVector2 = patrolVector1 + new Vector3 (0, 0, 20);
+
+		SetPatrolVectors(patrolVector1, patrolVector2);
+		enemyMove.OnPatrol (patrolVector1, patrolVector2);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+		/*
+		if (positionsChanged)
+		{
+			enemyMove.OnPatrol (patrolVector1, patrolVector2);
+			positionsChanged = false;
+		}
+		*/
+
+		/*
         if (distanceTraveled < patrolDistance)
         {
             Move();
@@ -30,8 +51,20 @@ public class Patrol : StateMachineBehaviour {
             Turn();
             distanceTraveled = 0f;
         }
+        */
     }
 
+	public void SetPatrolVectors(Vector3 position1, Vector3 position2)
+	{
+		// Reste à s'assurer que les positions sont accessibles : elles existent, sont sur la NavMesh etc.
+		if(position1 != null && position2 != null)
+			patrolVector1 = position1;
+			patrolVector2 = position2;
+
+		positionsChanged = true;
+	}
+
+	/*
     void Move()
     {
         movement = movement.normalized * patrolSpeed * Time.deltaTime;
@@ -44,4 +77,5 @@ public class Patrol : StateMachineBehaviour {
         enemyRigidbody.transform.forward = -enemyRigidbody.transform.forward;
         movement = enemyRigidbody.transform.forward;
     }
+    */
 }

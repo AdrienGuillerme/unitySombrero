@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDetection : MonoBehaviour {
 
     private Animator animator;
+	public EnemyMove enemyMove;
 
     void Start () {
         animator = GetComponentInParent<Animator>();
@@ -15,6 +16,7 @@ public class PlayerDetection : MonoBehaviour {
         if ((state.IsName("Patrol") || state.IsName("idle")) && col.gameObject.tag == "Player")
         {
             animator.SetTrigger("Pursuit");
+			enemyMove.SetTarget (col.gameObject.GetComponent<Transform>());
         }
         //if (state.IsName("Pursuit") && target)
         //{

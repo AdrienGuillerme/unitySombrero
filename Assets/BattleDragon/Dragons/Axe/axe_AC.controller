@@ -213,7 +213,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: idle
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -243,28 +243,28 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 110294366}
-    m_Position: {x: 132, y: 180, z: 0}
+    m_Position: {x: 444, y: 384, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110220574}
-    m_Position: {x: 132, y: 24, z: 0}
+    m_Position: {x: 444, y: 228, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110240276}
-    m_Position: {x: 480, y: 24, z: 0}
+    m_Position: {x: 792, y: 228, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110269612}
-    m_Position: {x: 120, y: 300, z: 0}
+    m_Position: {x: 432, y: 504, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102211382291134866}
-    m_Position: {x: 132, y: -132, z: 0}
+    m_Position: {x: 444, y: 72, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 1101707145838196050}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -180, y: 300, z: 0}
-  m_EntryPosition: {x: -180, y: -132, z: 0}
-  m_ExitPosition: {x: 492, y: 300, z: 0}
+  m_AnyStatePosition: {x: 132, y: 504, z: 0}
+  m_EntryPosition: {x: 132, y: 72, z: 0}
+  m_ExitPosition: {x: 804, y: 504, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102211382291134866}
 --- !u!114 &114617087420725348
@@ -286,7 +286,10 @@ AnimatorStateTransition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Pursuit
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110220574}
   m_Solo: 0
@@ -333,7 +336,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: LostTarget
+    m_ConditionEvent: Pursuit
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110220574}
@@ -405,7 +408,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Pursuit
+    m_ConditionEvent: LostTarget
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110294366}
