@@ -8,13 +8,15 @@ public class EnemyMove : MonoBehaviour
 
     NavMeshAgent agent;
     Vector3 initialPosition;        // The initial position... just in case the enemy has to return to
-    public bool goalReached = false;       // To know if we've reached our current goal or not
-    public bool goalChanged = true;        // To know if the goal has been changed
-	public bool onPatrol = false;
+    bool goalReached = false;       // To know if we've reached our current goal or not
+    bool goalChanged = true;        // To know if the goal has been changed
+	bool onPatrol = false;			// To know if we're on patrol or not
     int cpt = 0, freq = 20;			// Used to determine a frequence to check if the target has moved
-    public Vector3 goalVector;				// The goal's position
+    Vector3 goalVector;				// The goal's position
     float damping = 5f;
-	public Vector3 patrolVector1, patrolVector2;
+
+	Vector3 [] patrolPositions;
+	int indexPatrol;
 
     // Use this for initialization
     void Start()
@@ -41,11 +43,10 @@ public class EnemyMove : MonoBehaviour
             goalChanged = false;
         }
 
+		// 'If' to go from a spot of our patrol to an other
 		if (onPatrol && goalReached) {
-			if (goalVector == patrolVector1)
-				goalVector = patrolVector2;
-			else
-				goalVector = patrolVector1;
+			indexPatrol = (indexPatrol + 1) % patrolPositions.Length;
+			goalVector = patrolPositions[indexPatrol];
 
 			goalChanged = true;
 			goalReached = false;
@@ -91,14 +92,15 @@ public class EnemyMove : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
     }
 
-	public void OnPatrol(Vector3 position1, Vector3 position2)
+	// Use this to set 'on' the patrol mode
+	public void OnPatrol(Vector3[] positions)
 	{
 		onPatrol = true;
 		goalChanged = true;
 
-		patrolVector1 = position1;
-		patrolVector2 = position2;
+		patrolPositions = positions;
 
-		goalVector = patrolVector2;
+		goalVector = patrolPositions [0];
+		indexPatrol = 0;
 	}
 }
