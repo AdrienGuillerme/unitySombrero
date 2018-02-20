@@ -5,11 +5,10 @@ using UnityEngine;
 public class Patrol : StateMachineBehaviour {
 
     public List <Vector3> patrolPositions;	// List of positions of all the patrol's spots
-	public EnemyMove enemyMove;				// Reference to the EnemyMove script of the associated agent
+	private EnemyMove enemyMove;		    // Reference to the EnemyMove script of the associated agent
 
 	private Rigidbody enemyRigidbody;		// Reference to the rigidbody of the associated agent
 
-	// Called on the enter of the patrol state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex){
         enemyRigidbody = animator.gameObject.GetComponent<Rigidbody>();
 		enemyMove = animator.gameObject.GetComponent<EnemyMove> ();
@@ -17,11 +16,6 @@ public class Patrol : StateMachineBehaviour {
 		SetPatrolPositions();
 
 		enemyMove.OnPatrol (patrolPositions.ToArray());
-    }
-
-	// Called on the update of the patrol state
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex){
-		// Smthg here.
     }
 
 	// Use this to instanciate some basic positions
@@ -65,7 +59,6 @@ public class Patrol : StateMachineBehaviour {
 				}
 			}
 		}
-
 		patrolPositions.Insert (index, position);
 	}
 }

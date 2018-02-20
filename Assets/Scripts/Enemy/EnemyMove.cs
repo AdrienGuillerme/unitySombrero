@@ -18,14 +18,12 @@ public class EnemyMove : MonoBehaviour
 	Vector3 [] patrolPositions;
 	int indexPatrol;
 
-    // Use this for initialization
     void Start()
     {
         agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
-	
         initialPosition = transform.position;
-
-		// If no defined goal, stay at the initial position
+		
+        // If no defined goal, stay at the initial position
         if (target == null)
             goalVector = initialPosition;
 		// If not go to the goal
@@ -67,7 +65,6 @@ public class EnemyMove : MonoBehaviour
 	            cpt++;
     }
 
-	// Use this to set a new target
     public void SetTarget(Transform goal)
     {
         goalChanged = true;

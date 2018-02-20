@@ -24,7 +24,6 @@ public class EnemyHealth : MonoBehaviour {
     {
         if (col.gameObject.tag == "Weapons")
         {
-            Debug.Log("Dragon is hurt");
             getHurt(1);
             knockback = col.transform.forward;
             KnockBack(knockback);
@@ -43,7 +42,6 @@ public class EnemyHealth : MonoBehaviour {
     void Die()
     {
         isDead = true;
-        Debug.Log("Dragon is dead");
         animator.SetTrigger("Dead");
     }
 
