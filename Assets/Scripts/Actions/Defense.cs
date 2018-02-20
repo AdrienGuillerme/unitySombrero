@@ -51,16 +51,21 @@ public class Defense : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking)
+        if (col.gameObject.tag == "EnemyWeapons")
         {
-            Debug.Log("Attack blocked!");
-            isCountering = true;
-            hitTime = Time.time * 1000;
-            if (hitTime - shieldTime < 2000)
+            EnemyWeapon axe = col.GetComponentInParent<EnemyWeapon>();
+            if (axe.isAttacking)
             {
-                Debug.Log("perfect counter");
-                knockback = shield.transform.forward;
-                KnockBack(knockback, col.GetComponentInParent<Rigidbody>());
+                axe.isAttacking = false;
+                Debug.Log("Attack blocked!");
+                isCountering = true;
+                hitTime = Time.time * 1000;
+                if (hitTime - shieldTime < 2000)
+                {
+                    Debug.Log("perfect counter");
+                    knockback = shield.transform.forward;
+                    KnockBack(knockback, col.GetComponentInParent<Rigidbody>());
+                }
             }
         }
     }
