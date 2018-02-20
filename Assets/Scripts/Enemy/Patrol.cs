@@ -13,7 +13,8 @@ public class Patrol : StateMachineBehaviour {
         enemyRigidbody = animator.gameObject.GetComponent<Rigidbody>();
 		enemyMove = animator.gameObject.GetComponent<EnemyMove> ();
 
-		SetPatrolPositions();
+		if(patrolPositions.Count == 0)
+			SetPatrolPositions();
 
 		enemyMove.OnPatrol (patrolPositions.ToArray());
     }

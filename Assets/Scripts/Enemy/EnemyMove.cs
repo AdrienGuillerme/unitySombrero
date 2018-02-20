@@ -11,7 +11,7 @@ public class EnemyMove : MonoBehaviour
     bool goalReached = false;       // To know if we've reached our current goal or not
     bool goalChanged = true;        // To know if the goal has been changed
 	bool onPatrol = false;			// To know if we're on patrol or not
-    int cpt = 0, freq = 20;			// Used to determine a frequence to check if the target has moved
+    int cpt = 0, freq = 50;			// Used to determine a frequence to check if the target has moved
     Vector3 goalVector;				// The goal's position
     float damping = 5f;
 
@@ -92,6 +92,7 @@ public class EnemyMove : MonoBehaviour
 	// Use this to set 'on' the patrol mode
 	public void OnPatrol(Vector3[] positions)
 	{
+		target = null;
 		onPatrol = true;
 		goalChanged = true;
 

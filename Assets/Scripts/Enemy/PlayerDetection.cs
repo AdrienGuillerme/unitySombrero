@@ -13,10 +13,13 @@ public class PlayerDetection : MonoBehaviour {
 
     void OnTriggerEnter (Collider col) {
         AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+
         if ((state.IsName("Patrol") || state.IsName("idle")) && col.gameObject.tag == "Player")
         {
-            animator.SetTrigger("Pursuit");
-			enemyMove.SetTarget (col.gameObject.GetComponent<Transform>());
+			if (!col.gameObject.GetComponent<PlayerHealth> ().IsDead ()) {
+				animator.SetTrigger ("Pursuit");
+				enemyMove.SetTarget (col.gameObject.GetComponent<Transform> ());
+			}
         }
     }
 }
