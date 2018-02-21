@@ -15,11 +15,10 @@ public class PlayerInRange : MonoBehaviour {
         AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
         if (state.IsName("Pursuit") && col.gameObject.tag == "Player")
         {
-			targetHealth = col.gameObject.GetComponent<PlayerHealth> ();
-
-			if (!targetHealth.IsDead ()) {
-				//animator.GetComponent<EnemyAttack> ().SetTarget (targetHealth);
-				animator.SetTrigger ("Attack");
+			targetHealth = col.gameObject.GetComponent<PlayerHealth>();
+			if (!targetHealth.IsDead()) {
+				//animator.GetComponent<EnemyAttack>().SetTarget(targetHealth);
+				animator.SetTrigger("Attack");
 			}
         }
     }

@@ -251,11 +251,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114700127893177038, guid: 4b6c98a7783248c43b5b1bdb2849727c,
-        type: 2}
-      propertyPath: spawnOne
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b6c98a7783248c43b5b1bdb2849727c, type: 2}
   m_IsPrefabParent: 0
@@ -481,26 +476,6 @@ Prefab:
     - target: {fileID: 4348135152498598, guid: 6f75a9fedce030348b6e2658b842559b, type: 2}
       propertyPath: m_RootOrder
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 195211716239948738, guid: 6f75a9fedce030348b6e2658b842559b,
-        type: 2}
-      propertyPath: m_Height
-      value: 9.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 195211716239948738, guid: 6f75a9fedce030348b6e2658b842559b,
-        type: 2}
-      propertyPath: m_Radius
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 195211716239948738, guid: 6f75a9fedce030348b6e2658b842559b,
-        type: 2}
-      propertyPath: m_WalkableMask
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 195211716239948738, guid: 6f75a9fedce030348b6e2658b842559b,
-        type: 2}
-      propertyPath: m_StoppingDistance
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f75a9fedce030348b6e2658b842559b, type: 2}

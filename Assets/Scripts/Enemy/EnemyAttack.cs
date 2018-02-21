@@ -11,14 +11,13 @@ public class EnemyAttack : StateMachineBehaviour {
     {
         axe = animator.GetComponentInChildren<EnemyWeapon>();
         axe.isAttacking = true;
-
-		target = animator.GetComponentInChildren<PlayerInRange> ().GetTarget ();
+		target = animator.GetComponentInChildren<PlayerInRange>().GetTarget();
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 		axe.isAttacking = false;
-		if (target.IsDead ())
-			animator.SetTrigger ("Patrol");
+		if (target.IsDead())
+			animator.SetTrigger("Patrol");
     }
 }

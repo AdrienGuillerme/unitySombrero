@@ -33,7 +33,6 @@ public class EnemyMove : MonoBehaviour
 
     void Update()
     {
-
 		// If the goal has been changed, define a new destination
         if (goalChanged)
         {
