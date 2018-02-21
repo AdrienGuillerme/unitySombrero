@@ -8,11 +8,11 @@ public class EnemyMove : MonoBehaviour
 
     NavMeshAgent agent;
     Vector3 initialPosition;        // The initial position... just in case the enemy has to return to
-    bool goalReached = false;       // To know if we've reached our current goal or not
-    bool goalChanged = true;        // To know if the goal has been changed
+	bool goalReached = false;       // To know if we've reached our current goal or not
+	bool goalChanged = true;        // To know if the goal has been changed
 	bool onPatrol = false;			// To know if we're on patrol or not
     int cpt = 0, freq = 50;			// Used to determine a frequence to check if the target has moved
-    Vector3 goalVector;				// The goal's position
+	Vector3 goalVector;				// The goal's position
     float damping = 5f;
 
 	Vector3 [] patrolPositions;
@@ -64,6 +64,10 @@ public class EnemyMove : MonoBehaviour
 	            cpt++;
     }
 
+	public Vector3[] GetPatrolPositions(){
+		return patrolPositions;
+	}
+
     public void SetTarget(Transform goal)
     {
         goalChanged = true;
@@ -77,8 +81,11 @@ public class EnemyMove : MonoBehaviour
     public void CheckTarget(Transform target)
     {
         cpt = 0;
-        if (target.transform.position != goalVector)
-            SetTarget(target);
+		if (target.GetComponentInChildren<PlayerHealth> ().IsDead ())
+			GetComponent<Animator> ().SetTrigger ("Patrol");
+		else
+	        if (target.transform.position != goalVector)
+	            SetTarget(target);
     }
 
 	// Use this to rotate the agent to make look at the goal

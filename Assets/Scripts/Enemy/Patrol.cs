@@ -13,10 +13,24 @@ public class Patrol : StateMachineBehaviour {
         enemyRigidbody = animator.gameObject.GetComponent<Rigidbody>();
 		enemyMove = animator.gameObject.GetComponent<EnemyMove> ();
 
-		if(patrolPositions.Count == 0)
-			SetPatrolPositions();
+		// Check if the EnemyMove has positions for the patrol
+		// If it doesn't, set positions by default
+		if (enemyMove.GetPatrolPositions () == null || enemyMove.GetPatrolPositions ().Length == 0) {
+			if(patrolPositions.Count == 0)
+				SetPatrolPositions();
+		}
 
-		enemyMove.OnPatrol (patrolPositions.ToArray());
+		// If it does, get these positions
+		else {
+			List <Vector3> positions = new List<Vector3> ();
+
+			foreach (Vector3 v in enemyMove.GetPatrolPositions ())
+				positions.Add (v);
+			
+			SetPatrolPositions (positions.ToArray ());
+		}
+
+		enemyMove.OnPatrol (patrolPositions.ToArray ());
     }
 
 	// Use this to instanciate some basic positions
@@ -33,8 +47,8 @@ public class Patrol : StateMachineBehaviour {
 		{
 			patrolPositions.Clear ();
 
-			for (int i = 0; i < positions.Length; i++)
-				AddPatrolPosition (positions [i]);
+			foreach (Vector3 v in positions)
+				AddPatrolPosition (v);
 		}
 	}
 
