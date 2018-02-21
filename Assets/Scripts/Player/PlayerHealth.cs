@@ -84,7 +84,7 @@ public class PlayerHealth : MonoBehaviour {
         currentHealth -= i;
 
         // Set the health bar's value to the current health.
-        //healthSlider.value = currentHealth;
+        healthSlider.value = currentHealth;
 
         // Play the hurt sound effect.
         //playerAudio.Play();
@@ -124,6 +124,7 @@ public class PlayerHealth : MonoBehaviour {
         characterAttack.enabled = true;
         characterDefense.enabled = true;
         currentHealth = maxHealth;
+        healthSlider.value = currentHealth;
     }
 
     public void getRevive()
@@ -157,17 +158,10 @@ public class PlayerHealth : MonoBehaviour {
     {
         if (col.gameObject.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking  && isDead == false)
         {
-            if (defense.isCountering)
-            {
-                Debug.Log("I blocked an attack !");
-            }
-            else
-            {
-                Debug.Log("You hurt me!!!");
-                getHurt(10);
-                knockback = col.transform.forward;
-                KnockBack(knockback);
-            }
+            Debug.Log("You hurt me!!!");
+            getHurt(10);
+            knockback = col.transform.forward;
+            KnockBack(knockback);
         } 
     }
 

@@ -259,6 +259,15 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>Assets/P4Connect/Editor/log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="p4api.net">
+      <HintPath>Assets/P4Connect/Editor/p4api.net.dll</HintPath>
+    </Reference>
+    <Reference Include="P4Connect">
+      <HintPath>Assets/P4Connect/Editor/P4Connect.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>C:/Users/François/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
@@ -285,17 +294,22 @@
     <Compile Include="Assets\Scripts\Actions\Attack.cs" />
     <Compile Include="Assets\Scripts\Actions\AttackTriggerCollision.cs" />
     <Compile Include="Assets\Scripts\Actions\Defense.cs" />
+    <Compile Include="Assets\Scripts\Actions\PlayerCapacityBehavior.cs" />
+    <Compile Include="Assets\Scripts\Actions\SpecialCapacityGlyph.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Capacities\GlyphCapacity.cs" />
+    <Compile Include="Assets\Scripts\Capacities\RepulseCapacity.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\MenuManager.cs" />
     <Compile Include="Assets\Scripts\InvisibleWall\WallFollow.cs" />
+    <Compile Include="Assets\Scripts\LoadUI.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Player\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
-    <Compile Include="Assets\Scripts\Player\RepulseCapacity.cs" />
     <Compile Include="Assets\Scripts\Player\Resurection.cs" />
-    <Compile Include="Assets\Scripts\Player\ScoreManager.cs" />
-    <Compile Include="Assets\Scripts\PlayerCapacityBehavior.cs" />
-    <Compile Include="Assets\Scripts\SpecialCapacityGlyph.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\P4Connect\Editor\p4api.net.xml" />
+    <None Include="Assets\P4Connect\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

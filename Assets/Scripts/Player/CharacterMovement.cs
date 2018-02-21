@@ -1,10 +1,11 @@
+
 ﻿using UnityEngine;
 
 public class CharacterMovement: MonoBehaviour
 {
 
     public float speed = 6f;            // The speed that the player will move at.
-    
+    public float speedRotation = 6f;
 
     Vector3 movement;                   // The vector to store the direction of the player's movement.
     Animator anim;                      // Reference to the animator component.
@@ -87,7 +88,8 @@ public class CharacterMovement: MonoBehaviour
     void Turning(Quaternion stickAngle)
     {
         // Set the player's rotation to this new rotation.
-        playerRigidbody.MoveRotation(stickAngle);
+        //playerRigidbody.MoveRotation(stickAngle);
+        playerRigidbody.rotation = Quaternion.Slerp(playerRigidbody.rotation, stickAngle, Time.deltaTime * speedRotation);
     }
 
     void Turning()

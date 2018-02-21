@@ -25,18 +25,19 @@ public class Attack : MonoBehaviour {
         targetPos = new Vector3(-1, 0, 0);
         target = initPos;
 
-       //init gameController
+        //init gameController
         DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
         controllerName = parentFunction.controllerName;
     }
 
     void Update () {
-        weapon.SetActive(isAttacking);
         if (Input.GetAxis(controllerName + "Stick3") < -0.8f && !isAttacking && !isPressingTrigger)
         {
+            weapon.SetActive(true);
             isAttacking = true;
             isPressingTrigger = true;
-            StartCoroutine(WaitAttackEnd(0.2f));        // Set attack cooldown here
+            target = initPos + targetPos;
+            StartCoroutine(ProceedAttack(0.2f));        // Set attack cooldown here
         }
         else if (Input.GetAxis(controllerName + "Stick3") > -0.7f && isPressingTrigger)
         {
@@ -45,20 +46,23 @@ public class Attack : MonoBehaviour {
         weaponTransform.localPosition = Vector3.SmoothDamp(weaponTransform.localPosition, target, ref velocity, smoothTime);
     }
 
-    IEnumerator WaitAttackEnd(float delay)
+    IEnumerator ProceedAttack(float delay)
     {
-        target = initPos + targetPos;
         yield return new WaitForSeconds(delay);
-        target = initPos;
-        weaponTransform.localPosition = target;
+        ResetTrigger();
         isAttacking = false;
     }
 
     public void ChildTriggerEnter(Collider other)
     {
+        ResetTrigger();
+        //isAttacking = false;
+    }
+
+    void ResetTrigger()
+    {
         target = initPos;
+        weapon.SetActive(false);
         weaponTransform.localPosition = target;
-        isAttacking = false;
-        weapon.SetActive(isAttacking);
     }
 }
