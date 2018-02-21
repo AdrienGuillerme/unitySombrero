@@ -156,7 +156,7 @@ public class PlayerHealth : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking  && isDead == false)
+        if (col.gameObject.tag == "EnemyWeapons" && col.GetComponentInParent<EnemyWeapon>().isAttacking  && isDead == false)
         {
             Debug.Log("You hurt me!!!");
             getHurt(10);
