@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlyphCapacity : MonoBehaviour {
+public class GlyphCapacity : MonoBehaviour, ICapacity {
 
     // Use this for initialization
-    bool inCooldown = false;
-    bool inUse = false;
     float timeStamp;
-    
-    string controllerName;
+    public float distanceToCharacter = 5;
 
-    private void Start()
+    void Start()
     {
-        controllerName = GetComponentInParent<DontDestroy>().controllerName;
+
     }
 
-    private void Update()
+    void Update()
+    {
+    }
+
+    public void ActivateCapacity()
     {
         MakeGlyph();
     }
@@ -24,7 +25,7 @@ public class GlyphCapacity : MonoBehaviour {
     private void MakeGlyph()
     {
         GameObject obj = Resources.Load("Glyph") as GameObject;
-        Vector3 position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        Vector3 position = transform.position;
         Instantiate(obj, position, transform.rotation);
     }
 }

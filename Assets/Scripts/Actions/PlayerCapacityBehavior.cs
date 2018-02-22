@@ -8,7 +8,7 @@ public class PlayerCapacityBehavior : MonoBehaviour{
     public enum Capacity { Glyph, Repulsion };
 
     public Capacity capacityIntChosen = Capacity.Glyph;
-    public Capacity capacityChosen;
+    public ICapacity capacityChosen;
 
 
     // Use this for initialization

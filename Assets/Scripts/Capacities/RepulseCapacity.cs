@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RepulseCapacity : MonoBehaviour {
+public class RepulseCapacity : MonoBehaviour, ICapacity
+{
 
     public float repulsivePower;
     public float repulsiveRadius;
@@ -14,23 +15,55 @@ public class RepulseCapacity : MonoBehaviour {
     float timeStamp;
 
     Vector3 repulsiveDir;
-    string controllerName;
+   // string controllerName;
 
-    private void Start()
+    void Start()
     {
-       controllerName = GetComponentInParent<DontDestroy>().controllerName;
+       //controllerName = GetComponentInParent<DontDestroy>().controllerName;
     }
 
-    private void Update()
+    void Update()
     {
-        if (inCooldown)
+        //if (inCooldown)
+        //{
+        //    if(Time.time >= timeStamp)
+        //    {
+        //        inCooldown = false;
+        //    }
+        //}
+        //else if(inUse) 
+        //{
+        //    Repulsive();
+        //    if (Time.time >= timeStamp)
+        //    {
+        //        inUse = false;
+        //        timeStamp = Time.time + cooldownTime;
+        //        inCooldown = true;
+        //    }
+
+        //}
+        //else
+        //{
+        //        if (Input.GetButtonDown(controllerName + "A"))
+        //        {
+        //            timeStamp = Time.time + repulsiveDuration;
+        //            inUse = true;
+        //        }
+        // }
+    }
+
+    public void ActivateCapacity()
+    {
+
+        Repulsive();
+        /*if (inCooldown)
         {
-            if(Time.time >= timeStamp)
+            if (Time.time >= timeStamp)
             {
                 inCooldown = false;
             }
         }
-        else if(inUse) 
+        else if (inUse)
         {
             Repulsive();
             if (Time.time >= timeStamp)
@@ -43,12 +76,12 @@ public class RepulseCapacity : MonoBehaviour {
         }
         else
         {
-                if (Input.GetButtonDown(controllerName + "A"))
-                {
-                    timeStamp = Time.time + repulsiveDuration;
-                    inUse = true;
-                }
-         }
+            //if (Input.GetButtonDown(controllerName + "Capacity"))
+            //{
+                timeStamp = Time.time + repulsiveDuration;
+                inUse = true;
+            //}
+        }*/
     }
 
     private void Repulsive()
@@ -63,7 +96,6 @@ public class RepulseCapacity : MonoBehaviour {
                 Debug.Log("gameObject" + target);
                 repulsiveDir = (target.transform.position - transform.position).normalized;
                 target.transform.Translate(repulsiveDir*repulsivePower);
-                
             }
             i++;
         }

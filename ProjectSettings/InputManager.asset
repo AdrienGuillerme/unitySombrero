@@ -566,7 +566,7 @@ InputManager:
     axis: 2
     joyNum: 4
   - serializedVersion: 3
-    m_Name: Joy1Capacity
+    m_Name: Joy1LaunchCapacity
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -582,7 +582,7 @@ InputManager:
     axis: 2
     joyNum: 1
   - serializedVersion: 3
-    m_Name: Joy2Capacity
+    m_Name: Joy2LaunchCapacity
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -598,7 +598,7 @@ InputManager:
     axis: 2
     joyNum: 2
   - serializedVersion: 3
-    m_Name: Joy3Capacity
+    m_Name: Joy3LaunchCapacity
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -614,7 +614,7 @@ InputManager:
     axis: 2
     joyNum: 3
   - serializedVersion: 3
-    m_Name: Joy4Capacity
+    m_Name: Joy4LaunchCapacity
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
