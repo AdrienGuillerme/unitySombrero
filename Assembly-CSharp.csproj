@@ -51,21 +51,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GlyphBehaviour.cs" />
      <Compile Include="Assets\Scripts\Actions\Attack.cs" />
      <Compile Include="Assets\Scripts\Actions\AttackTriggerCollision.cs" />
      <Compile Include="Assets\Scripts\Actions\Defense.cs" />
      <Compile Include="Assets\Scripts\Actions\PlayerCapacityBehavior.cs" />
-     <Compile Include="Assets\Scripts\Actions\SpecialCapacityGlyph.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Capacities\GlyphCapacity.cs" />
+     <Compile Include="Assets\Scripts\Capacities\ICapacity.cs" />
+     <Compile Include="Assets\Scripts\Capacities\LauchCapacity.cs" />
+     <Compile Include="Assets\Scripts\Capacities\LauncherCapacityBehaviour.cs" />
      <Compile Include="Assets\Scripts\Capacities\RepulseCapacity.cs" />
      <Compile Include="Assets\Scripts\CharacterSelect\MenuManager.cs" />
+     <Compile Include="Assets\Scripts\Enemy\Death.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyMove.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyWeapon.cs" />
+     <Compile Include="Assets\Scripts\Enemy\Patrol.cs" />
+     <Compile Include="Assets\Scripts\Enemy\PlayerDetection.cs" />
+     <Compile Include="Assets\Scripts\Enemy\PlayerInRange.cs" />
      <Compile Include="Assets\Scripts\InvisibleWall\WallFollow.cs" />
+     <Compile Include="Assets\Scripts\LoadUI.cs" />
      <Compile Include="Assets\Scripts\Player\CharacterMovement.cs" />
      <Compile Include="Assets\Scripts\Player\DontDestroy.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\Player\Resurection.cs" />
-     <Compile Include="Assets\Scripts\Player\ScoreManager.cs" />
+     <Compile Include="Assets\Scripts\Spawner.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files (x86)/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
