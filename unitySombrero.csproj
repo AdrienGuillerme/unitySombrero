@@ -314,7 +314,10 @@
     <Compile Include="Assets\Scripts\Player\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Player\Resurection.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\Scripts\Spawner.cs" />
+=======
+>>>>>>> origin/Capacities
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\P4Connect\Editor\p4api.net.xml" />

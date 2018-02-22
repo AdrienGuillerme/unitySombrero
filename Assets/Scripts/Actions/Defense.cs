@@ -53,6 +53,7 @@ public class Defense : MonoBehaviour
     {
         if (col.gameObject.tag == "EnemyWeapons")
         {
+
             EnemyWeapon axe = col.GetComponentInParent<EnemyWeapon>();
             if (axe.isAttacking)
             {

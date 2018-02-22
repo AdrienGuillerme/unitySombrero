@@ -6,7 +6,10 @@ public class PlayerCapacityBehavior : MonoBehaviour{
 
     private string controllerName;
     public enum Capacity { Glyph, Repulsion };
-    public Capacity capacityChosen = Capacity.Glyph;
+
+    public Capacity capacityIntChosen = Capacity.Glyph;
+    public Capacity capacityChosen;
+
 
     // Use this for initialization
     private void Start()
@@ -14,11 +17,21 @@ public class PlayerCapacityBehavior : MonoBehaviour{
         //init gameController
         DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
         controllerName = parentFunction.controllerName;
-
-        //todo : définir quelle capacité depuis le parent
+        switch (capacityIntChosen)
+        {
+            case Capacity.Glyph:
+                capacityChosen = GetComponentInChildren<GlyphCapacity>();
+                break;
+            case Capacity.Repulsion:
+                capacityChosen = GetComponentInChildren<RepulseCapacity>();
+                break;
+            default:
+                Debug.Log("Default case");
+                break;
+        }
     }
 
-    void FixedUpdate()
+    void Update()
     {
         // Store the input button.
         bool capacityIsTriggered = false;
@@ -29,26 +42,11 @@ public class PlayerCapacityBehavior : MonoBehaviour{
         }
         else
         {
-            capacityIsTriggered = Input.GetButtonDown(controllerName + "Capacity");
+            capacityIsTriggered = Input.GetButtonDown(controllerName + "ActivateCapacity");
 
             if (capacityIsTriggered)
             {
-                switch (capacityChosen)
-                {
-                    case Capacity.Glyph:
-                        Debug.Log("lancement du glyph");
-                        Glyph();
-                        break;
-                    case Capacity.Repulsion:
-                        Debug.Log("lancement de la repulsion");
-                        Repulsive();
-                        break;
-                    default:
-                        Debug.Log("Default case");
-                        break;
-                }
-                // choose the capacity to trigger
-                
+                capacityChosen.ActivateCapacity();
             }
         }
 

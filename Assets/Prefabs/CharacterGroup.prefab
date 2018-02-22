@@ -57,9 +57,9 @@ GameObject:
   - component: {fileID: 4145552370336544}
   - component: {fileID: 137264268332808626}
   - component: {fileID: 136595448486928608}
-  - component: {fileID: 114740422087632916}
   - component: {fileID: 114992478999418130}
-  - component: {fileID: 114177144903056604}
+  - component: {fileID: 114032033355641270}
+  - component: {fileID: 114643100814255000}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 33767499835023798}
   - component: {fileID: 65139768434696608}
   - component: {fileID: 23552673167171802}
-  - component: {fileID: 114643100814255000}
   m_Layer: 9
   m_Name: AttackTrigger
   m_TagString: Weapons
@@ -415,7 +414,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114177144903056604
+--- !u!114 &114032033355641270
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -423,10 +422,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1147208451468742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783a081fa8349774b9db1edee816978f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f5a5a9163e7bf440a83ce61b5b890de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  capacityChosen: 0
+  capacityIntChosen: 1
 --- !u!114 &114352526555503328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -439,22 +438,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shield: {fileID: 1914601979389134}
-  movement: {fileID: 114740422087632916}
+  movement: {fileID: 0}
   isCountering: 0
 --- !u!114 &114643100814255000
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1741598263924522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be52ff9e3a99c91468a6fb66ace06cd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114740422087632916
-MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147208451468742}
