@@ -14,13 +14,11 @@ public class Defense : MonoBehaviour
     private bool defending = false;
     private float shieldTime;
     private float hitTime;
-    private string controllerName;
+
 
     private void Start()
     {
-        //init gameController
         DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
-        controllerName = parentFunction.controllerName;
     }
 
     void Awake()
@@ -32,20 +30,21 @@ public class Defense : MonoBehaviour
     void Update()
     {
         shield.SetActive(defending);
-        float lt = Input.GetAxisRaw(controllerName + "Stick3");
+    }
+
+    public void ActivateDefense()
+    {
+        defending = true;
+        movement.speed = 2;
+    }
+
+    public void DeactivateDefense()
+    {
         if (defending)
         {
-            if (lt < 0.9)
-            {
-                defending = false;
-                movement.speed = 6;
-                shieldTime = Time.time * 1000;
-            }
-        }
-        else if (lt > 0.9)
-        {
-            defending = true;
-            movement.speed = 2;
+            defending = false;
+            movement.speed = 6;
+            shieldTime = Time.time * 1000;
         }
     }
 

@@ -39,12 +39,9 @@ public class Attack : MonoBehaviour {
             target = initPos + targetPos;
             StartCoroutine(ProceedAttack(0.2f));        // Set attack cooldown here
         }
-        else if (Input.GetAxis(controllerName + "Stick3") > -0.7f && isPressingTrigger)
-        {
-            isPressingTrigger = false;
-        }
         weaponTransform.localPosition = Vector3.SmoothDamp(weaponTransform.localPosition, target, ref velocity, smoothTime);
     }
+
 
     IEnumerator ProceedAttack(float delay)
     {

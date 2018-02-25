@@ -6,9 +6,9 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
 
     float speed = 0.10f;
     private string controllerName;
-    private LauchCapacity.Capacity capacityIntChosen = LauchCapacity.Capacity.Glyph;
+    private LaunchCapacity.Capacity capacityIntChosen = LaunchCapacity.Capacity.Glyph;
     private ICapacity capacityChosen;
-    private LauchCapacity parentFunction;
+    private LaunchCapacity parentFunction;
     private bool activated;
     private Rigidbody rb;
 
@@ -23,10 +23,10 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
 
         switch (capacityIntChosen)
         {
-            case LauchCapacity.Capacity.Glyph:
+            case LaunchCapacity.Capacity.Glyph:
                 capacityChosen = GetComponentInChildren<GlyphCapacity>();
                 break;
-            case LauchCapacity.Capacity.Repulsion:
+            case LaunchCapacity.Capacity.Repulsion:
                 capacityChosen = GetComponentInChildren<RepulseCapacity>();
                 break;
             default:
@@ -51,7 +51,7 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
         activated = true;
     }
 
-    public void setParent(LauchCapacity parent)
+    public void setParent(LaunchCapacity parent)
     {
         this.parentFunction = parent;
     }

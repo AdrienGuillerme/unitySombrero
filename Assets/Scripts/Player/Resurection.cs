@@ -71,13 +71,6 @@ public class Resurection : MonoBehaviour
             box.enabled = false;
         }
 
-        if (canRevive() && characterHealth != null && characterHealth.IsDead())
-        {
-            if (Input.GetButton(controllerName + "Action"))
-            {
-                Revive();
-            }
-        }
     }
 
     private bool canRevive()
@@ -85,10 +78,13 @@ public class Resurection : MonoBehaviour
         return (!myHealth.IsDead());
     }
 
-    void Revive()
+    public void Revive()
     {
-        characterHealth.getRevive();
-        Debug.Log("I'm healing!");
+        if (canRevive() && characterHealth != null && characterHealth.IsDead())
+        {
+            characterHealth.getRevive();
+            Debug.Log("I'm healing!");
+        }
 
     }
 
