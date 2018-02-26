@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -301,7 +299,6 @@
     <Compile Include="Assets\LowpolyDungeonModularSystem\prefabs\Player\MouseLook.cs" />
     <Compile Include="Assets\LowpolyDungeonModularSystem\prefabs\Player\PlayerMovement.cs" />
     <Compile Include="Assets\LowpolyDungeonModularSystem\prefabs\Player\ShadowBlob.cs" />
-    <Compile Include="Assets\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Actions\Attack.cs" />
     <Compile Include="Assets\Scripts\Actions\AttackTriggerCollision.cs" />
     <Compile Include="Assets\Scripts\Actions\Defense.cs" />
@@ -326,6 +323,7 @@
     <Compile Include="Assets\Scripts\Player\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Player\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Player\Resurection.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
   </ItemGroup>

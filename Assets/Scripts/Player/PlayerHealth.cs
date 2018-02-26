@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour {
 
     public GameObject shield;
-    private Defense defense;
+    //private Defense defense;
 
     Rigidbody playerRigidbody;
     Vector3 knockback;
@@ -47,7 +47,7 @@ public class PlayerHealth : MonoBehaviour {
 
         
         playerRigidbody = GetComponentInParent<Rigidbody>();
-        defense = shield.GetComponent<Defense>();
+       // defense = shield.GetComponent<Defense>();
     }
 
     //Previously in CharacterHealth

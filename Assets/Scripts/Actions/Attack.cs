@@ -8,11 +8,9 @@ public class Attack : MonoBehaviour {
     
 
     private Transform weaponTransform;
-    private bool isPressingTrigger;
     private Vector3 initPos;
     private Vector3 targetPos;
     private Vector3 target;
-    private string controllerName;
 
     private float smoothTime = 0.05F;
     private Vector3 velocity = Vector3.zero;
@@ -20,14 +18,13 @@ public class Attack : MonoBehaviour {
     void Start () {
         weaponTransform = weapon.GetComponent<Transform>();
         isAttacking = false;
-        isPressingTrigger = false;
+
         initPos = weaponTransform.localPosition;
         targetPos = new Vector3(-1, 0, 0);
         target = initPos;
 
         //init gameController
-        DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
-        controllerName = parentFunction.controllerName;
+       
     }
 
     void Update () {
@@ -41,7 +38,6 @@ public class Attack : MonoBehaviour {
         {
             weapon.SetActive(true);
             isAttacking = true;
-            isPressingTrigger = true;
             target = initPos + targetPos;
             StartCoroutine(ProceedAttack(0.2f));
         }

@@ -10,7 +10,7 @@ public class Defense : MonoBehaviour
     public bool isCountering;
 
     Vector3 knockback;
-    Rigidbody playerRigidbody;
+    //Rigidbody playerRigidbody;
     private bool defending = false;
     private float shieldTime;
     private float hitTime;
@@ -18,12 +18,12 @@ public class Defense : MonoBehaviour
 
     private void Start()
     {
-        DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
+       // DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
     }
 
     void Awake()
     {
-        playerRigidbody = GetComponentInParent<Rigidbody>();
+       // playerRigidbody = GetComponentInParent<Rigidbody>();
         isCountering = false;        
     }
 
