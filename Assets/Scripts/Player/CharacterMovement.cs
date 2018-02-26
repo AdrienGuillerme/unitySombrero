@@ -89,6 +89,6 @@ public class CharacterMovement: MonoBehaviour
     void Animating(float h, float v)
     {
         bool walking = h != 0f || v != 0f;
-        anim.SetFloat("speed", Mathf.Abs(h)+ Mathf.Abs(v));
+        anim.SetFloat("speed", Mathf.Abs(h) + Mathf.Abs(v));
     }
 }

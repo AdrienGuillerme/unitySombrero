@@ -45,7 +45,6 @@ public class PlayerHealth : MonoBehaviour {
         // Set the initial health of the player.
         currentHealth = maxHealth;
 
-        
         playerRigidbody = GetComponentInParent<Rigidbody>();
         defense = shield.GetComponent<Defense>();
     }
@@ -156,12 +155,17 @@ public class PlayerHealth : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "EnemyWeapons" && col.GetComponentInParent<EnemyWeapon>().isAttacking  && isDead == false)
+        //if (!col.transform.IsChildOf(this.transform) && col.gameObject.tag == "EnemyWeapons" && col.GetComponentInParent<EnemyWeapon>().isAttacking  && isDead == false)
+        if (!col.transform.IsChildOf(this.transform) && col.tag == "Weapons" && col.GetComponentInParent<AttackThief>().isAttacking  && isDead == false)
         {
-            Debug.Log("You hurt me!!!");
-            getHurt(10);
-            knockback = col.transform.forward;
-            KnockBack(knockback);
+            {
+                Debug.Log("You hurt me!!!");
+                //getHurt(10);
+                anim.SetBool("damaged", true);
+                knockback = (col.transform.position - transform.position) * -80;
+                KnockBack(knockback);
+            }
+            
         } 
     }
 
