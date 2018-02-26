@@ -10,9 +10,10 @@ public class PlayerInput : MonoBehaviour {
     Resurection resurectionScript;
     LaunchCapacity capacityScript;
     Defense defenseScript;
+    private bool isActing;
 	// Use this for initialization
 	void Start () {
-
+        isActing = false;
         //init gameController
         DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
         attackScript = this.transform.Find("Sword").GetComponent<Attack>();
@@ -24,40 +25,42 @@ public class PlayerInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (!isActing)
+        {
+            //Attaque
+            if (Input.GetAxis(controllerName + "Stick3") < -0.8f)
+            {
 
-        //Attaque
-        if (Input.GetAxis(controllerName + "Stick3") < -0.8f)
-        {
-            /*
-            weapon.SetActive(true);
-            isAttacking = true;
-            isPressingTrigger = true;
-            target = initPos + targetPos;
-            StartCoroutine(ProceedAttack(0.2f));        // Set attack cooldown here
-            */   
+                attackScript.DoAttack();
+                StartCoroutine(DoAction(0.2f));
+            }
+            else if (Input.GetButton(controllerName + "Action"))
+            {
+                resurectionScript.Revive();
+                StartCoroutine(DoAction(0.1f));
+            }
+            else if (Input.GetButtonDown(controllerName + "LaunchCapacity"))
+            {
+                capacityScript.Launch();
+                StartCoroutine(DoAction(0.1f));
+            }
+            else if (Input.GetAxisRaw(controllerName + "Stick3") > 0.9)
+            {
+                defenseScript.ActivateDefense();
+                StartCoroutine(DoAction(0.2f));
+            }
         }
-        else if (Input.GetAxis(controllerName + "Stick3") > -0.7f)
-        {
-           // isPressingTrigger = false;
-        }
-        else if (Input.GetButton(controllerName + "Action"))
-        {
-            resurectionScript.Revive();
-        }
-        else if (Input.GetButtonDown(controllerName + "LaunchCapacity"))
-        {
-            capacityScript.Launch();
-        }
-    
+
         if (Input.GetAxisRaw(controllerName + "Stick3") < 0.9)
         {
             defenseScript.DeactivateDefense();
         }
-        else if (Input.GetAxisRaw(controllerName + "Stick3") > 0.9)
-        {
-            defenseScript.ActivateDefense();
-        }
+    }
 
-
+    IEnumerator DoAction(float delay)
+    {
+        isActing = true;
+        yield return new WaitForSeconds(delay);
+        isActing = false;
     }
 }

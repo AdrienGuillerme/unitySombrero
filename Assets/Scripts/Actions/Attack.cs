@@ -31,17 +31,21 @@ public class Attack : MonoBehaviour {
     }
 
     void Update () {
-        if (Input.GetAxis(controllerName + "Stick3") < -0.8f && !isAttacking && !isPressingTrigger)
+        weaponTransform.localPosition = Vector3.SmoothDamp(weaponTransform.localPosition, target, ref velocity, smoothTime);
+    }
+
+
+    public void DoAttack()
+    {
+        if (!isAttacking)
         {
             weapon.SetActive(true);
             isAttacking = true;
             isPressingTrigger = true;
             target = initPos + targetPos;
-            StartCoroutine(ProceedAttack(0.2f));        // Set attack cooldown here
+            StartCoroutine(ProceedAttack(0.2f));
         }
-        weaponTransform.localPosition = Vector3.SmoothDamp(weaponTransform.localPosition, target, ref velocity, smoothTime);
     }
-
 
     IEnumerator ProceedAttack(float delay)
     {
