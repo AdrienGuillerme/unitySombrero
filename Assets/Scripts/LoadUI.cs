@@ -15,8 +15,8 @@ public class LoadUI : MonoBehaviour {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         //Player Tag only for CharacterGroup->Player
         int cpt = 0;
-        Debug.Log(players.Length);
-        Debug.Log(users.Length);
+        //Debug.Log(players.Length);
+        //Debug.Log(users.Length);
         foreach (GameObject player in players)
         { GameObject newHealthUI;
             if (cpt % 2 == 1)
@@ -40,10 +40,10 @@ public class LoadUI : MonoBehaviour {
             }
 
             PlayerHealth newPlayerHealth = player.GetComponent<PlayerHealth>();
-            Debug.Log(player);
-            Debug.Log(cpt);
-            Debug.Log(newPlayerHealth);
-            Debug.Log(newHealthUI.GetComponentInChildren<Slider>());
+            //Debug.Log(player);
+            //Debug.Log(cpt);
+            //Debug.Log(newPlayerHealth);
+            ///Debug.Log(newHealthUI.GetComponentInChildren<Slider>());
             newPlayerHealth.healthSlider = newHealthUI.GetComponentInChildren<Slider>();
             GameObject user = users[cpt];
             DontDestroy newUserScore = user.GetComponent<DontDestroy>();

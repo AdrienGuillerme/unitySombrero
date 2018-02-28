@@ -299,6 +299,7 @@
     <Compile Include="Assets\LowpolyDungeonModularSystem\prefabs\Player\MouseLook.cs" />
     <Compile Include="Assets\LowpolyDungeonModularSystem\prefabs\Player\PlayerMovement.cs" />
     <Compile Include="Assets\LowpolyDungeonModularSystem\prefabs\Player\ShadowBlob.cs" />
+    <Compile Include="Assets\MenuPause.cs" />
     <Compile Include="Assets\Scripts\Actions\Attack.cs" />
     <Compile Include="Assets\Scripts\Actions\AttackTriggerCollision.cs" />
     <Compile Include="Assets\Scripts\Actions\Defense.cs" />
