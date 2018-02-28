@@ -185,7 +185,7 @@ public class MenuManager : MonoBehaviour
                         userFunction.controllerName = listControllerInArray[cpt];
                         cpt++;
                     }
-                    SceneManager.LoadScene("Test");
+                    SceneManager.LoadScene("MapSelection");
                 }
             }
         }
