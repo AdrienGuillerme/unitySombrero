@@ -8,7 +8,9 @@ public class DontDestroy : MonoBehaviour {
     public string controllerName;
     public Text uiText;
 
+
     private long score;
+    public int cptCapacity;
    
 
 	// Use this for initialization
