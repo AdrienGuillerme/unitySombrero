@@ -6,6 +6,7 @@ public class MenuPause : MonoBehaviour {
     private bool isPaused = false;
     private bool startPressed = false;
     private bool isActing = false;
+    private int delay = 0;
 
     public Transform canvas;
 
@@ -22,35 +23,43 @@ public class MenuPause : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-        if (isPaused)
+        if (isActing)
         {
-            Time.timeScale = 0f;
-            foreach (string controller in listController)
+            delay--;
+            if (delay == 0)
             {
-                if ((Input.GetButton(controller + "Action")) && (!isActing))
-                {
-                    isPaused = !isPaused;
-                    DoAction(0.2f);
-                    canvas.gameObject.SetActive(false);
-                }
+                isActing = false;
             }
         }
         else
         {
-            Time.timeScale = 1f;
             foreach (string controller in listController)
             {
-                if ((Input.GetButton(controller + "Start")) && (!isActing))
+                if (Input.GetButton(controller + "Start"))
                 {
                     isPaused = !isPaused;
-                    DoAction(0.2f);
-                    canvas.gameObject.SetActive(true);
+                    canvas.gameObject.SetActive(isPaused);
+                    Delay(30);
                 }
             }
+
+        }
+        
+
+        if (isPaused)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
         }
     }
-
+    private void Delay(int time)
+    {
+        isActing = true;
+        delay = time;
+    }
     IEnumerator DoAction(float delay)
     {
         isActing = true;
