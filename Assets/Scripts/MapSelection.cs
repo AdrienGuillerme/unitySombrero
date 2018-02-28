@@ -42,6 +42,7 @@ public class MapSelection : MonoBehaviour {
         nbMap = listImage.Count;
         map = objMap.GetComponent<Image>();
         text = objText.GetComponent<Text>();
+        ChangeImage();
     }
 
     // Update is called once per frame
