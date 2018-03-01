@@ -89,6 +89,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   loadingCanvas: {fileID: 0}
   optionCanvas: {fileID: 0}
+  sliderVolume: {fileID: 0}
+  buttonQuit: {fileID: 0}
 --- !u!114 &114637781907342954
 MonoBehaviour:
   m_ObjectHideFlags: 1
