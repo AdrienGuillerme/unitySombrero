@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c2e60bee2119a04ca752004f92be505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOptions: 0
   canvas: {fileID: 0}
   loadingCanvas: {fileID: 0}
   optionCanvas: {fileID: 0}
