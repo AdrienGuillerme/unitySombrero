@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadUI : MonoBehaviour {
+public class LoadUI : MonoBehaviour
+{
     public GameObject hudCanvas;
     public GameObject heathUILeft;
     public GameObject heathUIRight;
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         GameObject[] users = GameObject.FindGameObjectsWithTag("User");
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         //Player Tag only for CharacterGroup->Player
         int cpt = 0;
-        //Debug.Log(players.Length);
-        //Debug.Log(users.Length);
         foreach (GameObject player in players)
-        { GameObject newHealthUI;
+        {
+            GameObject newHealthUI;
             if (cpt % 2 == 1)
             {
                 newHealthUI = Instantiate(heathUIRight, hudCanvas.transform);
@@ -40,18 +41,14 @@ public class LoadUI : MonoBehaviour {
             }
 
             PlayerHealth newPlayerHealth = player.GetComponent<PlayerHealth>();
-            //Debug.Log(player);
-            //Debug.Log(cpt);
-            //Debug.Log(newPlayerHealth);
-            ///Debug.Log(newHealthUI.GetComponentInChildren<Slider>());
             newPlayerHealth.healthSlider = newHealthUI.GetComponentInChildren<Slider>();
             GameObject user = users[cpt];
             DontDestroy newUserScore = user.GetComponent<DontDestroy>();
-            newUserScore.uiText = newHealthUI.GetComponentInChildren <Text>();
+            newUserScore.uiText = newHealthUI.GetComponentInChildren<Text>();
             newUserScore.AddScore(0);
             cpt++;
         }
 
-		
-	}
+
+    }
 }
