@@ -6,11 +6,12 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
 
     float speed = 0.10f;
     private string controllerName;
-    private LaunchCapacity.Capacity capacityIntChosen = LaunchCapacity.Capacity.Glyph;
+    private CapacityEnum capacityIntChosen = CapacityEnum.Glyph;
     private ICapacity capacityChosen;
     private LaunchCapacity parentFunction;
     private bool activated;
     private Rigidbody rb;
+    private float altitude;
 
     // Use this for initialization
     void Start () {
@@ -23,11 +24,14 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
 
         switch (capacityIntChosen)
         {
-            case LaunchCapacity.Capacity.Glyph:
+            case CapacityEnum.Glyph:
                 capacityChosen = GetComponentInChildren<GlyphCapacity>();
                 break;
-            case LaunchCapacity.Capacity.Repulsion:
+            case CapacityEnum.Repulsion:
                 capacityChosen = GetComponentInChildren<RepulseCapacity>();
+                break;
+            case CapacityEnum.Meteor:
+                capacityChosen = GetComponentInChildren<MeteorCapacity>();
                 break;
             default:
                 Debug.Log("Default case");
@@ -54,5 +58,33 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
     public void setParent(LaunchCapacity parent)
     {
         this.parentFunction = parent;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Ennemi")
+        {
+            activate();
+        }
+        else if (other.gameObject.tag == "Player" && !other.gameObject.GetComponent<LaunchCapacity>().getControllerName().Equals(this.controllerName))
+        {
+            activate();
+        }
+        else if (other.gameObject.tag.Equals("EnvironmentComponent"))
+        {
+            Debug.Log("1 : Collide with " + other.gameObject.tag);
+            Debug.Log("2 : Collide with " + other.gameObject.name);
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void SetAltitude(float altitude)
+    {
+        this.altitude = altitude;
+    }
+
+    public float GetAltitude()
+    {
+        return this.altitude;
     }
 }

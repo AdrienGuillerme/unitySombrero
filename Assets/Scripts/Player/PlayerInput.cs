@@ -30,7 +30,6 @@ public class PlayerInput : MonoBehaviour {
             //Attaque
             if (Input.GetAxis(controllerName + "Stick3") < -0.8f)
             {
-
                 attackScript.DoAttack();
                 StartCoroutine(DoAction(0.2f));
             }

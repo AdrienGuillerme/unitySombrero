@@ -5,16 +5,16 @@ using UnityEngine;
 public class LaunchCapacity : MonoBehaviour {
 
     string controllerName;
-    public enum Capacity { Glyph, Repulsion };
-    public Capacity capacityIntChosen = Capacity.Glyph;
-    float distanceToCharacter = 1f;
+    public CapacityEnum capacityIntChosen = CapacityEnum.Glyph;
+    private float distanceToCharacter = 2f;
+    public float orbeAltitude = 0.5f;
     private GameObject launcher;
-    private bool asBeenLaunched;
+    private bool readyToLaunch;
 
     // Use this for initialization
     void Start () {
         controllerName = GetComponentInParent<DontDestroy>().controllerName;
-        asBeenLaunched = false;
+        readyToLaunch = true;
     }
 	
 	// Update is called once per frame
@@ -25,25 +25,37 @@ public class LaunchCapacity : MonoBehaviour {
 
     public void Launch()
     {
-        if (!asBeenLaunched)
-        {
-            GameObject obj = Resources.Load("CapacityLauncher") as GameObject;
-            Vector3 position = transform.forward * distanceToCharacter + transform.position;
-            launcher = Instantiate(obj, position, transform.rotation) as GameObject;
-            launcher.GetComponentInChildren<LauncherCapacityBehaviour>().setParent(this);
-            //Instantiate(obj, transform);
-            asBeenLaunched = true;
-        }
-        else
-        {
-            launcher.GetComponentInChildren<LauncherCapacityBehaviour>().activate();
-            launcher = null;
-            asBeenLaunched = false;
-        }
+		bool isDead = GetComponent<PlayerHealth>().IsDead();
+		
+		if (launcher == null)
+            readyToLaunch = true;
+		
+		if(readyToLaunch && !isDead)
+		{
+			GameObject obj = Resources.Load("CapacityLauncher") as GameObject;
+			Vector3 position = transform.forward * distanceToCharacter + transform.position;
+			position.y += orbeAltitude;
+			launcher = Instantiate(obj, position, transform.rotation) as GameObject;
+			launcher.GetComponentInChildren<LauncherCapacityBehaviour>().setParent(this);
+			launcher.GetComponentInChildren<LauncherCapacityBehaviour>().SetAltitude(orbeAltitude);
+			//Instantiate(obj, transform);
+			readyToLaunch = false;
+		}
+		else
+		{
+			launcher.GetComponentInChildren<LauncherCapacityBehaviour>().activate();
+			launcher = null;
+			readyToLaunch = true;
+		}
     }
 
     public string getControllerName()
     {
         return this.controllerName;
+    }
+
+    public void SetCapacity(CapacityEnum capacity)
+    {
+        this.capacityIntChosen = capacity;
     }
 }
