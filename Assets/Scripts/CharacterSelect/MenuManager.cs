@@ -183,6 +183,7 @@ public class MenuManager : MonoBehaviour
                         newCharacter.transform.parent = newUser.transform;
                         DontDestroy userFunction = newUser.GetComponent<DontDestroy>();
                         userFunction.controllerName = listControllerInArray[cpt];
+                        //newCharacter.gameObject.SetActive(false);
                         cpt++;
                     }
                     SceneManager.LoadScene("MapSelection");

@@ -19,6 +19,7 @@ public class MapSelection : MonoBehaviour {
     public GameObject objMap;
     private Image map;
     private Text text;
+    private GameObject[] users;
 
     private int nbMap;
     private int cpt = 0;
@@ -27,11 +28,11 @@ public class MapSelection : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        Time.timeScale = 1f;
         isActing = false;
-        GameObject[] users = GameObject.FindGameObjectsWithTag("User");
+        users = GameObject.FindGameObjectsWithTag("User");
         foreach(GameObject user in users)
         {
-            Debug.Log("user");
             controllers.Add(user.GetComponent<DontDestroy>().controllerName);
         }
 
@@ -84,6 +85,11 @@ public class MapSelection : MonoBehaviour {
 
                 if (Input.GetButton(controller + "Action"))
                 {
+                  
+                   /* foreach(GameObject user in users)
+                    {
+                        user.gameObject.SetActive(true);
+                    }*/
                     SceneManager.LoadScene(listName[cpt]);
                 }
             }
