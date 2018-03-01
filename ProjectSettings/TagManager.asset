@@ -9,6 +9,9 @@ TagManager:
   - EnemyWeapons
   - Spawner
   - Ennemi
+  - Item
+  - Box
+  - CharacterGroup
   layers:
   - Default
   - TransparentFX

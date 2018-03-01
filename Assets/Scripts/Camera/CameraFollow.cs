@@ -17,10 +17,20 @@ public class CameraFollow : MonoBehaviour
     {
         // Get the list of player
         listPlayer = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] listCharacter = GameObject.FindGameObjectsWithTag("CharacterGroup");
         Vector3 target = new Vector3(0,0,0);
+
+        foreach (GameObject charcater in listCharacter)
+        {
+            charcater.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        }
+
         foreach (GameObject player in listPlayer)
         {
             target += player.transform.position;
+            /*player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX;
+            player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY;*/
         }
         nbPlayer = listPlayer.Length;
         
