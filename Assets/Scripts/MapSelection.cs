@@ -22,14 +22,18 @@ public class MapSelection : MonoBehaviour {
 
     private int nbMap;
     private int cpt = 0;
-    private string controller;
+    private List<string> controllers = new List<string>();
     private bool isActing;
 
     // Use this for initialization
     void Start () {
         isActing = false;
         GameObject[] users = GameObject.FindGameObjectsWithTag("User");
-        controller = users[0].GetComponent<DontDestroy>().controllerName;
+        foreach(GameObject user in users)
+        {
+            Debug.Log("user");
+            controllers.Add(user.GetComponent<DontDestroy>().controllerName);
+        }
 
         listImage.Add(map1);
         listImage.Add(map2);
@@ -50,36 +54,40 @@ public class MapSelection : MonoBehaviour {
     {
         if (!isActing)
         {
-            float h;
-            if (controller == "Keyboard")
+            foreach (string controller in controllers)
             {
-                h = Input.GetAxisRaw("Horizontal");
-                StartCoroutine(DoAction(0.1f));
-            }
-            else
-            {
-                h = Input.GetAxisRaw(controller + "LStickX");
-                StartCoroutine(DoAction(0.1f));
-            }
-
-            if (h != 0)
-            {
-                if (h > 0)
+                float h;
+                if (controller == "Keyboard")
                 {
-                    cpt = (cpt + 1) % nbMap;                     
-                    ChangeImage();
+                    h = Input.GetAxisRaw("Horizontal");
+                    StartCoroutine(DoAction(0.1f));
                 }
                 else
                 {
-                    cpt = (cpt + nbMap - 1) % nbMap;
-                    ChangeImage();
+                    h = Input.GetAxisRaw(controller + "LStickX");
+                    StartCoroutine(DoAction(0.1f));
+                }
+
+                if (h != 0)
+                {
+                    if (h > 0)
+                    {
+                        cpt = (cpt + 1) % nbMap;
+                        ChangeImage();
+                    }
+                    else
+                    {
+                        cpt = (cpt + nbMap - 1) % nbMap;
+                        ChangeImage();
+                    }
+                }
+
+                if (Input.GetButton(controller + "Action"))
+                {
+                    SceneManager.LoadScene(listName[cpt]);
                 }
             }
-
-            if (Input.GetButton(controller + "Action"))
-            {
-                SceneManager.LoadScene(listName[cpt]);
-            }
+           
         }
     }
 
