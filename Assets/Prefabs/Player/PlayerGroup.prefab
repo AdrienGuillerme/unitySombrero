@@ -183,6 +183,8 @@ GameObject:
   - component: {fileID: 54678998221815534}
   - component: {fileID: 114142512082317968}
   - component: {fileID: 136023895323188060}
+  - component: {fileID: 114493952926643920}
+  - component: {fileID: 114916331700517654}
   m_Layer: 13
   m_Name: PlayerGroup
   m_TagString: Untagged
@@ -581,7 +583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1874878520784980
 GameObject:
   m_ObjectHideFlags: 1
@@ -1011,7 +1013,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831076570199856}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4699898405741858}
@@ -1482,7 +1484,7 @@ Rigidbody:
   m_GameObject: {fileID: 1350741316671686}
   serializedVersion: 2
   m_Mass: 70
-  m_Drag: 10
+  m_Drag: 1
   m_AngularDrag: Infinity
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1592,7 +1594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0aa8c7cf55e34d4984449d88d480e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shield: {fileID: 1831076570199856}
   maxHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 0}
@@ -1614,7 +1615,6 @@ MonoBehaviour:
   weaponTriggerL: {fileID: 1637158688281478}
   weaponTriggerR: {fileID: 1496969791936036}
   isAttacking: 0
-  isMovable: 0
 --- !u!114 &114289339473895986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1639,6 +1639,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be52ff9e3a99c91468a6fb66ace06cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114493952926643920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350741316671686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274ea12bacf2dd14cb9a9d88df79bed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capacityIntChosen: 0
+  orbeAltitude: 0.5
 --- !u!114 &114566453600068192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1653,6 +1666,17 @@ MonoBehaviour:
   shield: {fileID: 1831076570199856}
   movement: {fileID: 114289339473895986}
   isCountering: 0
+--- !u!114 &114916331700517654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350741316671686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc60f42d2ae69984088edee28fc4e922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114985084249743392
 MonoBehaviour:
   m_ObjectHideFlags: 1

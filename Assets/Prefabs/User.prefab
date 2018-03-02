@@ -69,3 +69,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllerName: 
   uiText: {fileID: 0}
+  cptCapacity: 0
