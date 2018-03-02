@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class AttackTriggerCollision : MonoBehaviour {
 
-    private AttackThief parent;
+    private Attack parent;
     private MeshCollider selfCollider;
     private Vector3 initPos;
+    private Vector3 initPosWorld;
     private Quaternion initRot;
 
     // Use this for initialization
     void Start () {
-        parent = GetComponentInParent<AttackThief>();
+        parent = GetComponentInParent<Attack>();
         selfCollider = GetComponentInParent<MeshCollider>();
         initPos = transform.localPosition;
+        initPosWorld = transform.position;
         initRot = transform.localRotation;
 	}
+
+    private void OnEnable()
+    {
+        initPosWorld = transform.position;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,6 +36,11 @@ public class AttackTriggerCollision : MonoBehaviour {
     {
         this.transform.localPosition = initPos;
         this.transform.localRotation = initRot;
+    }
+
+    public float PosDiffFromStart()
+    {
+        return (this.transform.position - initPosWorld).magnitude;
     }
 
 }

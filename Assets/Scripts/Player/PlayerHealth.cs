@@ -4,10 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
-
-    public GameObject shield;
-    private Defense defense;
-
     Rigidbody playerRigidbody;
     Vector3 knockback;
 
@@ -46,7 +42,6 @@ public class PlayerHealth : MonoBehaviour {
         currentHealth = maxHealth;
 
         playerRigidbody = GetComponentInParent<Rigidbody>();
-        defense = shield.GetComponent<Defense>();
     }
 
     //Previously in CharacterHealth
@@ -155,23 +150,36 @@ public class PlayerHealth : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        //if (!col.transform.IsChildOf(this.transform) && col.gameObject.tag == "EnemyWeapons" && col.GetComponentInParent<EnemyWeapon>().isAttacking  && isDead == false)
-        if (!col.transform.IsChildOf(this.transform) && col.tag == "Weapons" && col.GetComponentInParent<AttackThief>().isAttacking  && isDead == false)
+        if (!col.transform.IsChildOf(this.transform) && col.gameObject.tag == "EnemyWeapons" && col.GetComponentInParent<EnemyWeapon>().isAttacking  && isDead == false)
         {
             {
                 Debug.Log("You hurt me!!!");
-                //getHurt(10);
+                getHurt(10);
                 anim.SetBool("damaged", true);
-                knockback = (col.transform.position - transform.position) * -80;
+                knockback = (col.transform.position - transform.position).normalized;
+                knockback.y = 0;
                 KnockBack(knockback);
             }
-            
+        }
+
+        if (!col.transform.IsChildOf(this.transform) && col.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking  && isDead == false)
+        {
+            //TODO: vérifier le friendly fire
+            if(col.GetComponent<AttackTriggerCollision>().PosDiffFromStart() > 0.5f)
+            {
+                Debug.Log("Attacked by a mate");
+                //getHurt(10);
+                anim.SetBool("damaged", true);
+                knockback = (col.transform.position - transform.position).normalized;
+                knockback.y = 0; 
+                KnockBack(knockback);
+            }
         } 
     }
 
     void KnockBack(Vector3 k)
     {
-        k = k * 1000;
+        k = k * -200000;
         playerRigidbody.AddForce(k);
     }
 }

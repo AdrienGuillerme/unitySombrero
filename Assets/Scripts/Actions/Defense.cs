@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Defense : MonoBehaviour
 {
-    
     public GameObject shield;
     public CharacterMovement movement;
     public bool isCountering;
@@ -61,12 +60,13 @@ public class Defense : MonoBehaviour
                 Debug.Log("Attack blocked!");
                 isCountering = true;
                 hitTime = Time.time * 1000;
+                knockback = shield.transform.forward;
                 if (hitTime - shieldTime < 2000)
                 {
                     Debug.Log("perfect counter");
-                    knockback = shield.transform.forward;
-                    KnockBack(knockback, col.GetComponentInParent<Rigidbody>());
+                    knockback *= 10;
                 }
+                KnockBack(knockback, col.GetComponentInParent<Rigidbody>());
             }
         }
     }
@@ -78,7 +78,7 @@ public class Defense : MonoBehaviour
 
     void KnockBack(Vector3 k, Rigidbody target)
     {
-        k = k * 500;
+        k = k * 5000;
         target.AddForce(k);
     }
 }
