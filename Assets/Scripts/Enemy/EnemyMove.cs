@@ -22,7 +22,7 @@ public class EnemyMove : MonoBehaviour
     {
         agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
         initialPosition = transform.position;
-		
+
         // If no defined goal, stay at the initial position
         if (target == null)
             goalVector = initialPosition;
