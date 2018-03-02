@@ -150,36 +150,18 @@ public class PlayerHealth : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (!col.transform.IsChildOf(this.transform) && col.gameObject.tag == "EnemyWeapons" && col.GetComponentInParent<EnemyWeapon>().isAttacking  && isDead == false)
+        if (col.gameObject.tag == "EnemyWeapons" && col.GetComponentInParent<EnemyWeapon>().isAttacking  && isDead == false)
         {
-            {
-                Debug.Log("You hurt me!!!");
-                getHurt(10);
-                anim.SetBool("damaged", true);
-                knockback = (col.transform.position - transform.position).normalized;
-                knockback.y = 0;
-                KnockBack(knockback);
-            }
-        }
-
-        if (!col.transform.IsChildOf(this.transform) && col.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking  && isDead == false)
-        {
-            //TODO: vérifier le friendly fire
-            if(col.GetComponent<AttackTriggerCollision>().PosDiffFromStart() > 0.5f)
-            {
-                Debug.Log("Attacked by a mate");
-                //getHurt(10);
-                anim.SetBool("damaged", true);
-                knockback = (col.transform.position - transform.position).normalized;
-                knockback.y = 0; 
-                KnockBack(knockback);
-            }
+            Debug.Log("You hurt me!!!");
+            getHurt(10);
+            knockback = col.transform.forward;
+            KnockBack(knockback);
         } 
     }
 
     void KnockBack(Vector3 k)
     {
-        k = k * -200000;
+        k = k * 1000;
         playerRigidbody.AddForce(k);
     }
 }

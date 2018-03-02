@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114465453757044156}
   - component: {fileID: 114038516125285162}
   - component: {fileID: 114637781907342954}
+  - component: {fileID: 114535698338258314}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -74,6 +75,23 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
+--- !u!114 &114535698338258314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1121063468255186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2e60bee2119a04ca752004f92be505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOptions: 0
+  canvas: {fileID: 0}
+  loadingCanvas: {fileID: 0}
+  optionCanvas: {fileID: 0}
+  sliderVolume: {fileID: 0}
+  buttonQuit: {fileID: 0}
 --- !u!114 &114637781907342954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fabea6c30038014494173246a49c3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hudCanvas: {fileID: 1325538181960902, guid: fcf3a8f86d3541047a9eabec9baab9d8, type: 2}
+  hudCanvas: {fileID: 0}
   heathUILeft: {fileID: 1282180742447040, guid: 8c4eb6228c4fb25418c0100fa37128c6,
     type: 2}
   heathUIRight: {fileID: 1030459530388104, guid: 5e4c99aee750a9e4f9d19e7cbf81385c,

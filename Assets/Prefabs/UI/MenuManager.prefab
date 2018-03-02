@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1955763895484144}
+  m_IsPrefabParent: 1
+--- !u!1 &1955763895484144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4753764744882392}
+  - component: {fileID: 114886206012556490}
+  m_Layer: 0
+  m_Name: MenuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4753764744882392
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1955763895484144}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114886206012556490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1955763895484144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb149fab84b2544dae16155c911310c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uL: {fileID: 0}
+  uR: {fileID: 0}
+  dL: {fileID: 0}
+  dR: {fileID: 0}
+  user: {fileID: 1662271840235164, guid: d7ea229bb2101014abf2c64a6adbf5a5, type: 2}
+  character1: {fileID: 1059512891779480, guid: d4607b3c6b8424b47b52f344d8b3b14b, type: 2}
+  capacity1: {fileID: 114667926566855318, guid: 8b6ae0fe27c4ed249a869ce921fa9e3f,
+    type: 2}
+  capacity2: {fileID: 114096359417439230, guid: 1f461150713fe5944b4533ffeb828ca7,
+    type: 2}
+  capacity3: {fileID: 114602607631909320, guid: 62ee2b596038e3444b91deb202541f7c,
+    type: 2}
+  validation: {fileID: 114083630197205810, guid: b9afcc9549806e74fb725d4b7e027b21,
+    type: 2}

@@ -9,11 +9,12 @@ public class PlayerCapacityBehavior : MonoBehaviour{
 
     public Capacity capacityIntChosen = Capacity.Glyph;
     public ICapacity capacityChosen;
-
+    bool capacityIsTriggered;
 
     // Use this for initialization
     private void Start()
     {
+        capacityIsTriggered = false;
         //init gameController
         DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
         controllerName = parentFunction.controllerName;
@@ -33,8 +34,6 @@ public class PlayerCapacityBehavior : MonoBehaviour{
 
     void Update()
     {
-        // Store the input button.
-        bool capacityIsTriggered = false;
 
         if (controllerName == "Keyboard")
         {
@@ -52,6 +51,17 @@ public class PlayerCapacityBehavior : MonoBehaviour{
 
         // Animate the player.
         // Animating(capacityIsTriggered);
+    }
+    public void ActivateCapacity()
+    {
+        if (this.capacityIsTriggered)
+        {
+            capacityChosen.ActivateCapacity();
+        }
+        else
+        {
+            capacityIsTriggered = true;
+        }
     }
 
     private void Repulsive()

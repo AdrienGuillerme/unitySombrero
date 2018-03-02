@@ -25,7 +25,10 @@ public class GlyphCapacity : MonoBehaviour, ICapacity {
     private void MakeGlyph()
     {
         GameObject obj = Resources.Load("Glyph") as GameObject;
-        Vector3 position = transform.position;
+         Vector3 position = transform.position;
+        float orbeAltitude = this.gameObject.GetComponent<LauncherCapacityBehaviour>().GetAltitude();
+        Debug.Log("orbe : " + orbeAltitude);
+        position.y -= orbeAltitude;
         Instantiate(obj, position, transform.rotation);
     }
 }

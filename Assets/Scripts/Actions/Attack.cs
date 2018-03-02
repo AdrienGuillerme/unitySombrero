@@ -23,25 +23,24 @@ public class Attack : MonoBehaviour {
         weaponScriptR = weaponTriggerR.GetComponent<AttackTriggerCollision>();
 
         isAttacking = false;
-        isPressingTrigger = false;
         weaponTriggerR.SetActive(false);
         weaponTriggerL.SetActive(false);
         anim = GetComponentInParent<Animator>();
-
     }
 
     void Update () {
-        if (Input.GetAxis(controllerName + "Stick3") < -0.8f && !isAttacking && !isPressingTrigger)
+        
+    }
+
+
+    public void DoAttack()
+    {
+        if (!isAttacking)
         {
             isAttacking = true;
-            isPressingTrigger = true;
             anim.SetFloat("attackNumber", 0);
             anim.SetTrigger("attack");
             StartCoroutine(ChangeWeaponActive(0.2f, true));
-        }
-        else if (Input.GetAxis(controllerName + "Stick3") > -0.7f && isPressingTrigger)
-        {
-            isPressingTrigger = false;
         }
     }
 
