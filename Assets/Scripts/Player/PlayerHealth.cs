@@ -4,10 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
-
-    public GameObject shield;
-    //private Defense defense;
-
     Rigidbody playerRigidbody;
     Vector3 knockback;
 
@@ -45,9 +41,7 @@ public class PlayerHealth : MonoBehaviour {
         // Set the initial health of the player.
         currentHealth = maxHealth;
 
-        
         playerRigidbody = GetComponentInParent<Rigidbody>();
-       // defense = shield.GetComponent<Defense>();
     }
 
     //Previously in CharacterHealth

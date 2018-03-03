@@ -3,32 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Attack : MonoBehaviour {
-    public GameObject weapon;
+    public GameObject weaponTriggerL;
+    public GameObject weaponTriggerR;
+    private AttackTriggerCollision weaponScriptL;
+    private AttackTriggerCollision weaponScriptR;
+
+    private Animator anim;
+
     public bool isAttacking;
-    
-
-    private Transform weaponTransform;
-    private Vector3 initPos;
-    private Vector3 targetPos;
-    private Vector3 target;
-
-    private float smoothTime = 0.05F;
-    private Vector3 velocity = Vector3.zero;
+    private bool isPressingTrigger;
+    private string controllerName;
 
     void Start () {
-        weaponTransform = weapon.GetComponent<Transform>();
-        isAttacking = false;
-
-        initPos = weaponTransform.localPosition;
-        targetPos = new Vector3(-1, 0, 0);
-        target = initPos;
-
         //init gameController
-       
+        DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
+        controllerName = parentFunction.controllerName;
+
+        weaponScriptL = weaponTriggerL.GetComponent<AttackTriggerCollision>();
+        weaponScriptR = weaponTriggerR.GetComponent<AttackTriggerCollision>();
+
+        isAttacking = false;
+        weaponTriggerR.SetActive(false);
+        weaponTriggerL.SetActive(false);
+        anim = GetComponentInParent<Animator>();
     }
 
     void Update () {
-        weaponTransform.localPosition = Vector3.SmoothDamp(weaponTransform.localPosition, target, ref velocity, smoothTime);
+        
     }
 
 
@@ -36,30 +37,37 @@ public class Attack : MonoBehaviour {
     {
         if (!isAttacking)
         {
-            weapon.SetActive(true);
             isAttacking = true;
-            target = initPos + targetPos;
-            StartCoroutine(ProceedAttack(0.2f));
+            anim.SetFloat("attackNumber", 0);
+            anim.SetTrigger("attack");
+            StartCoroutine(ChangeWeaponActive(0.2f, true));
         }
     }
 
-    IEnumerator ProceedAttack(float delay)
+    IEnumerator ChangeWeaponActive(float delay, bool state)
     {
         yield return new WaitForSeconds(delay);
-        ResetTrigger();
-        isAttacking = false;
+        weaponTriggerR.SetActive(state);
+        weaponTriggerL.SetActive(state);
     }
 
-    public void ChildTriggerEnter(Collider other)
+    void AnimationEnter(AnimatorStateInfo stateInfo)
     {
-        ResetTrigger();
-        //isAttacking = false;
+
     }
 
-    void ResetTrigger()
+    void AnimationExit(AnimatorStateInfo stateInfo)
     {
-        target = initPos;
-        weapon.SetActive(false);
-        weaponTransform.localPosition = target;
+        if (true) //on peut vérifier isAlive au besoin
+        {
+            if (stateInfo.IsName("Attack_Tree"))
+            {
+                anim.ResetTrigger("damaged");
+                StartCoroutine(ChangeWeaponActive(0.0f, false));
+                weaponScriptL.ResetTrigger();
+                weaponScriptR.ResetTrigger();
+                isAttacking = false;
+            }
+        }
     }
 }

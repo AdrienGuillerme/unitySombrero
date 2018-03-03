@@ -172,6 +172,12 @@ Prefab:
       propertyPath: dR
       value: 
       objectReference: {fileID: 1409965940}
+    - target: {fileID: 114886206012556490, guid: db3a05565cbe23a44b528042e5870367,
+        type: 2}
+      propertyPath: character1
+      value: 
+      objectReference: {fileID: 1350741316671686, guid: c4bb8246b9ec91c419f3cc7f8e309eaa,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db3a05565cbe23a44b528042e5870367, type: 2}
   m_IsPrefabParent: 0
@@ -412,6 +418,26 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 114066290846493878, guid: c3cbbd8c6d1cb764a925e459c28ba031,
+        type: 2}
+      propertyPath: m_Text
+      value: Appuyez sur A
+      objectReference: {fileID: 0}
+    - target: {fileID: 114394691086684816, guid: c3cbbd8c6d1cb764a925e459c28ba031,
+        type: 2}
+      propertyPath: m_Text
+      value: Appuyez sur A
+      objectReference: {fileID: 0}
+    - target: {fileID: 114138403665557594, guid: c3cbbd8c6d1cb764a925e459c28ba031,
+        type: 2}
+      propertyPath: m_Text
+      value: Appuyez sur A
+      objectReference: {fileID: 0}
+    - target: {fileID: 114523391098450856, guid: c3cbbd8c6d1cb764a925e459c28ba031,
+        type: 2}
+      propertyPath: m_Text
+      value: Appuyez sur A
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3cbbd8c6d1cb764a925e459c28ba031, type: 2}

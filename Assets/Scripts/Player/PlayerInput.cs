@@ -16,10 +16,10 @@ public class PlayerInput : MonoBehaviour {
         isActing = false;
         //init gameController
         DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
-        attackScript = this.transform.Find("Sword").GetComponent<Attack>();
-        resurectionScript = this.transform.Find("ReviveCollider").GetComponent<Resurection>();
-        capacityScript = GetComponentInChildren<LaunchCapacity>();
-        defenseScript = GetComponentInChildren<Defense>();
+        attackScript = parentFunction.GetComponentInChildren<Attack>();
+        resurectionScript = parentFunction.GetComponentInChildren<Resurection>();
+        capacityScript = parentFunction.GetComponentInChildren<LaunchCapacity>();
+        defenseScript = parentFunction.GetComponentInChildren<Defense>();
         controllerName = parentFunction.controllerName;
     }
 	
