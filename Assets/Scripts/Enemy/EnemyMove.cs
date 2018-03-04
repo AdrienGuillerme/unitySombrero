@@ -81,8 +81,8 @@ public class EnemyMove : MonoBehaviour
     public void CheckTarget(Transform target)
     {
         cpt = 0;
-		if (target.GetComponentInChildren<PlayerHealth> ().IsDead ())
-			GetComponent<Animator> ().SetTrigger ("Patrol");
+		if (target.GetComponentInChildren<PlayerHealth>().IsDead())
+			GetComponent<Animator>().SetTrigger("Patrol");
 		else
 	        if (target.transform.position != goalVector)
 	            SetTarget(target);

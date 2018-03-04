@@ -95,7 +95,7 @@ public class PlayerHealth : MonoBehaviour {
         isDead = true;
         Debug.Log("I'm Dead");
         // Tell the animator that the player is dead.
-        anim.SetTrigger("Death");
+        anim.SetBool("death", true);
 
         // Set the audiosource to play the death clip and play it (this will stop the hurt sound from playing).
         //playerAudio.clip = deathClip;
@@ -113,7 +113,7 @@ public class PlayerHealth : MonoBehaviour {
         isDead = false;
         actualResPoints = 0;
         Debug.Log("Yay! I'm alive");
-        anim.SetTrigger("Revive");
+        anim.SetBool("death", false);
         characterMovement.enabled = true;
         characterAttack.enabled = true;
         characterDefense.enabled = true;
@@ -150,7 +150,7 @@ public class PlayerHealth : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "EnemyWeapons" && col.GetComponentInParent<EnemyWeapon>().isAttacking  && isDead == false)
+        if (col.gameObject.tag == "EnemyWeapons"  && isDead == false)
         {
             Debug.Log("You hurt me!!!");
             getHurt(10);

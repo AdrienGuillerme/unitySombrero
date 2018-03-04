@@ -53,9 +53,8 @@ public class Defense : MonoBehaviour
         {
 
             EnemyWeapon axe = col.GetComponentInParent<EnemyWeapon>();
-            if (axe.isAttacking)
+            if (true)
             {
-                axe.isAttacking = false;
                 Debug.Log("Attack blocked!");
                 isCountering = true;
                 hitTime = Time.time * 1000;
