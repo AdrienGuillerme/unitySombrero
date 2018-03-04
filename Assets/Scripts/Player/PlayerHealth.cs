@@ -95,7 +95,7 @@ public class PlayerHealth : MonoBehaviour {
         isDead = true;
         Debug.Log("I'm Dead");
         // Tell the animator that the player is dead.
-        anim.SetTrigger("Death");
+        anim.SetBool("death", true);
 
         // Set the audiosource to play the death clip and play it (this will stop the hurt sound from playing).
         //playerAudio.clip = deathClip;
@@ -113,7 +113,7 @@ public class PlayerHealth : MonoBehaviour {
         isDead = false;
         actualResPoints = 0;
         Debug.Log("Yay! I'm alive");
-        anim.SetTrigger("Revive");
+        anim.SetBool("death", false);
         characterMovement.enabled = true;
         characterAttack.enabled = true;
         characterDefense.enabled = true;
@@ -150,18 +150,36 @@ public class PlayerHealth : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "EnemyWeapons" && col.GetComponentInParent<EnemyWeapon>().isAttacking  && isDead == false)
+        if (!col.transform.IsChildOf(this.transform) && col.gameObject.tag == "EnemyWeapons" && col.GetComponentInParent<EnemyWeapon>().isAttacking  && isDead == false)
         {
-            Debug.Log("You hurt me!!!");
-            getHurt(10);
-            knockback = col.transform.forward;
-            KnockBack(knockback);
+            {
+                Debug.Log("You hurt me!!!");
+                getHurt(10);
+                anim.SetBool("damaged", true);
+                knockback = (col.transform.position - transform.position).normalized;
+                knockback.y = 0;
+                KnockBack(knockback);
+            }
+        }
+
+        if (!col.transform.IsChildOf(this.transform) && col.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking  && isDead == false)
+        {
+            //TODO: vérifier le friendly fire
+            if(col.GetComponent<AttackTriggerCollision>().PosDiffFromStart() > 0.5f)
+            {
+                Debug.Log("Attacked by a mate");
+                //getHurt(10);
+                anim.SetBool("damaged", true);
+                knockback = (col.transform.position - transform.position).normalized;
+                knockback.y = 0; 
+                KnockBack(knockback);
+            }
         } 
     }
 
     void KnockBack(Vector3 k)
     {
-        k = k * 1000;
+        k = k * -200000;
         playerRigidbody.AddForce(k);
     }
 }
