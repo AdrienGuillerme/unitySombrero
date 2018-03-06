@@ -19,19 +19,21 @@ public class EnemyHealth : MonoBehaviour {
         isDead = false;
         health = maxHealth;
 	}
-	
+
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Weapons")
         {
             GetHurt(1);
-            knockback = col.transform.forward;
+            knockback = (col.transform.position - transform.position).normalized;
+            knockback.y = 0;
             KnockBack(knockback);
         }
     }
 
     public void GetHurt(int i)
     {
+        //Debug.Log("Skeleton hurt!");
         health -= i;
         if (health <= 0 && !isDead)
         {
@@ -47,7 +49,7 @@ public class EnemyHealth : MonoBehaviour {
 
     void KnockBack(Vector3 k)
     {
-        k = k * 1000;
+        k = k * -3000;
         enemyRigidbody.AddForce(k);
     }
 }
