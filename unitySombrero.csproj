@@ -313,6 +313,7 @@
     <Compile Include="Assets\Scripts\Capacities\MeteorCapacity.cs" />
     <Compile Include="Assets\Scripts\Capacities\RepulseCapacity.cs" />
     <Compile Include="Assets\Scripts\Enemy\Death.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Destroy.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMove.cs" />
