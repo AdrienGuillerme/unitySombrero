@@ -49,7 +49,7 @@ public class EnemyHealth : MonoBehaviour {
 
     void KnockBack(Vector3 k)
     {
-        k = k * -3000;
+        k = k * -50000;
         enemyRigidbody.AddForce(k);
     }
 }

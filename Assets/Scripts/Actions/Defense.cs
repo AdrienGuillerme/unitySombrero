@@ -76,7 +76,7 @@ public class Defense : MonoBehaviour
 
     void KnockBack(Vector3 k, Rigidbody target)
     {
-        k = k * 5000;
+        k = k * 50000;
         target.AddForce(k);
     }
 }
