@@ -322,6 +322,7 @@
     <Compile Include="Assets\Scripts\Enemy\PlayerDetection.cs" />
     <Compile Include="Assets\Scripts\Enemy\PlayerInRange.cs" />
     <Compile Include="Assets\Scripts\Enemy\Pursuit.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Spawner.cs" />
     <Compile Include="Assets\Scripts\InvisibleWall\WallFollow.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Player\DontDestroy.cs" />
@@ -329,7 +330,6 @@
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Player\Resurection.cs" />
-    <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\UI\LoadUI.cs" />
     <Compile Include="Assets\Scripts\UI\MapSelection.cs" />
     <Compile Include="Assets\Scripts\UI\MenuManager.cs" />

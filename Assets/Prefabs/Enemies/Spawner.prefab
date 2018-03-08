@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4184865030274790}
   - component: {fileID: 114700127893177038}
   m_Layer: 9
-  m_Name: DragonsSpawner
+  m_Name: Spawner
   m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,6 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9774c738dbae8f742bdb2470ea57981a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1858391109834574, guid: 6f75a9fedce030348b6e2658b842559b, type: 2}
+  agent: {fileID: 0}
   spawnOne: 0
   chosenPatrolPositions: []
