@@ -2,4 +2,4 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CapacityEnum{ Glyph, Repulsion, Meteor };
+public enum CapacityEnum{ Glyph, Repulsion, Meteor, Freeze };
