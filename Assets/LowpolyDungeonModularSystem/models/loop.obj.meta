@@ -667,7 +667,12 @@ ModelImporter:
     4300260: Plane1843
     4300262: loop
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: loopMat
+    second: {fileID: 2100000, guid: 63f620c26d5051c469b0f2bfd0b9e7d9, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -698,7 +703,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 2
     addColliders: 0
     importVisibility: 0
     importBlendShapes: 1
@@ -710,6 +715,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
