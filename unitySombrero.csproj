@@ -282,7 +282,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GlyphBehaviour.cs" />
     <Compile Include="Assets\LittleThief\Demo1\Scripts\BoxController.cs" />
     <Compile Include="Assets\LittleThief\Demo1\Scripts\ButtonEvent.cs" />
     <Compile Include="Assets\LittleThief\Demo1\Scripts\CameraController.cs" />
@@ -304,12 +303,16 @@
     <Compile Include="Assets\Scripts\Actions\Defense.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerCapacityBehavior.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Capacities\CapacityEnum.cs" />
+    <Compile Include="Assets\Scripts\Capacities\FreezeCapacity.cs" />
+    <Compile Include="Assets\Scripts\Capacities\GlyphBehaviour.cs" />
     <Compile Include="Assets\Scripts\Capacities\GlyphCapacity.cs" />
     <Compile Include="Assets\Scripts\Capacities\ICapacity.cs" />
-    <Compile Include="Assets\Scripts\Capacities\LauchCapacity.cs" />
+    <Compile Include="Assets\Scripts\Capacities\LaunchCapacity.cs" />
     <Compile Include="Assets\Scripts\Capacities\LauncherCapacityBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Capacities\MeteorBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Capacities\MeteorCapacity.cs" />
     <Compile Include="Assets\Scripts\Capacities\RepulseCapacity.cs" />
-    <Compile Include="Assets\Scripts\CharacterSelect\MenuManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Death.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
@@ -318,13 +321,19 @@
     <Compile Include="Assets\Scripts\Enemy\Patrol.cs" />
     <Compile Include="Assets\Scripts\Enemy\PlayerDetection.cs" />
     <Compile Include="Assets\Scripts\Enemy\PlayerInRange.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Pursuit.cs" />
     <Compile Include="Assets\Scripts\InvisibleWall\WallFollow.cs" />
-    <Compile Include="Assets\Scripts\LoadUI.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Player\DontDestroy.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerBehaviour.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Player\Resurection.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
+    <Compile Include="Assets\Scripts\UI\LoadUI.cs" />
+    <Compile Include="Assets\Scripts\UI\MapSelection.cs" />
+    <Compile Include="Assets\Scripts\UI\MenuManager.cs" />
+    <Compile Include="Assets\Scripts\UI\MenuPause.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LittleThief\Readme.txt" />

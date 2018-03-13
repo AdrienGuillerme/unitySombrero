@@ -4,48 +4,46 @@ using UnityEngine;
 
 public class Defense : MonoBehaviour
 {
-    
     public GameObject shield;
     public CharacterMovement movement;
     public bool isCountering;
 
     Vector3 knockback;
-    Rigidbody playerRigidbody;
+    //Rigidbody playerRigidbody;
     private bool defending = false;
     private float shieldTime;
     private float hitTime;
-    private string controllerName;
+
 
     private void Start()
     {
-        //init gameController
-        DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
-        controllerName = parentFunction.controllerName;
+       // DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
     }
 
     void Awake()
     {
-        playerRigidbody = GetComponentInParent<Rigidbody>();
+       // playerRigidbody = GetComponentInParent<Rigidbody>();
         isCountering = false;        
     }
 
     void Update()
     {
         shield.SetActive(defending);
-        float lt = Input.GetAxisRaw(controllerName + "Stick3");
+    }
+
+    public void ActivateDefense()
+    {
+        defending = true;
+        movement.speed = 2;
+    }
+
+    public void DeactivateDefense()
+    {
         if (defending)
         {
-            if (lt < 0.9)
-            {
-                defending = false;
-                movement.speed = 6;
-                shieldTime = Time.time * 1000;
-            }
-        }
-        else if (lt > 0.9)
-        {
-            defending = true;
-            movement.speed = 2;
+            defending = false;
+            movement.speed = 6;
+            shieldTime = Time.time * 1000;
         }
     }
 
@@ -55,18 +53,18 @@ public class Defense : MonoBehaviour
         {
 
             EnemyWeapon axe = col.GetComponentInParent<EnemyWeapon>();
-            if (axe.isAttacking)
+            if (true)
             {
-                axe.isAttacking = false;
                 Debug.Log("Attack blocked!");
                 isCountering = true;
                 hitTime = Time.time * 1000;
+                knockback = shield.transform.forward;
                 if (hitTime - shieldTime < 2000)
                 {
                     Debug.Log("perfect counter");
-                    knockback = shield.transform.forward;
-                    KnockBack(knockback, col.GetComponentInParent<Rigidbody>());
+                    knockback *= 10;
                 }
+                KnockBack(knockback, col.GetComponentInParent<Rigidbody>());
             }
         }
     }
@@ -78,7 +76,7 @@ public class Defense : MonoBehaviour
 
     void KnockBack(Vector3 k, Rigidbody target)
     {
-        k = k * 500;
+        k = k * 5000;
         target.AddForce(k);
     }
 }

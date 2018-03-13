@@ -22,7 +22,7 @@ public class EnemyMove : MonoBehaviour
     {
         agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
         initialPosition = transform.position;
-		
+
         // If no defined goal, stay at the initial position
         if (target == null)
             goalVector = initialPosition;
@@ -81,8 +81,8 @@ public class EnemyMove : MonoBehaviour
     public void CheckTarget(Transform target)
     {
         cpt = 0;
-		if (target.GetComponentInChildren<PlayerHealth> ().IsDead ())
-			GetComponent<Animator> ().SetTrigger ("Patrol");
+		if (target.GetComponentInChildren<PlayerHealth>().IsDead())
+			GetComponent<Animator>().SetTrigger("Patrol");
 		else
 	        if (target.transform.position != goalVector)
 	            SetTarget(target);

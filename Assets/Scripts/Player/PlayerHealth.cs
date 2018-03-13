@@ -4,10 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
-
-    public GameObject shield;
-    private Defense defense;
-
     Rigidbody playerRigidbody;
     Vector3 knockback;
 
@@ -34,23 +30,16 @@ public class PlayerHealth : MonoBehaviour {
 
     void Awake()
     {
-        //Previously in CharacterHealth
-        // Setting up the references.
         anim = GetComponentInParent<Animator>();
         //playerAudio = GetComponent<AudioSource>();
         characterMovement = GetComponent<CharacterMovement>();
         characterAttack = transform.parent.GetComponentInChildren<Attack>();
         characterDefense = transform.parent.GetComponentInChildren<Defense>();
 
-        // Set the initial health of the player.
         currentHealth = maxHealth;
-
-        
         playerRigidbody = GetComponentInParent<Rigidbody>();
-        defense = shield.GetComponent<Defense>();
     }
 
-    //Previously in CharacterHealth
     void Update()
     {
         isRevived = false;
@@ -61,14 +50,12 @@ public class PlayerHealth : MonoBehaviour {
             // ... set the colour of the damageImage to the flash colour.
             damageImage.color = flashColour;
         }
-        // Otherwise...
         else
         {
             // ... transition the colour back to clear.
             damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
         }
         
-
         // Reset the damaged flag.
         damaged = false;*/
     }
@@ -79,35 +66,24 @@ public class PlayerHealth : MonoBehaviour {
     {
         // Set the damaged flag so the screen will flash.
         damaged = true;
-
-        // Reduce the current health by the damage amount.
         currentHealth -= i;
-
-        // Set the health bar's value to the current health.
         healthSlider.value = currentHealth;
-
-        // Play the hurt sound effect.
         //playerAudio.Play();
-
-        // If the player has lost all it's health and the death flag hasn't been set yet...
         if (currentHealth <= 0 && !isDead)
             Death();
     }
 
-    //Previously in CharacterHealth
     void Death()
     {
         // Set the death flag so this function won't be called again.
         isDead = true;
         Debug.Log("I'm Dead");
-        // Tell the animator that the player is dead.
-        //anim.SetTrigger("Die");
+        anim.SetBool("death", true);
 
         // Set the audiosource to play the death clip and play it (this will stop the hurt sound from playing).
         //playerAudio.clip = deathClip;
         //playerAudio.Play();
 
-        // Turn off the movement and shooting scripts.
         characterMovement.enabled = false;
         characterAttack.enabled = false;
         characterDefense.enabled = false;
@@ -119,7 +95,7 @@ public class PlayerHealth : MonoBehaviour {
         isDead = false;
         actualResPoints = 0;
         Debug.Log("Yay! I'm alive");
-        anim.SetTrigger("Revive");
+        anim.SetBool("death", false);
         characterMovement.enabled = true;
         characterAttack.enabled = true;
         characterDefense.enabled = true;
@@ -156,18 +132,36 @@ public class PlayerHealth : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "EnemyWeapons" && col.GetComponentInParent<EnemyWeapon>().isAttacking  && isDead == false)
+        if (col.gameObject.tag == "EnemyWeapons" && isDead == false)
         {
-            Debug.Log("You hurt me!!!");
-            getHurt(10);
-            knockback = col.transform.forward;
-            KnockBack(knockback);
+            {
+                //Debug.Log("You hurt me!!!");
+                getHurt(10);
+                anim.SetBool("damaged", true);
+                knockback = (col.transform.position - transform.position).normalized;
+                knockback.y = 0;
+                KnockBack(knockback);
+            }
+        }
+
+        if (!col.transform.IsChildOf(this.transform) && col.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking  && isDead == false)
+        {
+            //TODO: vérifier le friendly fire
+            if(col.GetComponent<AttackTriggerCollision>().PosDiffFromStart() > 0.5f)
+            {
+                Debug.Log("Attacked by a mate");
+                //getHurt(10);
+                anim.SetBool("damaged", true);
+                knockback = (col.transform.position - transform.position).normalized;
+                knockback.y = 0; 
+                KnockBack(knockback);
+            }
         } 
     }
 
     void KnockBack(Vector3 k)
     {
-        k = k * 1000;
+        k = k * -100000;
         playerRigidbody.AddForce(k);
     }
 }

@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Resurection : MonoBehaviour
 {
-
-    string controllerName;
     // public Slider resSlider;                                 // Reference to the UI's health bar.
     //public AudioClip deathClip;                                 // The audio clip to play when the player dies.
     //Animator anim;                                              // Reference to the Animator component.
@@ -23,8 +21,6 @@ public class Resurection : MonoBehaviour
     {
         //init gameController
         trans = this.GetComponentInParent<Transform>().parent.transform;
-        DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
-        controllerName = parentFunction.controllerName;
         myHealth =trans.Find("Player").GetComponent<PlayerHealth>();
 
     }
@@ -71,13 +67,6 @@ public class Resurection : MonoBehaviour
             box.enabled = false;
         }
 
-        if (canRevive() && characterHealth != null && characterHealth.IsDead())
-        {
-            if (Input.GetButton(controllerName + "Action"))
-            {
-                Revive();
-            }
-        }
     }
 
     private bool canRevive()
@@ -85,10 +74,13 @@ public class Resurection : MonoBehaviour
         return (!myHealth.IsDead());
     }
 
-    void Revive()
+    public void Revive()
     {
-        characterHealth.getRevive();
-        Debug.Log("I'm healing!");
+        if (canRevive() && characterHealth != null && characterHealth.IsDead())
+        {
+            characterHealth.getRevive();
+            Debug.Log("I'm healing!");
+        }
 
     }
 

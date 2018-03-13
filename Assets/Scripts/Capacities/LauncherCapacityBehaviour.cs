@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class LauncherCapacityBehaviour : MonoBehaviour {
 
-    float speed = 0.10f;
+    public float speed = 5f;
     private string controllerName;
-    private LauchCapacity.Capacity capacityIntChosen = LauchCapacity.Capacity.Glyph;
+    private CapacityEnum capacityIntChosen = CapacityEnum.Glyph;
     private ICapacity capacityChosen;
-    private LauchCapacity parentFunction;
+    private LaunchCapacity parentFunction;
     private bool activated;
     private Rigidbody rb;
+    private float altitude;
 
     // Use this for initialization
     void Start () {
@@ -23,11 +24,17 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
 
         switch (capacityIntChosen)
         {
-            case LauchCapacity.Capacity.Glyph:
+            case CapacityEnum.Glyph:
                 capacityChosen = GetComponentInChildren<GlyphCapacity>();
                 break;
-            case LauchCapacity.Capacity.Repulsion:
+            case CapacityEnum.Repulsion:
                 capacityChosen = GetComponentInChildren<RepulseCapacity>();
+                break;
+            case CapacityEnum.Meteor:
+                capacityChosen = GetComponentInChildren<MeteorCapacity>();
+                break;
+            case CapacityEnum.Freeze:
+                capacityChosen = GetComponentInChildren<FreezeCapacity>();
                 break;
             default:
                 Debug.Log("Default case");
@@ -40,10 +47,14 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
 
         if(activated) {
             capacityChosen.ActivateCapacity();
-            Destroy(gameObject);
+
+            if (capacityIntChosen != CapacityEnum.Freeze)
+                Destroy(gameObject);
+            else
+                StartCoroutine(KillSelf(0.2f));
         }
 
-        transform.position += speed * transform.forward;
+        transform.position += speed * transform.forward * Time.deltaTime;
     }
 
     public void activate()
@@ -51,8 +62,40 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
         activated = true;
     }
 
-    public void setParent(LauchCapacity parent)
+    public void setParent(LaunchCapacity parent)
     {
         this.parentFunction = parent;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Ennemi")
+        {
+            activate();
+        }
+        else if (other.gameObject.tag == "Player" && !other.gameObject.GetComponentInParent<LaunchCapacity>().getControllerName().Equals(this.controllerName))
+        {
+            activate();
+        }
+        else if (other.gameObject.tag.Equals("EnvironmentComponent"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void SetAltitude(float altitude)
+    {
+        this.altitude = altitude;
+    }
+
+    public float GetAltitude()
+    {
+        return this.altitude;
+    }
+
+    IEnumerator KillSelf(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(this.gameObject);
     }
 }

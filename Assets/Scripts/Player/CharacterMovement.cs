@@ -1,5 +1,6 @@
 
 ﻿using UnityEngine;
+using System.Collections;
 
 public class CharacterMovement: MonoBehaviour
 {
@@ -14,12 +15,17 @@ public class CharacterMovement: MonoBehaviour
     float camRayLength = 100f;          // The length of the ray from the camera into the scene.
     private string controllerName ;
     PlayerHealth myHealth;              // Reference to my own health function
+    Vector3 playerDirection;
+    UnityEngine.AI.NavMeshAgent agent;
+    float speedWeight = 1;
+    float lerpSpeed = 8;
 
     Vector3 rotationAxe = new Vector3(0, 1, 0);
     private void Start()
     {
         DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
         controllerName = parentFunction.controllerName;
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     void Awake()
@@ -45,12 +51,23 @@ public class CharacterMovement: MonoBehaviour
         else
         {
             h= Input.GetAxisRaw(controllerName + "LStickX");
+            if(Mathf.Abs(h) < 0.2)
+            {
+                h = 0;
+            }
+
             v = Input.GetAxisRaw(controllerName + "LStickY");
+            if (Mathf.Abs(v) < 0.2)
+            {
+                v = 0;
+            }
+
             if ((Mathf.Abs(Input.GetAxisRaw(controllerName + "RStickX"))>0.2)||(Mathf.Abs(Input.GetAxisRaw(controllerName + "RStickY")) > 0.2))
             {
                 Quaternion stickAngle = Quaternion.AxisAngle(rotationAxe, Mathf.Atan2(Input.GetAxisRaw(controllerName + "RStickX"), Input.GetAxisRaw(controllerName + "RStickY")));
                 Turning(stickAngle);
             }
+            //Move();
         }
         Move(h, v);
         Animating(h, v);
@@ -64,6 +81,66 @@ public class CharacterMovement: MonoBehaviour
             movement = movement.normalized * speed * Time.deltaTime;
             playerRigidbody.MovePosition(transform.position + movement);
         }
+    }
+
+    void Move()
+    {
+        float h, v;
+        Transform cameratransform = Camera.main.transform;
+        cameratransform.rotation = Quaternion.LookRotation(new Vector3(transform.position.x - cameratransform.position.x, 0, transform.position.z - cameratransform.position.z));
+        Vector3 forward = cameratransform.TransformDirection(Vector3.forward);
+        Vector3 right = cameratransform.TransformDirection(Vector3.right);
+
+        h = Input.GetAxisRaw(controllerName + "LStickX");
+        if (Mathf.Abs(h) < 0.2)
+        {
+            h = 0;
+        }
+        else
+        {
+            if (h < 0)
+                h = -1;
+            else
+                h = 1;
+        }
+
+        v = Input.GetAxisRaw(controllerName + "LStickY");
+        if (Mathf.Abs(v) < 0.2)
+        {
+            v = 0;
+        }
+        else
+        {
+            if (v < 0)
+                v = -1;
+            else
+                v = 1;
+        }
+
+        playerDirection = h * right + v * forward;
+        speed = playerDirection.magnitude;
+
+
+        if (speedWeight < 1.0f)
+        {
+            speedWeight += Time.deltaTime * 2.0f;
+        }
+        else
+        {
+            speedWeight = 1.0f;
+        }
+
+        speed = speed * speedWeight;
+        if (speed > 0)
+        {
+            if (playerDirection != Vector3.zero)
+            {
+                Quaternion playerRotation = Quaternion.LookRotation(playerDirection);
+                transform.rotation = Quaternion.Lerp(transform.rotation, playerRotation, Time.deltaTime * lerpSpeed);
+            }
+            agent.Move(transform.forward * Time.deltaTime * speed * 3.0f);
+        }
+        anim.SetFloat("speed", speed);
     }
 
     void Turning(Quaternion stickAngle)
@@ -89,6 +166,31 @@ public class CharacterMovement: MonoBehaviour
     void Animating(float h, float v)
     {
         bool walking = h != 0f || v != 0f;
-        anim.SetBool("IsWalking", walking);
+        anim.SetFloat("speed", Mathf.Abs(h) + Mathf.Abs(v));
+    }
+
+    public void setSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
+    public void setSpeed(float speed, float time)
+    {
+        StartCoroutine(Freeze(speed, time));
+    }
+
+    IEnumerator Freeze(float speed, float time)
+    {
+        // we freeze
+        float oldSpeed = this.speed;
+        Debug.Log("freeeeeeeeeeze");
+        this.speed = speed;
+        this.anim.enabled = false;
+
+        yield return new WaitForSeconds(time);
+        // we unfreeze
+        Debug.Log("unfreeeeeeeeeeze");
+        this.anim.enabled = true;
+        this.speed = oldSpeed;
     }
 }

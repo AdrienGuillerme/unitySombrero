@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAttack : StateMachineBehaviour {
+    EnemyWeapon weapon;
+    GameObject weaponTrigger;
+    private AttackTriggerCollision weaponScript;
 
-    private EnemyWeapon axe;
 	PlayerHealth target;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        axe = animator.GetComponentInChildren<EnemyWeapon>();
-        axe.isAttacking = true;
-		target = animator.GetComponentInChildren<PlayerInRange>().GetTarget();
+        weapon = animator.GetComponentInChildren<EnemyWeapon>();
+        weaponTrigger = weapon.weaponTrigger;
+        weaponScript = weaponTrigger.GetComponent<AttackTriggerCollision>();
+        weaponTrigger.SetActive(true);
     }
-
-	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex){
-		if (target.IsDead())
-			animator.SetTrigger("Patrol");
-	}
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-		axe.isAttacking = false;
+        weaponTrigger.SetActive(false);
+        weaponScript.ResetTrigger();
     }
 }
