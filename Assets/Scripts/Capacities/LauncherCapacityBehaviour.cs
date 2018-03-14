@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LauncherCapacityBehaviour : MonoBehaviour {
 
-    float speed = 0.10f;
+    public float speed = 5f;
     private string controllerName;
     private CapacityEnum capacityIntChosen = CapacityEnum.Glyph;
     private ICapacity capacityChosen;
@@ -33,6 +33,9 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
             case CapacityEnum.Meteor:
                 capacityChosen = GetComponentInChildren<MeteorCapacity>();
                 break;
+            case CapacityEnum.Freeze:
+                capacityChosen = GetComponentInChildren<FreezeCapacity>();
+                break;
             default:
                 Debug.Log("Default case");
                 break;
@@ -44,10 +47,14 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
 
         if(activated) {
             capacityChosen.ActivateCapacity();
-            Destroy(gameObject);
+
+            if (capacityIntChosen != CapacityEnum.Freeze)
+                Destroy(gameObject);
+            else
+                StartCoroutine(KillSelf(0.2f));
         }
 
-        transform.position += speed * transform.forward;
+        transform.position += speed * transform.forward * Time.deltaTime;
     }
 
     public void activate()
@@ -66,14 +73,12 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
         {
             activate();
         }
-        else if (other.gameObject.tag == "Player" && !other.gameObject.GetComponent<LaunchCapacity>().getControllerName().Equals(this.controllerName))
+        else if (other.gameObject.tag == "Player" && !other.gameObject.GetComponentInParent<LaunchCapacity>().getControllerName().Equals(this.controllerName))
         {
             activate();
         }
         else if (other.gameObject.tag.Equals("EnvironmentComponent"))
         {
-            Debug.Log("1 : Collide with " + other.gameObject.tag);
-            Debug.Log("2 : Collide with " + other.gameObject.name);
             Destroy(this.gameObject);
         }
     }
@@ -86,5 +91,11 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
     public float GetAltitude()
     {
         return this.altitude;
+    }
+
+    IEnumerator KillSelf(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(this.gameObject);
     }
 }

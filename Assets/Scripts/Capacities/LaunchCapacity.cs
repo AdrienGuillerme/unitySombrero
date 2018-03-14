@@ -25,7 +25,7 @@ public class LaunchCapacity : MonoBehaviour {
 
     public void Launch()
     {
-		bool isDead = GetComponent<PlayerHealth>().IsDead();
+		bool isDead = GetComponentInChildren<PlayerHealth>().IsDead();
 		
 		if (launcher == null)
             readyToLaunch = true;
