@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour {
     Defense characterDefense;                                   // Reference to the player's defense.
     bool isDead;                                                // Whether the player is dead.
     bool isRevived;
-    bool damaged;                                               // True when the player gets damaged.
+	bool isDamaged;                                             // True when the player gets damaged.
 
     private int actualResPoints = 0;
     private int resPoints = 90;
@@ -78,7 +78,7 @@ public class PlayerHealth : MonoBehaviour {
     public void getHurt(int i)
     {
         // Set the damaged flag so the screen will flash.
-        damaged = true;
+        isDamaged = true;
 
         // Reduce the current health by the damage amount.
         currentHealth -= i;
@@ -93,6 +93,17 @@ public class PlayerHealth : MonoBehaviour {
         if (currentHealth <= 0 && !isDead)
             Death();
     }
+
+	public void GetHeal(int i) {
+		currentHealth += i;
+
+		if (currentHealth > maxHealth) {
+			currentHealth = maxHealth;
+			isDamaged = false;
+		}
+
+		healthSlider.value = currentHealth;
+	}
 
     //Previously in CharacterHealth
     void Death()
@@ -124,6 +135,7 @@ public class PlayerHealth : MonoBehaviour {
         characterAttack.enabled = true;
         characterDefense.enabled = true;
         currentHealth = maxHealth;
+		isDamaged = false;
         healthSlider.value = currentHealth;
     }
 
@@ -148,6 +160,10 @@ public class PlayerHealth : MonoBehaviour {
     {
         return this.isDead;
     }
+
+	public bool IsDamaged() {
+		return this.isDamaged;
+	}
 
     public bool IsRevived()
     {
