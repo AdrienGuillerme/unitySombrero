@@ -1659,7 +1659,7 @@ GameObject:
   - component: {fileID: 114156863523157736}
   - component: {fileID: 195999693612364292}
   m_Layer: 0
-  m_Name: Dragon
+  m_Name: dragon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3873,7 +3873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff2a5fb78d11984cbc0d1ca287d2576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAttacking: 0
+  weaponTrigger: {fileID: 0}
 --- !u!114 &114156863523157736
 MonoBehaviour:
   m_ObjectHideFlags: 1
