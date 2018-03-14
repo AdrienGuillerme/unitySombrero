@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour {
     Defense characterDefense;                                   // Reference to the player's defense.
     bool isDead;                                                // Whether the player is dead.
     bool isRevived;
-    bool damaged;                                               // True when the player gets damaged.
+	bool isDamaged;                                             // True when the player gets damaged.
 
     private int actualResPoints = 0;
     private int resPoints = 90;
@@ -65,13 +65,28 @@ public class PlayerHealth : MonoBehaviour {
     public void getHurt(int i)
     {
         // Set the damaged flag so the screen will flash.
-        damaged = true;
+        isDamaged = true;
+
+        // Reduce the current health by the damage amount.
         currentHealth -= i;
         healthSlider.value = currentHealth;
         //playerAudio.Play();
         if (currentHealth <= 0 && !isDead)
             Death();
     }
+
+	public void GetHeal(int i) {
+		currentHealth += i;
+
+		if (currentHealth > maxHealth) {
+			currentHealth = maxHealth;
+			isDamaged = false;
+		}
+
+		healthSlider.value = currentHealth;
+	}
+
+    //Previously in CharacterHealth
 
     void Death()
     {
@@ -100,6 +115,7 @@ public class PlayerHealth : MonoBehaviour {
         characterAttack.enabled = true;
         characterDefense.enabled = true;
         currentHealth = maxHealth;
+		isDamaged = false;
         healthSlider.value = currentHealth;
     }
 
@@ -125,6 +141,10 @@ public class PlayerHealth : MonoBehaviour {
         return this.isDead;
     }
 
+	public bool IsDamaged() {
+		return this.isDamaged;
+	}
+
     public bool IsRevived()
     {
         return this.isRevived;
@@ -146,7 +166,7 @@ public class PlayerHealth : MonoBehaviour {
 
         if (!col.transform.IsChildOf(this.transform) && col.tag == "Weapons" && col.GetComponentInParent<Attack>().isAttacking  && isDead == false)
         {
-            //TODO: vérifier le friendly fire
+            //TODO: v�rifier le friendly fire
             if(col.GetComponent<AttackTriggerCollision>().PosDiffFromStart() > 0.5f)
             {
                 Debug.Log("Attacked by a mate");

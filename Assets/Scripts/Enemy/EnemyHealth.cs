@@ -9,6 +9,8 @@ public class EnemyHealth : MonoBehaviour {
     private int health;
     public bool isDead;
 
+	public EnemiesManager enemiesManager;
+
     Rigidbody enemyRigidbody;
     Animator animator;
     Vector3 knockback;
@@ -31,6 +33,11 @@ public class EnemyHealth : MonoBehaviour {
         }
     }
 
+	public void SetEnemiesManager(EnemiesManager m)
+	{
+		enemiesManager = m;
+	}
+
     public void GetHurt(int i)
     {
         //Debug.Log("Skeleton hurt!");
@@ -45,6 +52,8 @@ public class EnemyHealth : MonoBehaviour {
     {
         isDead = true;
         animator.SetTrigger("Dead");
+		GameObject g = transform.parent.gameObject;
+		enemiesManager.SetAgentDead (g);
     }
 
     void KnockBack(Vector3 k)
