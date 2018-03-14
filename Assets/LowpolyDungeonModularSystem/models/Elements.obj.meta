@@ -247,7 +247,247 @@ ModelImporter:
     4300092: Wall_low
     4300094: wall_low_diagonal
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ArcMat
+    second: {fileID: 2100000, guid: 95224dcd19f58fc44a751f05c93f1239, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Arc_half_001Mat
+    second: {fileID: 2100000, guid: ec18734a7ae8a0f4f9b5f8d5a8121311, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Arc_half_002Mat
+    second: {fileID: 2100000, guid: 361adc06e53d93540b00854e4f252ce6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Arc_supportMat
+    second: {fileID: 2100000, guid: 3fe5a17974efc4746b0330582597c4fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Barrel_001Mat
+    second: {fileID: 2100000, guid: f2432388d9d13f8478914043f2488eb5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Barrel_small_001Mat
+    second: {fileID: 2100000, guid: 325a692677de99a4b852f97a41191ec2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FenceDiagonal_001Mat
+    second: {fileID: 2100000, guid: 31c94e6c85e509246a8630753eb4406c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FenceDiagonal_002Mat
+    second: {fileID: 2100000, guid: 0cfcf46a06a24d445bfdec5f2ccbf81b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fence_001Mat
+    second: {fileID: 2100000, guid: f4ecae712b9618d4baa250e03fc46f9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fence_002Mat
+    second: {fileID: 2100000, guid: d8e96a17152e59d42a6309464df36082, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_1x1Mat
+    second: {fileID: 2100000, guid: 04ddd4d6fa5577143af0770fcb91bf54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_2x2Mat
+    second: {fileID: 2100000, guid: fb50b2660d5f9bf49a4499453ac7e3d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_3x3Mat
+    second: {fileID: 2100000, guid: 5e1dda6e6ccaf9a4cbc48ade3bf27c3c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_3x3_holeMat
+    second: {fileID: 2100000, guid: a6b118d71d4b0dc4e940c97c99328f0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_HoleMat
+    second: {fileID: 2100000, guid: d0a53d45dcec06e498273d24f6c9794f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_Hole_GrateMat
+    second: {fileID: 2100000, guid: e19a23748d4f66d47a29cd57cdeaf932, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_blockMat
+    second: {fileID: 2100000, guid: 46c6d87b49b85db45bd7212d5a7b0e4d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_blocks_001Mat
+    second: {fileID: 2100000, guid: f5517eb10acec1e4ca94feef3bd2ca13, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_blocks_002Mat
+    second: {fileID: 2100000, guid: aad4820c662c15442a91f4e851ed6ced, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_blocks_003Mat
+    second: {fileID: 2100000, guid: b8bf5757f031c05499e5c411fa36a9b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_blocks_004Mat
+    second: {fileID: 2100000, guid: 0a9a23a2027e4034b8cdce7fcdb5b7c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GateGrateMat
+    second: {fileID: 2100000, guid: 37cbaa766da058949a3ac04bab330960, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gate_closeMat
+    second: {fileID: 2100000, guid: 515ef3b00cef4e94db07eb2869629e5e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gate_openMat
+    second: {fileID: 2100000, guid: 592e685c0d49cc64bb0e0dfe56dfde0b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pillar_001Mat
+    second: {fileID: 2100000, guid: 2fa17cad5642c9a42b88367a001cc33d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pillar_002Mat
+    second: {fileID: 2100000, guid: 682f7b2fc28e22f4d940a99abfc13b7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pillar_half_001Mat
+    second: {fileID: 2100000, guid: 2347dd49b5412994b9e2d7a2d55633a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pillar_half_002Mat
+    second: {fileID: 2100000, guid: f854f767783a25c41b84b9221120c757, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SkullMat
+    second: {fileID: 2100000, guid: f847c17c66c04724e80cbb181403782e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stairs_highMat
+    second: {fileID: 2100000, guid: 3400f903622670648bc061f2db813a63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stairs_high_handrail_centerMat
+    second: {fileID: 2100000, guid: fbb0cc950c7d7474290a7fa246a013af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stairs_high_handrail_leftMat
+    second: {fileID: 2100000, guid: b066d50ce69dda941b1d058391caf91f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stairs_high_handrail_rightMat
+    second: {fileID: 2100000, guid: 16eda28309d6443458437d88e57b7d63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stairs_lowMat
+    second: {fileID: 2100000, guid: ef4aa04875c379248b36f13b58668c23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stairs_low_handrail_centerMat
+    second: {fileID: 2100000, guid: 288a45eff22b9ac4e8f438bae17373a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stairs_low_handrail_leftMat
+    second: {fileID: 2100000, guid: 4c23484447fbac0478085c0a436b4c6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stairs_low_handrail_rightMat
+    second: {fileID: 2100000, guid: bb87fe3f783158e4f8aad094c8dac00b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WallMat
+    second: {fileID: 2100000, guid: 375e69f0b617ab24992dbdc5458a4d1f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_blockMat
+    second: {fileID: 2100000, guid: e3001e0f2fd60844f8c4dc7ace229006, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_lowMat
+    second: {fileID: 2100000, guid: f66d00048025d764c8ed8c76809a0e2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chain_001Mat
+    second: {fileID: 2100000, guid: 060acd35373cd8842ba27fb5342627a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chain_002Mat
+    second: {fileID: 2100000, guid: 329c284f93276464d835b01c97e874da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chain_003Mat
+    second: {fileID: 2100000, guid: d6343c7c4b3a46c43846b15c11b5ffd3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chain_004Mat
+    second: {fileID: 2100000, guid: 61f16ad7bea484a40b0ae65f8ad0025e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chest_001Mat
+    second: {fileID: 2100000, guid: 3e111d8d4630fe64c887d048237729bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: firepit_001Mat
+    second: {fileID: 2100000, guid: 146316a5e18a5b34187b1b69901e33d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: torch069Mat
+    second: {fileID: 2100000, guid: 97409b8b2c2691e42a1df3101c2ab9e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall_low_diagonalMat
+    second: {fileID: 2100000, guid: 80415a3958c773a418bda18163d7e6e9, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -278,7 +518,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 2
     addColliders: 0
     importVisibility: 0
     importBlendShapes: 1
@@ -290,6 +530,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88

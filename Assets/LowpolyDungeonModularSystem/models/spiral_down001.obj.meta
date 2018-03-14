@@ -277,7 +277,12 @@ ModelImporter:
     4300104: Tube007
     4300106: spiral_down001
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: spiral_down001Mat
+    second: {fileID: 2100000, guid: 26554421387150d408a4681e5e54eaa7, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -308,7 +313,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 2
     addColliders: 0
     importVisibility: 0
     importBlendShapes: 1
@@ -320,6 +325,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
