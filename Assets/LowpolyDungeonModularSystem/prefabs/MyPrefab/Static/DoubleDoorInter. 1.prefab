@@ -246,7 +246,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1098990551971108
 GameObject:
@@ -816,7 +816,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1595160354486822
 GameObject:
@@ -5076,7 +5076,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300010, guid: 97840ceb898f0f7488c8e5bd9289a9bc, type: 3}
@@ -5272,7 +5272,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 969e64d6bfdcf454f8c030d5280a276c, type: 3}
@@ -5314,12 +5314,12 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.88235295, g: 0.6659706, b: 0.27897924, a: 1}
-  m_Intensity: 6
+  m_Intensity: 3
   m_Range: 15
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -5350,12 +5350,12 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.88235295, g: 0.6659706, b: 0.27897924, a: 1}
-  m_Intensity: 6
+  m_Intensity: 3
   m_Range: 15
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -5386,12 +5386,12 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.88235295, g: 0.6659706, b: 0.27897924, a: 1}
-  m_Intensity: 6
+  m_Intensity: 3
   m_Range: 15
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -5422,12 +5422,12 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.88235295, g: 0.6659706, b: 0.27897924, a: 1}
-  m_Intensity: 6
+  m_Intensity: 3
   m_Range: 15
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
