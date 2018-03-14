@@ -428,7 +428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1618621821073384
 GameObject:
   m_ObjectHideFlags: 1
@@ -1475,6 +1475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   isDead: 0
+  enemiesManager: {fileID: 0}
 --- !u!114 &114288317948041388
 MonoBehaviour:
   m_ObjectHideFlags: 1
