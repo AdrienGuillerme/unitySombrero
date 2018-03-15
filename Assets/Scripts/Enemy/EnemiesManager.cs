@@ -12,7 +12,7 @@ using UnityEngine;
 
 public class EnemiesManager : MonoBehaviour{
 
-	public GameObject agent;	// The prefab of the enemy we will make appear
+	public GameObject[] agentsPrefab;	// The prefab of the enemy we will make appear
 	Spawner spawner;
 
 	public bool spawnOne;		// Set it to 'true' to make 1 ennemy spawn
@@ -36,11 +36,11 @@ public class EnemiesManager : MonoBehaviour{
 	void Update() {
 		if (spawnOne) {
 			spawnOne = false;
-			spawner.SpawnOne (agent, this.transform.position);
+			spawner.SpawnOne (agentsPrefab[0], this.transform.position);
 		}
 
 		if (dragons.Count == 0)
-			spawner.SpawnMany (agent, patrolPositions.ToArray ());
+			spawner.SpawnMany (agentsPrefab[0], patrolPositions.ToArray ());
 
 		CheckAgents ();
 	}
@@ -58,9 +58,9 @@ public class EnemiesManager : MonoBehaviour{
 			foreach (Vector3 v in chosenPatrolPositions)
 				patrolPositions.Add (v);
 		else {
-			patrolPositions.Add (new Vector3 (0, 0, -10));
-			patrolPositions.Add (new Vector3 (-20, 0, 3));
-			patrolPositions.Add (new Vector3 (-5, 0, 18));
+			patrolPositions.Add (transform.position + new Vector3 (0, 0, -5));
+			patrolPositions.Add (transform.position + new Vector3 (-5, 0, 5));
+			patrolPositions.Add (transform.position + new Vector3 (-5, 0, 5));
 		}
 	}
 

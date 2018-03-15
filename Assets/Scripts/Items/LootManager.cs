@@ -41,7 +41,7 @@ public class LootManager : MonoBehaviour{
 	// The value is a string with the score and health bonuses, separated with a ';'
 	void CreateEnemiesDictionary() {
 		enemiesBonuses.Add ("Dragon", "75;10");
-		enemiesBonuses.Add ("RandomShit", "0;0");
+		enemiesBonuses.Add ("Skeletons_warrior", "125;10");
 	}
 
 	void CreateItemsDictionary() {

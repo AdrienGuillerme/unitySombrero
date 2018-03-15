@@ -17,7 +17,8 @@ public class Patrol : StateMachineBehaviour {
 		// If it doesn't, set positions by default
 		if (enemyMove.GetPatrolPositions () == null || enemyMove.GetPatrolPositions ().Length == 0) {
 			if(patrolPositions.Count == 0)
-				SetPatrolPositions();
+				//SetPatrolPositions();
+				Debug.Log("prout");
 		}
 
 		// If it does, get these positions
