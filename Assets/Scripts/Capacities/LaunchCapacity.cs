@@ -30,23 +30,26 @@ public class LaunchCapacity : MonoBehaviour {
 		if (launcher == null)
             readyToLaunch = true;
 		
-		if(readyToLaunch && !isDead)
-		{
-			GameObject obj = Resources.Load("CapacityLauncher") as GameObject;
-			Vector3 position = transform.forward * distanceToCharacter + transform.position;
-			position.y += orbeAltitude;
-			launcher = Instantiate(obj, position, transform.rotation) as GameObject;
-			launcher.GetComponentInChildren<LauncherCapacityBehaviour>().setParent(this);
-			launcher.GetComponentInChildren<LauncherCapacityBehaviour>().SetAltitude(orbeAltitude);
-			//Instantiate(obj, transform);
-			readyToLaunch = false;
-		}
-		else
-		{
-			launcher.GetComponentInChildren<LauncherCapacityBehaviour>().activate();
-			launcher = null;
-			readyToLaunch = true;
-		}
+        if(!isDead)
+        {
+            if (readyToLaunch)
+            {
+                GameObject obj = Resources.Load("CapacityLauncher") as GameObject;
+                Vector3 position = transform.forward * distanceToCharacter + transform.position;
+                position.y += orbeAltitude;
+                launcher = Instantiate(obj, position, transform.rotation) as GameObject;
+                launcher.GetComponentInChildren<LauncherCapacityBehaviour>().setParent(this);
+                launcher.GetComponentInChildren<LauncherCapacityBehaviour>().SetAltitude(orbeAltitude);
+                //Instantiate(obj, transform);
+                readyToLaunch = false;
+            }
+            else
+            {
+                launcher.GetComponentInChildren<LauncherCapacityBehaviour>().activate();
+                launcher = null;
+                readyToLaunch = true;
+            }
+        }
     }
 
     public string getControllerName()
