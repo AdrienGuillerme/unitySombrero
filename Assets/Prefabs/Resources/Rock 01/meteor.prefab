@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
   - component: {fileID: 54479344258933518}
-  - component: {fileID: 114596050137937100}
   - component: {fileID: 135661196001594166}
+  - component: {fileID: 114662165410377744}
   m_Layer: 0
   m_Name: meteor
   m_TagString: Untagged
@@ -100,7 +100,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 90
   m_CollisionDetection: 0
---- !u!114 &114596050137937100
+--- !u!114 &114662165410377744
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a166560b4ff41614da9a3dd3c840ea2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 713d49a9384f6d34793559f8abf2f0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damages: 10

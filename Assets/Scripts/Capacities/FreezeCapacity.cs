@@ -28,6 +28,12 @@ public class FreezeCapacity : MonoBehaviour, ICapacity {
                 other.gameObject.GetComponentInChildren<CharacterMovement>().setSpeed(0f, 5f);
                 triggered = true;
             }
+
+            /*if (other.gameObject.tag == "Ennemi")
+            {
+                other.gameObject.GetComponent<EnemyMove>();
+                triggered = true;
+            }*/
         }
     }
 

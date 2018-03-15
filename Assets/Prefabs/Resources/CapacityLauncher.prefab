@@ -26,7 +26,8 @@ GameObject:
   - component: {fileID: 114123732136111622}
   - component: {fileID: 114856737082620776}
   - component: {fileID: 54115232900485026}
-  - component: {fileID: 114803193408234126}
+  - component: {fileID: 114138717216271424}
+  - component: {fileID: 114009338969315854}
   m_Layer: 0
   m_Name: CapacityLauncher
   m_TagString: Untagged
@@ -103,6 +104,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114009338969315854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1734492218682008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a54c72e12b2e244fb2ee4f830d0a981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114123732136111622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,7 +130,7 @@ MonoBehaviour:
   repulsiveRadius: 5
   repulsiveDuration: 1
   cooldownTime: 0
---- !u!114 &114803193408234126
+--- !u!114 &114138717216271424
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -126,11 +138,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1734492218682008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92cbbce9038abfc4a95ee2e62a4d1d05, type: 3}
+  m_Script: {fileID: 11500000, guid: df099952978cc744aa9c225632a7256d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startingAltitude: 10
-  nbMeteors: 15
+  nbMeteors: 25
 --- !u!114 &114856737082620776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4238606fa251940b8a30e67cdc16ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
 --- !u!114 &114871372817113578
 MonoBehaviour:
   m_ObjectHideFlags: 1
