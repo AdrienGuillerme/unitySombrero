@@ -12,6 +12,7 @@ TagManager:
   - Box
   - CharacterGroup
   - Enemy
+  - Gate
   layers:
   - Default
   - TransparentFX
