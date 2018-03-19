@@ -32,7 +32,7 @@ public class GlyphBehaviour : MonoBehaviour {
 
         if (other.gameObject.tag == "Ennemi")
         {
-            other.gameObject.GetComponent<EnemyHealth>().GetHurt(damages);
+            other.gameObject.GetComponent<EnemyHealth>().GetHurt(damages, this.GetComponentInParent<Collider>());
             setActivated();
         }
     }

@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour {
     public bool isDead;
 
 	public EnemiesManager enemiesManager;
-
+    public int associatedScore;
     Rigidbody enemyRigidbody;
     Animator animator;
     Vector3 knockback;
@@ -26,7 +26,7 @@ public class EnemyHealth : MonoBehaviour {
     {
         if (col.gameObject.tag == "Weapons")
         {
-            GetHurt(1);
+            GetHurt(1, col);
             knockback = (col.transform.position - transform.position).normalized;
             knockback.y = 0;
             KnockBack(knockback);
@@ -38,13 +38,14 @@ public class EnemyHealth : MonoBehaviour {
 		enemiesManager = m;
 	}
 
-    public void GetHurt(int i)
+    public void GetHurt(int i, Collider col)
     {
         //Debug.Log("Skeleton hurt!");
         health -= i;
         if (health <= 0 && !isDead)
         {
             Die();
+            col.transform.GetComponentInParent<DontDestroy>().AddScore(associatedScore);
         }
     }
 
