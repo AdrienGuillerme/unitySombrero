@@ -14,7 +14,7 @@ using UnityEngine;
 public class LootManager : MonoBehaviour{
 	Spawner spawner;
 
-	Dictionary<string, string> enemiesBonuses = new Dictionary<string, string>();
+	//Dictionary<string, string> enemiesBonuses = new Dictionary<string, string>();
 
 	Dictionary<int, string> scoreItemsBonuses = new Dictionary<int, string>();
 	Dictionary<int, string> healthItemsBonuses = new Dictionary<int, string>();
@@ -30,12 +30,12 @@ public class LootManager : MonoBehaviour{
 		foreach (Transform t in transform)
 			itemsList.Add (t.gameObject);
 
-		CreateEnemiesDictionary ();
+		//CreateEnemiesDictionary ();
 		CreateItemsDictionary ();
 		CreateBonusesLists ();
 	}
 
-
+	/*
 	// Here we instanciate the rewards an enemy can drop
 	// The key is a string with the enemy's name,
 	// The value is a string with the score and health bonuses, separated with a ';'
@@ -43,11 +43,12 @@ public class LootManager : MonoBehaviour{
 		enemiesBonuses.Add ("Dragon", "75;10");
 		enemiesBonuses.Add ("Skeletons_warrior", "125;10");
 	}
+	*/
 
 	void CreateItemsDictionary() {
-		scoreItemsBonuses.Add (25, "Emerald");
-		scoreItemsBonuses.Add (50, "Ruby");
-		scoreItemsBonuses.Add (100, "Diamond");
+		scoreItemsBonuses.Add (150, "Emerald");
+		scoreItemsBonuses.Add (25, "Ruby");
+		scoreItemsBonuses.Add (300, "Diamond");
 
 		healthItemsBonuses.Add (10, "Heart");
 	}
@@ -66,6 +67,7 @@ public class LootManager : MonoBehaviour{
 		healthList.Reverse ();
 	}
 
+	/*
 	public void MakeSpawn(Vector3 position, string EnemyName){
 		int score, health;
 
@@ -83,6 +85,7 @@ public class LootManager : MonoBehaviour{
 
 		MakeSpawn (position, score, health);
 	}
+	*/
 
 	public void MakeSpawn(Vector3 position, int score, int health){
 		int index = 0;
