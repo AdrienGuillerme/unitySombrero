@@ -220,9 +220,9 @@ public class MenuPause : MonoBehaviour
             case 2:
                 loadingCanvas.gameObject.SetActive(true);
                 GameObject[] characters = GameObject.FindGameObjectsWithTag("CharacterGroup");
-                foreach (GameObject charachter in characters)
+                foreach (GameObject character in characters)
                 {
-                    charachter.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                    character.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
                 SceneManager.LoadScene("MapSelection");
                 break;
