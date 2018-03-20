@@ -110,7 +110,7 @@ public class PlayerHealth : MonoBehaviour {
         isDead = false;
         actualResPoints = 0;
         Debug.Log("Yay! I'm alive");
-        anim.SetBool("death", false);
+        anim.SetBool("revive", true);
         characterMovement.enabled = true;
         characterAttack.enabled = true;
         characterDefense.enabled = true;
@@ -170,7 +170,7 @@ public class PlayerHealth : MonoBehaviour {
             if(col.GetComponent<AttackTriggerCollision>().PosDiffFromStart() > 0.5f)
             {
                 Debug.Log("Attacked by a mate");
-                //getHurt(10);
+                getHurt(10);
                 anim.SetBool("damaged", true);
                 knockback = (col.transform.position - transform.position).normalized;
                 knockback.y = 0; 
