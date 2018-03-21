@@ -2,22 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.AI;
+
+
 public class EnemyHealth : MonoBehaviour {
 
-    public int maxHealth = 3;
-
     private int health;
-    public bool isDead;
 
-	public EnemiesManager enemiesManager;
+    public int maxHealth = 3;
+    public bool isDead;
 
     Rigidbody enemyRigidbody;
     Animator animator;
+    EnemyMove move;
     Vector3 knockback;
+    public PlayerInRange playerInRange;
 
     void Start () {
         enemyRigidbody = GetComponentInParent<Rigidbody>();
         animator = GetComponentInParent<Animator>();
+        move = animator.GetComponent<EnemyMove>();
         isDead = false;
         health = maxHealth;
 	}
@@ -26,39 +30,37 @@ public class EnemyHealth : MonoBehaviour {
     {
         if (col.gameObject.tag == "Weapons")
         {
-            GetHurt(1);
             knockback = (col.transform.position - transform.position).normalized;
+            GetHurt(1);
+        }
+    }
+
+    public void GetHurt(int i)
+    {
+        if (health <= 0 && !isDead)
+        {
+            Die();
+        }
+        else
+        {
+            animator.SetTrigger("Damaged");
+            health -= i;
             knockback.y = 0;
             KnockBack(knockback);
         }
     }
 
-	public void SetEnemiesManager(EnemiesManager m)
-	{
-		enemiesManager = m;
-	}
-
-    public void GetHurt(int i)
-    {
-        //Debug.Log("Skeleton hurt!");
-        health -= i;
-        if (health <= 0 && !isDead)
-        {
-            Die();
-        }
-    }
-
     void Die()
     {
+        move.enabled = false;
+        playerInRange.enabled = false;
         isDead = true;
         animator.SetTrigger("Dead");
-		GameObject g = transform.parent.gameObject;
-		enemiesManager.SetAgentDead (g);
     }
 
     void KnockBack(Vector3 k)
     {
-        k = k * -50000;
+        k = k * -20000;
         enemyRigidbody.AddForce(k);
     }
 }

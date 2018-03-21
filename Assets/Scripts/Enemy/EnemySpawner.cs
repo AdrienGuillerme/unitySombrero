@@ -40,7 +40,6 @@ public class EnemySpawner : MonoBehaviour {
     void SpawnAgent(Vector3 position)
     {
         GameObject newAgent = (GameObject)Instantiate(agent, position, Quaternion.identity);
-        newAgent.GetComponent<EnemyMove>().OnPatrol(patrolPositions.ToArray());
         dragons.Add(newAgent);
         RotatePositions();
     }

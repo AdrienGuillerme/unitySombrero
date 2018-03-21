@@ -31,7 +31,15 @@ public class EnemiesManager : MonoBehaviour{
 
 		InitPatrolPositions ();
 		spawnOne = false;
-	}
+
+        spawner.SpawnMany(agentsPrefab[0], patrolPositions.ToArray());
+        GameObject[] agents = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in agents)
+        {
+            EnemyMove move = enemy.GetComponent<EnemyMove>();
+            move.SetPatrolPositions(patrolPositions);
+        }
+    }
 
 	void Update() {
 		if (spawnOne) {
@@ -39,10 +47,10 @@ public class EnemiesManager : MonoBehaviour{
 			spawner.SpawnOne (agentsPrefab[0], this.transform.position);
 		}
 
-		if (dragons.Count == 0)
+		/*if (dragons.Count == 0)
 			spawner.SpawnMany (agentsPrefab[0], patrolPositions.ToArray ());
 
-		CheckAgents ();
+		CheckAgents ();*/
 	}
 
 	Vector3[] GetPatrolPosition(){
@@ -58,9 +66,9 @@ public class EnemiesManager : MonoBehaviour{
 			foreach (Vector3 v in chosenPatrolPositions)
 				patrolPositions.Add (v);
 		else {
-			patrolPositions.Add (transform.position + new Vector3 (0, 0, -5));
-			patrolPositions.Add (transform.position + new Vector3 (-5, 0, 5));
-			patrolPositions.Add (transform.position + new Vector3 (-5, 0, 5));
+			patrolPositions.Add (transform.position + new Vector3 (0, 0, -10));
+			patrolPositions.Add (transform.position + new Vector3 (-10, 0, 10));
+			patrolPositions.Add (transform.position + new Vector3 (-10, 0, 10));
 		}
 	}
 
@@ -77,8 +85,6 @@ public class EnemiesManager : MonoBehaviour{
 		foreach (GameObject o in agents) {
 			if (!dragons.Contains (o) && !o.GetComponentInChildren<EnemyHealth> ().isDead) {
 				dragons.Add (o);
-				o.GetComponentInChildren<EnemyHealth> ().SetEnemiesManager (this);
-				o.GetComponent<EnemyMove> ().OnPatrol (GetPatrolPosition ());
 				RotatePositions ();
 			}
 		}

@@ -12,14 +12,17 @@ public class PlayerInRange : MonoBehaviour {
     }
 
 	void OnTriggerStay (Collider col) {
-        AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
-        if (state.IsName("Pursuit") && col.gameObject.tag == "Player")
+        if (animator)
         {
-			targetHealth = col.gameObject.GetComponent<PlayerHealth>();
-			if (!targetHealth.IsDead()) {
-				//animator.GetComponent<EnemyAttack>().SetTarget(targetHealth);
-				animator.SetTrigger("Attack");
-			}
+            AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+            if (state.IsName("Pursuit") && col.gameObject.tag == "Player")
+            {
+                targetHealth = col.gameObject.GetComponent<PlayerHealth>();
+                if (!targetHealth.IsDead())
+                {
+                    animator.SetTrigger("Attack");
+                }
+            }
         }
     }
 
@@ -27,3 +30,4 @@ public class PlayerInRange : MonoBehaviour {
 		return targetHealth;
 	}
 }
+ 

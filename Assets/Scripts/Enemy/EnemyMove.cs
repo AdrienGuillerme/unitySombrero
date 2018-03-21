@@ -1,110 +1,157 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
-{	
-	[SerializeField]
-    Transform target;				// The purchased target
+{
+    [SerializeField]
+    Transform target;
 
     NavMeshAgent agent;
-    Vector3 initialPosition;        // The initial position... just in case the enemy has to return to
-	bool goalReached = false;       // To know if we've reached our current goal or not
-	bool goalChanged = true;        // To know if the goal has been changed
-	bool onPatrol = false;			// To know if we're on patrol or not
-    int cpt = 0, freq = 50;			// Used to determine a frequence to check if the target has moved
-	Vector3 goalVector;				// The goal's position
-    float damping = 5f;
+    Vector3 initialPosition;
+    Vector3 goalPosition;             
+    Animator anim;
+    List<Vector3> patrolPositions = new List<Vector3>();
 
-	Vector3 [] patrolPositions;
-	int indexPatrol;
+    bool goalReached = false;
+	bool onPatrol = true;
+    int cpt = 0, freq = 50;			// Used to determine a frequence to check if the target has moved
+    int indexPatrol;
+
+    private int detectionRange = 15;
 
     void Start()
     {
         agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
         initialPosition = transform.position;
+        anim = GetComponent<Animator>();
 
-        // If no defined goal, stay at the initial position
-        if (target == null)
-            goalVector = initialPosition;
-		// If not go to the goal
+        InitPatrolPositions();
+
+        if (DetectPlayers())
+        {
+            onPatrol = false;
+            SetPlayerTarget(target);
+        }
         else
-			SetTarget(target);
+        {
+            Patrol();
+        }
     }
 
     void Update()
     {
-		// If the goal has been changed, define a new destination
-        if (goalChanged)
+        if (onPatrol)
         {
-            agent.SetDestination(goalVector);
-            goalChanged = false;
-        }
-
-		// 'If' to go from a spot of our patrol to an other
-		if (onPatrol && goalReached) {
-			indexPatrol = (indexPatrol + 1) % patrolPositions.Length;
-			goalVector = patrolPositions[indexPatrol];
-
-			goalChanged = true;
-			goalReached = false;
-		}
-
-		// If the goal has been reached, just wait
-        if (Vector3.Distance(goalVector, transform.position) <= agent.stoppingDistance && !goalReached)
+            if (DetectPlayers())
+            {
+                SetPlayerTarget(target);
+            }
+            else if (goalReached)
+            {
+                goalPosition = patrolPositions[indexPatrol];
+                agent.SetDestination(goalPosition);
+                goalReached = false;
+                indexPatrol = (indexPatrol + 1) % patrolPositions.Count;
+            }
+            if (Vector3.Distance(goalPosition, transform.position) <= agent.stoppingDistance && !goalReached)
+            {
+                goalReached = true;
+            }
+        } else
         {
-			goalReached = true;
-			//LookAtGoal ();
+            // Every 'freq' frames, we check if the target has moved
+            if (cpt == freq)
+            {
+                cpt = 0;
+                CheckTarget(target);
+            }
+            else
+            {
+                cpt++;
+            }
         }
-
-		if(target != null)
-			// Every 'freq' frames, we check if the target has moved
-	        if (cpt == freq)
-				CheckTarget(target);
-	        else
-	            cpt++;
     }
 
-	public Vector3[] GetPatrolPositions(){
-		return patrolPositions;
-	}
-
-    public void SetTarget(Transform goal)
+    void InitPatrolPositions ()
     {
-        goalChanged = true;
-        goalReached = false;
-		onPatrol = false;
-		target = goal;
-		goalVector = target.transform.position;
+        if (patrolPositions.Count == 0)
+        {
+            patrolPositions.Add(transform.position + new Vector3(0, 0, -10));
+            patrolPositions.Add(transform.position + new Vector3(-10, 0, 10));
+            patrolPositions.Add(transform.position + new Vector3(-10, 0, 10));
+        }
     }
 
-	// Use this to check if the current target has moved
+    public void SetPatrolPositions(List<Vector3> positions)
+    {
+        patrolPositions = positions;
+    }
+
+    public void SetPlayerTarget(Transform goal)
+    {
+        onPatrol = false;
+        anim.SetTrigger("Pursuit");
+        goalPosition = goal.position;
+        agent.SetDestination(goalPosition);
+    }
+
     public void CheckTarget(Transform target)
     {
-        cpt = 0;
-		if (target.GetComponentInChildren<PlayerHealth>().IsDead())
-			GetComponent<Animator>().SetTrigger("Patrol");
-		else
-	        if (target.transform.position != goalVector)
-	            SetTarget(target);
+        if (target.GetComponentInChildren<PlayerHealth>().IsDead())
+        {
+            Patrol();
+        }
+        else
+        {
+            Vector3 targetPosition = target.transform.position;
+            if (targetPosition != goalPosition)
+            {
+                goalPosition = targetPosition;
+                agent.SetDestination(goalPosition);
+            }
+        }
     }
 
-	// Use this to rotate the agent to make look at the goal
-    void LookAtGoal()
-    {
-        Quaternion rotation = Quaternion.LookRotation(goalVector - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
-    }
-
-	// Use this to set 'on' the patrol mode
-	public void OnPatrol(Vector3[] positions)
+	public void Patrol()
 	{
-		target = null;
 		onPatrol = true;
-		goalChanged = true;
-
-		patrolPositions = positions;
-
-		goalVector = patrolPositions [0];
 		indexPatrol = 0;
-	}
+        goalReached = true;
+        AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
+        if (!state.IsName("Patrol"))
+        {
+            anim.SetTrigger("Patrol");
+        }
+    }
+
+    bool DetectPlayers()
+    {
+        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, detectionRange);
+        Transform newTarget = null;
+        bool foundTarget = false;
+        foreach (Collider col in collidersInRange)
+        {
+            if (col.gameObject.tag == "Player")
+            {
+                if (!foundTarget)
+                {
+                    newTarget = col.gameObject.GetComponent<Transform>();
+                    foundTarget = true;
+                }
+                else
+                {
+                    Transform t = col.gameObject.GetComponent<Transform>();
+                    float dist1 = Vector3.Distance(t.position, transform.position);
+                    float dist2 = Vector3.Distance(newTarget.position, transform.position);
+                    if (dist2 < dist1)
+                    {
+                        newTarget = t;
+                    }
+                }
+            }
+        }
+        target = newTarget;
+        return foundTarget;
+    }
 }
