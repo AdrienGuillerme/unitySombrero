@@ -14,6 +14,9 @@ public class LaunchCapacity : MonoBehaviour {
     // Use this for initialization
     void Start () {
         controllerName = GetComponentInParent<DontDestroy>().controllerName;
+        int cpt = GetComponentInParent<DontDestroy>().cptCapacity;
+        capacityIntChosen = (CapacityEnum)cpt;
+        Debug.Log(capacityIntChosen);
         readyToLaunch = true;
     }
 	

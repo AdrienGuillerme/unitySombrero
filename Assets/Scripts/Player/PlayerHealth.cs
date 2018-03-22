@@ -170,7 +170,7 @@ public class PlayerHealth : MonoBehaviour {
             if(col.GetComponent<AttackTriggerCollision>().PosDiffFromStart() > 0.5f)
             {
                 Debug.Log("Attacked by a mate");
-                getHurt(10);
+                //getHurt(10);
                 anim.SetBool("damaged", true);
                 knockback = (col.transform.position - transform.position).normalized;
                 knockback.y = 0; 

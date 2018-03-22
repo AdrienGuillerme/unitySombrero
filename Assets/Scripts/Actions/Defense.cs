@@ -59,10 +59,11 @@ public class Defense : MonoBehaviour
                 isCountering = true;
                 hitTime = Time.time * 1000;
                 knockback = shield.transform.forward;
+                knockback.y = 0;
                 if (hitTime - shieldTime < 2000)
                 {
                     Debug.Log("perfect counter");
-                    knockback *= 10;
+                    knockback *= 2;
                 }
                 KnockBack(knockback, col.GetComponentInParent<Rigidbody>());
             }
