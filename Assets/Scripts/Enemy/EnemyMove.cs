@@ -8,7 +8,6 @@ public class EnemyMove : MonoBehaviour
     Transform target;
 
     NavMeshAgent agent;
-    Vector3 initialPosition;
     Vector3 goalPosition;             
     Animator anim;
     List<Vector3> patrolPositions = new List<Vector3>();
@@ -23,7 +22,6 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        initialPosition = transform.position;
         anim = GetComponent<Animator>();
 
         InitPatrolPositions();

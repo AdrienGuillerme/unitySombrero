@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour {
     Animator animator;
     EnemyMove move;
     Vector3 knockback;
+    public LootManager lootManager;
     public PlayerInRange playerInRange;
 
     void Start () {
@@ -56,6 +57,26 @@ public class EnemyHealth : MonoBehaviour {
         playerInRange.enabled = false;
         isDead = true;
         animator.SetTrigger("Dead");
+        StartCoroutine(KillMe(2f));
+    }
+
+    IEnumerator KillMe(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        LootOrNot();
+    }
+
+    void LootOrNot()
+    {
+        int goal = 5;
+        if (Random.Range(0, 10) > goal) {
+            lootManager.MakeSpawn(enemyRigidbody.transform.position, enemyRigidbody.gameObject.name);
+        }
+    }
+
+    public void SetLootManager(LootManager manager)
+    {
+        lootManager = manager;
     }
 
     void KnockBack(Vector3 k)

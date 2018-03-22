@@ -111,7 +111,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -276, y: 156, z: 0}
   m_EntryPosition: {x: -276, y: 36, z: 0}
-  m_ExitPosition: {x: 300, y: -192, z: 0}
+  m_ExitPosition: {x: 288, y: 156, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102973466354741644}
 --- !u!114 &114137179404791430
@@ -134,6 +134,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbc95b69a20afc24f89681d74aedbd9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114933315314935060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228b0eea8064cb74d97aa8cf9abd35b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1101 &1101021592715212918
