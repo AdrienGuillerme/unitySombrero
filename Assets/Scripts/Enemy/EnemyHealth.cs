@@ -29,7 +29,7 @@ public class EnemyHealth : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Weapons")
+        if (!isDead && col.gameObject.tag == "Weapons")
         {
             knockback = (col.transform.position - transform.position).normalized;
             GetHurt(1);
@@ -38,14 +38,14 @@ public class EnemyHealth : MonoBehaviour {
 
     public void GetHurt(int i)
     {
-        if (health <= 0 && !isDead)
+        health -= i;
+        if (health <= 0)
         {
             Die();
         }
         else
         {
             animator.SetTrigger("Damaged");
-            health -= i;
             knockback.y = 0;
             KnockBack(knockback);
         }
@@ -53,7 +53,9 @@ public class EnemyHealth : MonoBehaviour {
 
     void Die()
     {
-        move.enabled = false;
+        move.Stop();
+        enemyRigidbody.isKinematic = true;
+        //move.enabled = false;
         playerInRange.enabled = false;
         isDead = true;
         animator.SetTrigger("Dead");
@@ -62,8 +64,9 @@ public class EnemyHealth : MonoBehaviour {
 
     IEnumerator KillMe(float delay)
     {
-        yield return new WaitForSeconds(delay);
         LootOrNot();
+        yield return new WaitForSeconds(delay);
+        GameObject.Destroy(this.gameObject.transform.parent.gameObject);
     }
 
     void LootOrNot()
@@ -81,7 +84,7 @@ public class EnemyHealth : MonoBehaviour {
 
     void KnockBack(Vector3 k)
     {
-        k = k * -20000;
+        k = k * -30000;
         enemyRigidbody.AddForce(k);
     }
 }

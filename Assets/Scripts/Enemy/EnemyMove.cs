@@ -11,9 +11,11 @@ public class EnemyMove : MonoBehaviour
     Vector3 goalPosition;             
     Animator anim;
     List<Vector3> patrolPositions = new List<Vector3>();
+    Collider enemyCollider;
 
     bool goalReached = false;
 	bool onPatrol = true;
+    bool allowedToMove = true;
     int cpt = 0, freq = 50;			// Used to determine a frequence to check if the target has moved
     int indexPatrol;
 
@@ -23,6 +25,7 @@ public class EnemyMove : MonoBehaviour
     {
         agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
+        enemyCollider = GetComponent<CapsuleCollider>();
 
         InitPatrolPositions();
 
@@ -39,34 +42,38 @@ public class EnemyMove : MonoBehaviour
 
     void Update()
     {
-        if (onPatrol)
+        if (allowedToMove)
         {
-            if (DetectPlayers())
+            if (onPatrol)
             {
-                SetPlayerTarget(target);
-            }
-            else if (goalReached)
-            {
-                goalPosition = patrolPositions[indexPatrol];
-                agent.SetDestination(goalPosition);
-                goalReached = false;
-                indexPatrol = (indexPatrol + 1) % patrolPositions.Count;
-            }
-            if (Vector3.Distance(goalPosition, transform.position) <= agent.stoppingDistance && !goalReached)
-            {
-                goalReached = true;
-            }
-        } else
-        {
-            // Every 'freq' frames, we check if the target has moved
-            if (cpt == freq)
-            {
-                cpt = 0;
-                CheckTarget(target);
+                if (DetectPlayers())
+                {
+                    SetPlayerTarget(target);
+                }
+                else if (goalReached)
+                {
+                    goalPosition = patrolPositions[indexPatrol];
+                    agent.SetDestination(goalPosition);
+                    goalReached = false;
+                    indexPatrol = (indexPatrol + 1) % patrolPositions.Count;
+                }
+                if (Vector3.Distance(goalPosition, transform.position) <= agent.stoppingDistance && !goalReached)
+                {
+                    goalReached = true;
+                }
             }
             else
             {
-                cpt++;
+                // Every 'freq' frames, we check if the target has moved
+                if (cpt == freq)
+                {
+                    cpt = 0;
+                    CheckTarget(target);
+                }
+                else
+                {
+                    cpt++;
+                }
             }
         }
     }
@@ -151,5 +158,14 @@ public class EnemyMove : MonoBehaviour
         }
         target = newTarget;
         return foundTarget;
+    }
+
+    public void Stop()
+    {
+        allowedToMove = false;
+        enemyCollider.isTrigger = true;
+        Transform t = GetComponent<Transform>();
+        agent.SetDestination(t.position);
+        agent.isStopped = true;
     }
 }

@@ -1479,6 +1479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   isDead: 0
+  lootManager: {fileID: 0}
   playerInRange: {fileID: 114898605193757344}
 --- !u!136 &136327520682031026
 CapsuleCollider:
