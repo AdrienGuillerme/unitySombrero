@@ -8,22 +8,26 @@ public class EnemyMove : MonoBehaviour
     Transform target;
 
     NavMeshAgent agent;
-    Vector3 goalPosition;             
+    Vector3 goalPosition;
+    Transform enemyTransform;
     Animator anim;
     List<Vector3> patrolPositions = new List<Vector3>();
     Collider enemyCollider;
+    PlayerHealth targetHealth;
 
     bool goalReached = false;
 	bool onPatrol = true;
     bool allowedToMove = true;
-    int cpt = 0, freq = 50;			// Used to determine a frequence to check if the target has moved
+    int cpt = 0, freq = 40;			// Used to determine a frequence to check if the target has moved
     int indexPatrol;
 
-    private int detectionRange = 15;
+    private float detectionRange = 25f;
+    private float attackTriggerRange = 3.8f;
 
     void Start()
     {
         agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        enemyTransform = GetComponent<Transform>();
         anim = GetComponent<Animator>();
         enemyCollider = GetComponent<CapsuleCollider>();
 
@@ -40,7 +44,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (allowedToMove)
         {
@@ -74,6 +78,11 @@ public class EnemyMove : MonoBehaviour
                 {
                     cpt++;
                 }
+                float dist = Vector3.Distance(enemyTransform.position, target.position);
+                if (!targetHealth.IsDead() && dist < attackTriggerRange)
+                {
+                    anim.SetTrigger("Attack");
+                }
             }
         }
     }
@@ -99,11 +108,12 @@ public class EnemyMove : MonoBehaviour
         anim.SetTrigger("Pursuit");
         goalPosition = goal.position;
         agent.SetDestination(goalPosition);
+        targetHealth = goal.GetComponentInChildren<PlayerHealth>();
     }
 
     public void CheckTarget(Transform target)
     {
-        if (target.GetComponentInChildren<PlayerHealth>().IsDead())
+        if (targetHealth.IsDead())
         {
             Patrol();
         }

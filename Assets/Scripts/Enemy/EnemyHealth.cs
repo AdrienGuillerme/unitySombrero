@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour {
 
     private int health;
 
-    public int maxHealth = 3;
+    public int maxHealth = 5;
     public bool isDead;
 
     Rigidbody enemyRigidbody;
@@ -17,7 +17,6 @@ public class EnemyHealth : MonoBehaviour {
     EnemyMove move;
     Vector3 knockback;
     public LootManager lootManager;
-    public PlayerInRange playerInRange;
 
     void Start () {
         enemyRigidbody = GetComponentInParent<Rigidbody>();
@@ -56,7 +55,6 @@ public class EnemyHealth : MonoBehaviour {
         move.Stop();
         enemyRigidbody.isKinematic = true;
         //move.enabled = false;
-        playerInRange.enabled = false;
         isDead = true;
         animator.SetTrigger("Dead");
         StartCoroutine(KillMe(2f));
