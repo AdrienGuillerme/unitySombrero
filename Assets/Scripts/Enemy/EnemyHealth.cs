@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour {
 
     private int health;
 
-    public int maxHealth = 5;
+    public int maxHealth = 3;
     public bool isDead;
 
     Rigidbody enemyRigidbody;
@@ -69,9 +69,25 @@ public class EnemyHealth : MonoBehaviour {
 
     void LootOrNot()
     {
-        int goal = 5;
-        if (Random.Range(0, 10) > goal) {
-            lootManager.MakeSpawn(enemyRigidbody.transform.position, enemyRigidbody.gameObject.name);
+        int rng = Random.Range(0, 100);
+        if (rng > 50)
+        {
+            if (rng < 75)
+            {
+                lootManager.MakeSpawn(transform.position, 0, 10);
+                return;
+            }
+            if (rng < 92)
+            {
+                lootManager.MakeSpawn(transform.position, 25, 0);
+                return;
+            }
+            if (rng < 99)
+            {
+                lootManager.MakeSpawn(transform.position, 150, 0);
+                return;
+            }
+            lootManager.MakeSpawn(transform.position, 300, 0);
         }
     }
 

@@ -88,45 +88,4 @@ public class EnemiesManager : MonoBehaviour{
 			}
 		}
 	}
-
-	/*// Check if the agent is dead and then delete him
-	public void SetAgentDead(GameObject agent){
-		if (dragons.Contains (agent)) {
-			dragons.Remove (agent);
-			StartCoroutine (KillMe (2f, agent));
-		}
-	}
-
-	IEnumerator KillMe(float delay, GameObject agent){
-		yield return new WaitForSeconds(delay);
-		LootOrNot (agent.transform.position);
-		Destroy (agent);
-	}
-
-	void LootOrNot(GameObject agent){
-		int goal = 5;
-		float rng = Random.Range (0f, 10f);
-		if(rng > goal)
-			lootManager.MakeSpawn (agent.transform.position, agent.gameObject.name);
-	}
-	*/
-
-	void LootOrNot(Vector3 position){
-		int rng = Random.Range (0, 100);
-		if (rng > 50) {
-			if (rng < 75) {
-				lootManager.MakeSpawn (position, 0, 10);
-				return;
-			}
-			if (rng < 92) {
-				lootManager.MakeSpawn (position, 25, 0);
-				return;
-			}
-			if (rng < 99) {
-				lootManager.MakeSpawn (position, 150, 0);
-				return;
-			}
-			lootManager.MakeSpawn (position, 300, 0);
-		}
-	}
 }
