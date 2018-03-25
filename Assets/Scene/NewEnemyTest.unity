@@ -4135,7 +4135,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4310110259221060, guid: 84e2a527049b82d4db5ccf771f8ad02c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -23
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 4310110259221060, guid: 84e2a527049b82d4db5ccf771f8ad02c, type: 2}
       propertyPath: m_LocalRotation.x
@@ -16635,6 +16635,11 @@ Prefab:
       propertyPath: buttonQuit
       value: 
       objectReference: {fileID: 1654112292}
+    - target: {fileID: 114637781907342954, guid: 91fe41a1736c73d41b8fcfe885d154f5,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91fe41a1736c73d41b8fcfe885d154f5, type: 2}
   m_IsPrefabParent: 0

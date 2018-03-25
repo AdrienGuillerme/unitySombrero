@@ -9,7 +9,6 @@ public class EnemyMove : MonoBehaviour
 
     NavMeshAgent agent;
     Vector3 goalPosition;
-    Transform enemyTransform;
     Animator anim;
     List<Vector3> patrolPositions = new List<Vector3>();
     Collider enemyCollider;
@@ -27,7 +26,6 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        enemyTransform = GetComponent<Transform>();
         anim = GetComponent<Animator>();
         enemyCollider = GetComponent<CapsuleCollider>();
 
@@ -72,13 +70,14 @@ public class EnemyMove : MonoBehaviour
                 if (cpt == freq)
                 {
                     cpt = 0;
+                    ChangeTarget();
                     CheckTarget(target);
                 }
                 else
                 {
                     cpt++;
                 }
-                float dist = Vector3.Distance(enemyTransform.position, target.position);
+                float dist = Vector3.Distance(transform.position, target.position);
                 if (!targetHealth.IsDead() && dist < attackTriggerRange)
                 {
                     anim.SetTrigger("Attack");
@@ -106,6 +105,7 @@ public class EnemyMove : MonoBehaviour
     {
         onPatrol = false;
         anim.SetTrigger("Pursuit");
+        agent.speed = 8;
         goalPosition = goal.position;
         agent.SetDestination(goalPosition);
         targetHealth = goal.GetComponentInChildren<PlayerHealth>();
@@ -137,6 +137,7 @@ public class EnemyMove : MonoBehaviour
         if (!state.IsName("Patrol"))
         {
             anim.SetTrigger("Patrol");
+            agent.speed = 4;
         }
     }
 
@@ -149,19 +150,23 @@ public class EnemyMove : MonoBehaviour
         {
             if (col.gameObject.tag == "Player")
             {
-                if (!foundTarget)
+                PlayerHealth player = col.gameObject.GetComponent<PlayerHealth>();
+                if (!player.IsDead())
                 {
-                    newTarget = col.gameObject.GetComponent<Transform>();
-                    foundTarget = true;
-                }
-                else
-                {
-                    Transform t = col.gameObject.GetComponent<Transform>();
-                    float dist1 = Vector3.Distance(t.position, transform.position);
-                    float dist2 = Vector3.Distance(newTarget.position, transform.position);
-                    if (dist2 < dist1)
+                    if (!foundTarget)
                     {
-                        newTarget = t;
+                        newTarget = col.gameObject.transform;
+                        foundTarget = true;
+                    }
+                    else
+                    {
+                        Transform t = col.gameObject.transform;
+                        float targetDistance = Vector3.Distance(t.position, transform.position);
+                        float colliderDistance = Vector3.Distance(newTarget.position, transform.position);
+                        if (colliderDistance < targetDistance)
+                        {
+                            newTarget = t;
+                        }
                     }
                 }
             }
@@ -170,12 +175,44 @@ public class EnemyMove : MonoBehaviour
         return foundTarget;
     }
 
+    void ChangeTarget()
+    {
+        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, detectionRange);
+        Transform newTarget = null;
+        float targetDistance = Vector3.Distance(transform.position, target.position);
+        bool foundNewTarget = false;
+        foreach (Collider col in collidersInRange)
+        {
+            if (col.gameObject.tag == "Player")
+            {
+                PlayerHealth player = col.gameObject.GetComponent<PlayerHealth>();
+                if (!player.IsDead())
+                {
+                    float colliderDistance = Vector3.Distance(transform.position, col.transform.position);
+                    if (!foundNewTarget && colliderDistance < 0.6f* targetDistance)
+                    {
+                        foundNewTarget = true;
+                        targetDistance = colliderDistance;
+                        newTarget = col.gameObject.transform;
+                    }
+                    else if (colliderDistance < targetDistance)
+                    {
+                        newTarget = col.gameObject.transform;
+                    }
+                }
+            }
+        }
+        if (foundNewTarget)
+        {
+            target = newTarget;
+        }
+    }
+
     public void Stop()
     {
         allowedToMove = false;
         enemyCollider.isTrigger = true;
-        Transform t = GetComponent<Transform>();
-        agent.SetDestination(t.position);
+        agent.SetDestination(transform.position);
         agent.isStopped = true;
     }
 }
