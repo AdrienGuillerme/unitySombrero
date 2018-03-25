@@ -90,6 +90,13 @@ public class MapSelection : MonoBehaviour {
                     {
                         user.gameObject.SetActive(true);
                     }*/
+                    if (cpt == 1)
+                    {
+                        foreach (GameObject user in users)
+                        {
+                            DestroyObject(user.gameObject);
+                        }
+                    }
                     SceneManager.LoadScene(listName[cpt]);
                 }
             }

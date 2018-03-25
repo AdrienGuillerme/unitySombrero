@@ -38,7 +38,7 @@ public class Attack : MonoBehaviour {
         if (!isAttacking)
         {
             isAttacking = true;
-            anim.SetFloat("attackNumber", 0);
+            //anim.SetFloat("attackNumber", 0.2f);
             anim.SetTrigger("attack");
             StartCoroutine(ChangeWeaponActive(0.2f, true));
         }
@@ -48,7 +48,7 @@ public class Attack : MonoBehaviour {
     {
         yield return new WaitForSeconds(delay);
         weaponTriggerR.SetActive(state);
-        weaponTriggerL.SetActive(state);
+        //weaponTriggerL.SetActive(state);
     }
 
     void AnimationEnter(AnimatorStateInfo stateInfo)
