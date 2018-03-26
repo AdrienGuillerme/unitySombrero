@@ -28,9 +28,10 @@ public class MeteorCapacity : MonoBehaviour, ICapacity {
         Vector3[] positions = new Vector3[nbMeteors];
         GameObject obj = Resources.Load("Rock 01\\meteor") as GameObject;
         Vector3 position = transform.position;
-        
+        string controllerName = gameObject.GetComponent<LauncherCapacityBehaviour>().GetControllerName();
+        CapsuleCollider playerCollider = gameObject.GetComponent<LauncherCapacityBehaviour>().GetPlayerCollider();
 
-        for(int loop = 0; loop < nbMeteors; loop++)
+        for (int loop = 0; loop < nbMeteors; loop++)
         {
             positions[loop] = new Vector3(position.x + Random.Range(-8.0f, 8.0f),
                 position.y + startingAltitude + 2 * loop, 
@@ -39,7 +40,8 @@ public class MeteorCapacity : MonoBehaviour, ICapacity {
 
         for (int loop = 0; loop < nbMeteors; loop++)
         {
-            Instantiate(obj, positions[loop], transform.rotation);
+            GameObject meteorObject = Instantiate(obj, positions[loop], transform.rotation);
+            meteorObject.GetComponent<MeteorBehaviour>().SetPlayerCollider(playerCollider);
         }
     }
 }
