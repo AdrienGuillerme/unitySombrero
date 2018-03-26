@@ -140,7 +140,7 @@ public class PlayerHealth : MonoBehaviour {
         {
             Live();
             isRevived = false;
-            this.GetComponentInParent<DontDestroy>().SubstractScore(1);
+            
         }
         else
         {
@@ -151,6 +151,7 @@ public class PlayerHealth : MonoBehaviour {
 
             //resSlider.value = (actualPoints / rezPoints) * 100;
         }
+        this.GetComponentInParent<DontDestroy>().SubstractScore(1);
     }
    
     //Previously in CharacterHealth
