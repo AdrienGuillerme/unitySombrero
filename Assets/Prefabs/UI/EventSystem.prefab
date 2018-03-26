@@ -120,3 +120,11 @@ MonoBehaviour:
     type: 2}
   heathUIRight: {fileID: 1030459530388104, guid: 5e4c99aee750a9e4f9d19e7cbf81385c,
     type: 2}
+  capacity1: {fileID: 114667926566855318, guid: 8b6ae0fe27c4ed249a869ce921fa9e3f,
+    type: 2}
+  capacity2: {fileID: 114096359417439230, guid: 1f461150713fe5944b4533ffeb828ca7,
+    type: 2}
+  capacity3: {fileID: 114602607631909320, guid: 62ee2b596038e3444b91deb202541f7c,
+    type: 2}
+  capacity4: {fileID: 114358628192098962, guid: 37f02f096878d1445bb9546d75a3f3cf,
+    type: 2}

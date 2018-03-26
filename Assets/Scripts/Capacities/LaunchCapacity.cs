@@ -41,7 +41,8 @@ public class LaunchCapacity : MonoBehaviour {
                 Vector3 position = transform.forward * distanceToCharacter + transform.position;
                 position.y += orbeAltitude;
                 launcher = Instantiate(obj, position, transform.rotation) as GameObject;
-                launcher.GetComponentInChildren<LauncherCapacityBehaviour>().setParent(this);
+                launcher.GetComponentInChildren<LauncherCapacityBehaviour>().SetParent(this);
+                launcher.GetComponentInChildren<LauncherCapacityBehaviour>().SetPlayerCollider(GetComponent<CapsuleCollider>() as CapsuleCollider);
                 launcher.GetComponentInChildren<LauncherCapacityBehaviour>().SetAltitude(orbeAltitude);
                 //Instantiate(obj, transform);
                 readyToLaunch = false;

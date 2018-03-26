@@ -120,11 +120,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114886206012556490, guid: db3a05565cbe23a44b528042e5870367,
-        type: 2}
-      propertyPath: sombreroMaterials.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4753764744882392, guid: db3a05565cbe23a44b528042e5870367, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -177,32 +172,6 @@ Prefab:
       propertyPath: dR
       value: 
       objectReference: {fileID: 1409965940}
-    - target: {fileID: 114886206012556490, guid: db3a05565cbe23a44b528042e5870367,
-        type: 2}
-      propertyPath: character1
-      value: 
-      objectReference: {fileID: 1350741316671686, guid: c4bb8246b9ec91c419f3cc7f8e309eaa,
-        type: 2}
-    - target: {fileID: 114886206012556490, guid: db3a05565cbe23a44b528042e5870367,
-        type: 2}
-      propertyPath: sombreroMaterials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9c334967740947042b0bb445cd1525fb, type: 2}
-    - target: {fileID: 114886206012556490, guid: db3a05565cbe23a44b528042e5870367,
-        type: 2}
-      propertyPath: sombreroMaterials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: d5b6e4429bd3a6a49913a8126204a5d8, type: 2}
-    - target: {fileID: 114886206012556490, guid: db3a05565cbe23a44b528042e5870367,
-        type: 2}
-      propertyPath: sombreroMaterials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7bf22e0aa5cedab40a21e228174fc156, type: 2}
-    - target: {fileID: 114886206012556490, guid: db3a05565cbe23a44b528042e5870367,
-        type: 2}
-      propertyPath: sombreroMaterials.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2fd5bcf18a2883f4a9a1fedf2d804828, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db3a05565cbe23a44b528042e5870367, type: 2}
   m_IsPrefabParent: 0
@@ -404,76 +373,6 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 916289952}
-    - target: {fileID: 224101003566313878, guid: c3cbbd8c6d1cb764a925e459c28ba031,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 224101003566313878, guid: c3cbbd8c6d1cb764a925e459c28ba031,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 224060188713653210, guid: c3cbbd8c6d1cb764a925e459c28ba031,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 224060188713653210, guid: c3cbbd8c6d1cb764a925e459c28ba031,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 224526702292123716, guid: c3cbbd8c6d1cb764a925e459c28ba031,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 224526702292123716, guid: c3cbbd8c6d1cb764a925e459c28ba031,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 224432455121396964, guid: c3cbbd8c6d1cb764a925e459c28ba031,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 224432455121396964, guid: c3cbbd8c6d1cb764a925e459c28ba031,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 114066290846493878, guid: c3cbbd8c6d1cb764a925e459c28ba031,
-        type: 2}
-      propertyPath: m_Text
-      value: Appuyez sur A
-      objectReference: {fileID: 0}
-    - target: {fileID: 114394691086684816, guid: c3cbbd8c6d1cb764a925e459c28ba031,
-        type: 2}
-      propertyPath: m_Text
-      value: Appuyez sur A
-      objectReference: {fileID: 0}
-    - target: {fileID: 114138403665557594, guid: c3cbbd8c6d1cb764a925e459c28ba031,
-        type: 2}
-      propertyPath: m_Text
-      value: Appuyez sur A
-      objectReference: {fileID: 0}
-    - target: {fileID: 114523391098450856, guid: c3cbbd8c6d1cb764a925e459c28ba031,
-        type: 2}
-      propertyPath: m_Text
-      value: Appuyez sur A
-      objectReference: {fileID: 0}
-    - target: {fileID: 224101003566313878, guid: c3cbbd8c6d1cb764a925e459c28ba031,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224101003566313878, guid: c3cbbd8c6d1cb764a925e459c28ba031,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3cbbd8c6d1cb764a925e459c28ba031, type: 2}
   m_IsPrefabParent: 0
