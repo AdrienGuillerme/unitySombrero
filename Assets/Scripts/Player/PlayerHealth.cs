@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour {
     CharacterMovement characterMovement;                        // Reference to the player's movement.
     Attack characterAttack;                                     // Reference to the player's attack.
     Defense characterDefense;                                   // Reference to the player's defense.
+    GameObject characterShield;
     bool isDead;                                                // Whether the player is dead.
     bool isRevived;
 	bool isDamaged;                                             // True when the player gets damaged.
@@ -35,6 +36,7 @@ public class PlayerHealth : MonoBehaviour {
         characterMovement = GetComponent<CharacterMovement>();
         characterAttack = transform.parent.GetComponentInChildren<Attack>();
         characterDefense = transform.parent.GetComponentInChildren<Defense>();
+        characterShield = characterDefense.transform.GetChild(0).gameObject;
 
         currentHealth = maxHealth;
         playerRigidbody = GetComponentInParent<Rigidbody>();
@@ -102,6 +104,7 @@ public class PlayerHealth : MonoBehaviour {
         characterMovement.enabled = false;
         characterAttack.enabled = false;
         characterDefense.enabled = false;
+        characterShield.SetActive(false);
     }
 
     //Previously in CharacterHealth
