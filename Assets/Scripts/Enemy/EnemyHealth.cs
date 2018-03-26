@@ -2,63 +2,103 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.AI;
+
+
 public class EnemyHealth : MonoBehaviour {
 
-    public int maxHealth = 3;
-
     private int health;
-    public bool isDead;
 
-	public EnemiesManager enemiesManager;
+    public int maxHealth = 3;
+    public bool isDead;
 
     Rigidbody enemyRigidbody;
     Animator animator;
+    EnemyMove move;
     Vector3 knockback;
+    public LootManager lootManager;
 
     void Start () {
         enemyRigidbody = GetComponentInParent<Rigidbody>();
         animator = GetComponentInParent<Animator>();
+        move = animator.GetComponent<EnemyMove>();
         isDead = false;
         health = maxHealth;
 	}
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Weapons")
+        if (!isDead && col.gameObject.tag == "Weapons")
         {
-            GetHurt(1);
             knockback = (col.transform.position - transform.position).normalized;
+            GetHurt(1);
+        }
+    }
+
+    public void GetHurt(int i)
+    {
+        health -= i;
+        if (health <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            animator.SetTrigger("Damaged");
             knockback.y = 0;
             KnockBack(knockback);
         }
     }
 
-	public void SetEnemiesManager(EnemiesManager m)
-	{
-		enemiesManager = m;
-	}
-
-    public void GetHurt(int i)
+    void Die()
     {
-        //Debug.Log("Skeleton hurt!");
-        health -= i;
-        if (health <= 0 && !isDead)
+        move.Stop();
+        enemyRigidbody.isKinematic = true;
+        //move.enabled = false;
+        isDead = true;
+        animator.SetTrigger("Dead");
+        StartCoroutine(KillMe(2f));
+    }
+
+    IEnumerator KillMe(float delay)
+    {
+        LootOrNot();
+        yield return new WaitForSeconds(delay);
+        GameObject.Destroy(this.gameObject.transform.parent.gameObject);
+    }
+
+    void LootOrNot()
+    {
+        int rng = Random.Range(0, 100);
+        if (rng > 50)
         {
-            Die();
+            if (rng < 75)
+            {
+                lootManager.MakeSpawn(transform.position, 0, 10);
+                return;
+            }
+            if (rng < 92)
+            {
+                lootManager.MakeSpawn(transform.position, 25, 0);
+                return;
+            }
+            if (rng < 99)
+            {
+                lootManager.MakeSpawn(transform.position, 150, 0);
+                return;
+            }
+            lootManager.MakeSpawn(transform.position, 300, 0);
         }
     }
 
-    void Die()
+    public void SetLootManager(LootManager manager)
     {
-        isDead = true;
-        animator.SetTrigger("Dead");
-		GameObject g = transform.parent.gameObject;
-		enemiesManager.SetAgentDead (g);
+        lootManager = manager;
     }
 
     void KnockBack(Vector3 k)
     {
-        k = k * -50000;
+        k = k * -30000;
         enemyRigidbody.AddForce(k);
     }
 }

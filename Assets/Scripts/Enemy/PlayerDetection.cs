@@ -11,7 +11,7 @@ public class PlayerDetection : MonoBehaviour {
         animator = GetComponentInParent<Animator>();
     }
 
-    void OnTriggerEnter (Collider col) {
+    /*void OnTriggerEnter (Collider col) {
         AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
 
         if ((state.IsName("Patrol") || state.IsName("Wait")) && col.gameObject.tag == "Player")
@@ -21,5 +21,5 @@ public class PlayerDetection : MonoBehaviour {
 				enemyMove.SetTarget (col.gameObject.GetComponent<Transform> ());
 			}
         }
-    }
+    }*/
 }

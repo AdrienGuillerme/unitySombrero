@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour {
 	// Random coef is added to the position for each instance of the object.
 	public void SpawnMany(GameObject o, Vector3 position, int number){
 		for (int i = 0; i < number; i++)
-					SpawnOne (o, position + new Vector3 (Random.Range(-randomCoef, randomCoef), 0, Random.Range(-randomCoef, randomCoef)));
+			SpawnOne (o, position + new Vector3 (Random.Range(-randomCoef, randomCoef), 0, Random.Range(-randomCoef, randomCoef)));
 	}
 
 	// Use this to make objects spawn at the all the wanted positions
