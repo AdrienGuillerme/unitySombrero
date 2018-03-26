@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     // Make an ennemy appear at 'position'
-    void SpawnAgent(Vector3 position)
+    public void SpawnAgent(Vector3 position)
     {
         GameObject newAgent = (GameObject)Instantiate(agent, position, Quaternion.identity);
         newAgent.GetComponent<EnemyMove>().OnPatrol(patrolPositions.ToArray());

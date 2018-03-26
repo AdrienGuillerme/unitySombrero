@@ -14,7 +14,7 @@ public class PlayerDetection : MonoBehaviour {
     void OnTriggerEnter (Collider col) {
         AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
 
-        if ((state.IsName("Patrol") || state.IsName("idle")) && col.gameObject.tag == "Player")
+        if ((state.IsName("Patrol") || state.IsName("Wait")) && col.gameObject.tag == "Player")
         {
 			if (!col.gameObject.GetComponent<PlayerHealth> ().IsDead ()) {
 				animator.SetTrigger ("Pursuit");
