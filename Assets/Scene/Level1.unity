@@ -5204,6 +5204,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 114811442284105688, guid: 8d1956230918f2842ba177b76336c1d6,
+        type: 2}
+      propertyPath: agentsPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 1090725046967928, guid: 84e2a527049b82d4db5ccf771f8ad02c,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d1956230918f2842ba177b76336c1d6, type: 2}
   m_IsPrefabParent: 0
@@ -8640,6 +8646,10 @@ Prefab:
       propertyPath: FailMenu
       value: 
       objectReference: {fileID: 461525297}
+    - target: {fileID: 1426928519617150, guid: 8384cd4a4d4943d4d8a636db3f9e0700, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8384cd4a4d4943d4d8a636db3f9e0700, type: 2}
   m_IsPrefabParent: 0
@@ -9179,9 +9189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e507a8fba180664390da3d02a260a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1617868012894854, guid: 84e2a527049b82d4db5ccf771f8ad02c, type: 2}
-  spawnOne: 0
-  chosenPatrolPositions: []
 --- !u!1001 &729908112
 Prefab:
   m_ObjectHideFlags: 0
