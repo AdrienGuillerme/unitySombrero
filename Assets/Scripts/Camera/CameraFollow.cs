@@ -11,10 +11,13 @@ public class CameraFollow : MonoBehaviour
     int nbPlayer;
     GameObject[] listPlayer;
 
+
+
     Vector3 offset;                     // The initial offset from the target.
 
     void Start()
     {
+
         // Get the list of player
         listPlayer = GameObject.FindGameObjectsWithTag("Player");
         GameObject[] listCharacter = GameObject.FindGameObjectsWithTag("CharacterGroup");
@@ -65,6 +68,7 @@ public class CameraFollow : MonoBehaviour
                  }
                  else { lastPlayer = newPlayer; }
              }
+
          }
        
         if (notYet != 1)
