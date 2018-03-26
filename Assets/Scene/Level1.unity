@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -15443,6 +15443,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114637781907342954, guid: 91fe41a1736c73d41b8fcfe885d154f5,
+        type: 2}
+      propertyPath: hudCanvas
+      value: 
+      objectReference: {fileID: 336582739}
     - target: {fileID: 114535698338258314, guid: 91fe41a1736c73d41b8fcfe885d154f5,
         type: 2}
       propertyPath: canvas
@@ -15468,11 +15473,6 @@ Prefab:
       propertyPath: buttonQuit
       value: 
       objectReference: {fileID: 1654112292}
-    - target: {fileID: 114637781907342954, guid: 91fe41a1736c73d41b8fcfe885d154f5,
-        type: 2}
-      propertyPath: hudCanvas
-      value: 
-      objectReference: {fileID: 336582739}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91fe41a1736c73d41b8fcfe885d154f5, type: 2}
   m_IsPrefabParent: 0
