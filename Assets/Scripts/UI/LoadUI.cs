@@ -9,10 +9,25 @@ public class LoadUI : MonoBehaviour
     public GameObject heathUILeft;
     public GameObject heathUIRight;
 
+   
+    public Image capacity1;
+    public Image capacity2;
+    public Image capacity3;
+    public Image capacity4;
+
+    List<Image> listImage = new List<Image>();
+
+
 
     // Use this for initialization
     void Start()
     {
+        listImage.Add(capacity1);
+        listImage.Add(capacity2);
+        listImage.Add(capacity3);
+        listImage.Add(capacity4);
+
+
         GameObject[] users = GameObject.FindGameObjectsWithTag("User");
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         //Player Tag only for CharacterGroup->Player
@@ -39,7 +54,7 @@ public class LoadUI : MonoBehaviour
 
                 }
             }
-
+           
             PlayerHealth newPlayerHealth = player.GetComponent<PlayerHealth>();
             newPlayerHealth.healthSlider = newHealthUI.GetComponentInChildren<Slider>();
             GameObject user = users[cpt];
@@ -47,6 +62,7 @@ public class LoadUI : MonoBehaviour
             newUserScore.uiText = newHealthUI.GetComponentInChildren<Text>();
             newUserScore.AddScore(0);
             cpt++;
+            newHealthUI.GetComponentsInChildren<Image>()[2].sprite = listImage[newUserScore.cptCapacity].sprite;
         }
 
 
