@@ -94,7 +94,7 @@ public class PlayerHealth : MonoBehaviour {
         isDead = true;
         Debug.Log("I'm Dead");
         anim.SetBool("death", true);
-
+        this.GetComponentInParent<DontDestroy>().SubstractScore(100);
         // Set the audiosource to play the death clip and play it (this will stop the hurt sound from playing).
         //playerAudio.clip = deathClip;
         //playerAudio.Play();
@@ -102,6 +102,20 @@ public class PlayerHealth : MonoBehaviour {
         characterMovement.enabled = false;
         characterAttack.enabled = false;
         characterDefense.enabled = false;
+    }
+
+    public void ResetLife()
+    {
+        isDead = false;
+        actualResPoints = 0;
+        Debug.Log("Yay! I'm alive");
+        anim.SetBool("revive", true);
+        characterMovement.enabled = true;
+        characterAttack.enabled = true;
+        characterDefense.enabled = true;
+        currentHealth = maxHealth;
+        isDamaged = false;
+        isRevived = false;
     }
 
     //Previously in CharacterHealth
@@ -126,11 +140,15 @@ public class PlayerHealth : MonoBehaviour {
         {
             Live();
             isRevived = false;
+            this.GetComponentInParent<DontDestroy>().SubstractScore(1);
         }
         else
         {
             actualResPoints++;
             Debug.Log("Yay! Heal me!");
+
+            //ajouter animation de resurection
+
             //resSlider.value = (actualPoints / rezPoints) * 100;
         }
     }

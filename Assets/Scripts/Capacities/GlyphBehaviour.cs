@@ -9,6 +9,7 @@ public class GlyphBehaviour : MonoBehaviour {
     public int damages = 30;
     private bool asBeenActivated;
     private string controllerName = "";
+    private CapsuleCollider playerCollider;
 
     void Start()
     {
@@ -33,7 +34,7 @@ public class GlyphBehaviour : MonoBehaviour {
 
         if (other.gameObject.tag == "Ennemi")
         {
-            other.gameObject.GetComponent<EnemyHealth>().GetHurt(damages, controllerName);
+            other.gameObject.GetComponent<EnemyHealth>().GetHurt(damages, playerCollider);
             setActivated();
         }
     }
@@ -50,5 +51,10 @@ public class GlyphBehaviour : MonoBehaviour {
     public void SetControllerName(string controllerName)
     {
         this.controllerName = controllerName;
+    }
+
+    public void SetPlayerCollider(CapsuleCollider playerCollider)
+    {
+        this.playerCollider = playerCollider;
     }
 }

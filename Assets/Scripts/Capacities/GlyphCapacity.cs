@@ -28,8 +28,11 @@ public class GlyphCapacity : MonoBehaviour, ICapacity {
         Vector3 position = transform.position;
         float orbeAltitude = this.gameObject.GetComponent<LauncherCapacityBehaviour>().GetAltitude();
         string controllerName = gameObject.GetComponent<LauncherCapacityBehaviour>().GetControllerName();
+        CapsuleCollider playerCollider = gameObject.GetComponent<LauncherCapacityBehaviour>().GetPlayerCollider();
+
         position.y -= orbeAltitude;
         GameObject glyphObject = Instantiate(obj, position, transform.rotation);
-        glyphObject.GetComponent<GlyphBehaviour>().SetControllerName(controllerName);
+
+        glyphObject.GetComponent<GlyphBehaviour>().SetPlayerCollider(playerCollider);
     }
 }

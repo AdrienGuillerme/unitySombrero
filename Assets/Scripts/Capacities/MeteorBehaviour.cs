@@ -9,6 +9,7 @@ public class MeteorBehaviour : MonoBehaviour {
     public float lifeTime = 5f;
     private bool asTouchedSomething;
     private string controllerName = "";
+    private CapsuleCollider playerCollider;
 
     // Use this for initialization
     void Start () {
@@ -33,7 +34,7 @@ public class MeteorBehaviour : MonoBehaviour {
 
         if (other.gameObject.tag == "Ennemi")
         {
-            other.gameObject.GetComponent<EnemyHealth>().GetHurt(damages, controllerName);
+            other.gameObject.GetComponent<EnemyHealth>().GetHurt(damages, playerCollider);
             setActivated();
         }
 
@@ -56,5 +57,10 @@ public class MeteorBehaviour : MonoBehaviour {
     public void SetControllerName(string controllerName)
     {
         this.controllerName = controllerName;
+    }
+
+    public void SetPlayerCollider(CapsuleCollider playerCollider)
+    {
+        this.playerCollider = playerCollider;
     }
 }

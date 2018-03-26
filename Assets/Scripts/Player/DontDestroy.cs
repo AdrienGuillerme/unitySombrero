@@ -24,4 +24,10 @@ public class DontDestroy : MonoBehaviour {
         score += i;
         uiText.text = "Score : " + score.ToString();
     }
+
+    public void SubstractScore(int i)
+    {
+        score -= i;
+        uiText.text = "Score : " + score.ToString();
+    }
 }

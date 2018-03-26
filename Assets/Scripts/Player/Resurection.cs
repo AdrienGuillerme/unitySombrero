@@ -79,6 +79,7 @@ public class Resurection : MonoBehaviour
         if (canRevive() && characterHealth != null && characterHealth.IsDead())
         {
             characterHealth.getRevive();
+            this.GetComponentInParent<DontDestroy>().AddScore(1);
             Debug.Log("I'm healing!");
         }
 

@@ -6,6 +6,7 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
 
     public float speed = 5f;
     private string controllerName;
+    private CapsuleCollider playerCollider;
     private CapacityEnum capacityIntChosen = CapacityEnum.Glyph;
     private ICapacity capacityChosen;
     private LaunchCapacity parentFunction;
@@ -62,7 +63,7 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
         activated = true;
     }
 
-    public void setParent(LaunchCapacity parent)
+    public void SetParent(LaunchCapacity parent)
     {
         this.parentFunction = parent;
     }
@@ -98,9 +99,19 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
         return this.controllerName;
     }
 
+    public CapsuleCollider GetPlayerCollider()
+    {
+        return playerCollider;
+    }
+
     IEnumerator KillSelf(float time)
     {
         yield return new WaitForSeconds(time);
         Destroy(this.gameObject);
+    }
+
+    public void SetPlayerCollider (CapsuleCollider playerCollider)
+    {
+        this.playerCollider = playerCollider;
     }
 }
