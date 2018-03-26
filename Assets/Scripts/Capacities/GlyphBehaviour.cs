@@ -8,6 +8,7 @@ public class GlyphBehaviour : MonoBehaviour {
     public float lifeTimeAfterActivation = 1f;
     public int damages = 30;
     private bool asBeenActivated;
+    private string controllerName = "";
 
     void Start()
     {
@@ -32,7 +33,7 @@ public class GlyphBehaviour : MonoBehaviour {
 
         if (other.gameObject.tag == "Ennemi")
         {
-            other.gameObject.GetComponent<EnemyHealth>().GetHurt(damages);
+            other.gameObject.GetComponent<EnemyHealth>().GetHurt(damages, controllerName);
             setActivated();
         }
     }
@@ -44,5 +45,10 @@ public class GlyphBehaviour : MonoBehaviour {
             StartCoroutine(KillSelf(lifeTimeAfterActivation));
             asBeenActivated = true;
         }
+    }
+
+    public void SetControllerName(string controllerName)
+    {
+        this.controllerName = controllerName;
     }
 }

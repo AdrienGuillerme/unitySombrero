@@ -6,14 +6,17 @@ public class MeteorBehaviour : MonoBehaviour {
 
     public int damages = 50;
     public float lifeTimeAfterActivation = 0.2f;
+    public float lifeTime = 5f;
     private bool asTouchedSomething;
+    private string controllerName = "";
 
     // Use this for initialization
     void Start () {
         asTouchedSomething = false;
         Rigidbody rb = this.gameObject.GetComponent<Rigidbody>();
         rb.AddForce(new Vector3(0, -10, 0), ForceMode.VelocityChange);
-	}
+        StartCoroutine(KillSelf(lifeTime));
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -30,7 +33,7 @@ public class MeteorBehaviour : MonoBehaviour {
 
         if (other.gameObject.tag == "Ennemi")
         {
-            other.gameObject.GetComponent<EnemyHealth>().GetHurt(damages);
+            other.gameObject.GetComponent<EnemyHealth>().GetHurt(damages, controllerName);
             setActivated();
         }
 
@@ -46,7 +49,12 @@ public class MeteorBehaviour : MonoBehaviour {
     IEnumerator KillSelf(float time)
     {
         //yield return new WaitForSeconds(time);
-        yield return new WaitForSeconds(lifeTimeAfterActivation);
+        yield return new WaitForSeconds(time);
         Destroy(this.gameObject);
+    }
+
+    public void SetControllerName(string controllerName)
+    {
+        this.controllerName = controllerName;
     }
 }

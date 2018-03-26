@@ -93,6 +93,11 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
         return this.altitude;
     }
 
+    public string GetControllerName()
+    {
+        return this.controllerName;
+    }
+
     IEnumerator KillSelf(float time)
     {
         yield return new WaitForSeconds(time);

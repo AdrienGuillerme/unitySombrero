@@ -50,6 +50,11 @@ public class EnemyHealth : MonoBehaviour {
         }
     }
 
+    public void GetHurt(int damages, string attacker)
+    {
+        GetHurt(damages);
+    }
+
     void Die()
     {
         move.Stop();
