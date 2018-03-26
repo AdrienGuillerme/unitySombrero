@@ -104,6 +104,20 @@ public class PlayerHealth : MonoBehaviour {
         characterDefense.enabled = false;
     }
 
+    public void ResetLife()
+    {
+        isDead = false;
+        actualResPoints = 0;
+        Debug.Log("Yay! I'm alive");
+        anim.SetBool("revive", true);
+        characterMovement.enabled = true;
+        characterAttack.enabled = true;
+        characterDefense.enabled = true;
+        currentHealth = maxHealth;
+        isDamaged = false;
+        isRevived = false;
+    }
+
     //Previously in CharacterHealth
     public void Live()
     {
