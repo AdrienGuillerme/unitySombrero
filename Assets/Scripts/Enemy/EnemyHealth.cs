@@ -9,8 +9,13 @@ public class EnemyHealth : MonoBehaviour {
 
     private int health;
 
+
     public int maxHealth = 3;
     public bool isDead;
+
+
+	public EnemiesManager enemiesManager;
+    public int associatedScore;
 
     Rigidbody enemyRigidbody;
     Animator animator;
@@ -30,17 +35,26 @@ public class EnemyHealth : MonoBehaviour {
     {
         if (!isDead && col.gameObject.tag == "Weapons")
         {
+            GetHurt(1, col);
             knockback = (col.transform.position - transform.position).normalized;
-            GetHurt(1);
+           
         }
     }
 
-    public void GetHurt(int i)
+
+	public void SetEnemiesManager(EnemiesManager m)
+	{
+		enemiesManager = m;
+	}
+
+    public void GetHurt(int i, Collider col)
+
     {
         health -= i;
         if (health <= 0)
         {
             Die();
+            col.transform.GetComponentInParent<DontDestroy>().AddScore(associatedScore);
         }
         else
         {
