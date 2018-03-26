@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour {
     CharacterMovement characterMovement;                        // Reference to the player's movement.
     Attack characterAttack;                                     // Reference to the player's attack.
     Defense characterDefense;                                   // Reference to the player's defense.
+    GameObject characterShield;
     bool isDead;                                                // Whether the player is dead.
     bool isRevived;
 	bool isDamaged;                                             // True when the player gets damaged.
@@ -35,6 +36,7 @@ public class PlayerHealth : MonoBehaviour {
         characterMovement = GetComponent<CharacterMovement>();
         characterAttack = transform.parent.GetComponentInChildren<Attack>();
         characterDefense = transform.parent.GetComponentInChildren<Defense>();
+        characterShield = characterDefense.transform.GetChild(0).gameObject;
 
         currentHealth = maxHealth;
         playerRigidbody = GetComponentInParent<Rigidbody>();
@@ -94,6 +96,7 @@ public class PlayerHealth : MonoBehaviour {
         isDead = true;
         Debug.Log("I'm Dead");
         anim.SetBool("death", true);
+        anim.SetBool("revive", false);
         this.GetComponentInParent<DontDestroy>().SubstractScore(100);
         // Set the audiosource to play the death clip and play it (this will stop the hurt sound from playing).
         //playerAudio.clip = deathClip;
@@ -102,18 +105,20 @@ public class PlayerHealth : MonoBehaviour {
         characterMovement.enabled = false;
         characterAttack.enabled = false;
         characterDefense.enabled = false;
+        characterShield.SetActive(false);
     }
 
     public void ResetLife()
     {
         isDead = false;
+        currentHealth = maxHealth;
+        anim.SetBool("death", false);
+        anim.SetBool("revive", true);
         actualResPoints = 0;
         Debug.Log("Yay! I'm alive");
-        anim.SetBool("revive", true);
         characterMovement.enabled = true;
         characterAttack.enabled = true;
         characterDefense.enabled = true;
-        currentHealth = maxHealth;
         isDamaged = false;
         isRevived = false;
     }
@@ -122,13 +127,14 @@ public class PlayerHealth : MonoBehaviour {
     public void Live()
     {
         isDead = false;
+        currentHealth = maxHealth;
         actualResPoints = 0;
         Debug.Log("Yay! I'm alive");
         anim.SetBool("revive", true);
+        anim.SetBool("death", false);
         characterMovement.enabled = true;
         characterAttack.enabled = true;
         characterDefense.enabled = true;
-        currentHealth = maxHealth;
 		isDamaged = false;
         healthSlider.value = currentHealth;
     }
