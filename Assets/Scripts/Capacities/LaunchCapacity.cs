@@ -6,10 +6,13 @@ public class LaunchCapacity : MonoBehaviour {
 
     string controllerName;
     public CapacityEnum capacityIntChosen = CapacityEnum.Glyph;
-    private float distanceToCharacter = 2f;
     public float orbeAltitude = 0.5f;
+    public float coolDownTime = 3f;
+
     private GameObject launcher;
+    private float distanceToCharacter = 2f;
     private bool readyToLaunch;
+    private bool inCoolDown;
 
     // Use this for initialization
     void Start () {
@@ -18,6 +21,7 @@ public class LaunchCapacity : MonoBehaviour {
         capacityIntChosen = (CapacityEnum)cpt;
         Debug.Log(capacityIntChosen);
         readyToLaunch = true;
+        inCoolDown = false;
     }
 	
 	// Update is called once per frame
@@ -37,14 +41,18 @@ public class LaunchCapacity : MonoBehaviour {
         {
             if (readyToLaunch)
             {
-                GameObject obj = Resources.Load("CapacityLauncher") as GameObject;
-                Vector3 position = transform.forward * distanceToCharacter + transform.position;
-                position.y += orbeAltitude;
-                launcher = Instantiate(obj, position, transform.rotation) as GameObject;
-                launcher.GetComponentInChildren<LauncherCapacityBehaviour>().setParent(this);
-                launcher.GetComponentInChildren<LauncherCapacityBehaviour>().SetAltitude(orbeAltitude);
-                //Instantiate(obj, transform);
-                readyToLaunch = false;
+                if(!inCoolDown)
+                {
+                    GameObject obj = Resources.Load("CapacityLauncher") as GameObject;
+                    Vector3 position = transform.forward * distanceToCharacter + transform.position;
+                    position.y += orbeAltitude;
+                    launcher = Instantiate(obj, position, transform.rotation) as GameObject;
+                    launcher.GetComponentInChildren<LauncherCapacityBehaviour>().SetParent(this);
+                    launcher.GetComponentInChildren<LauncherCapacityBehaviour>().SetPlayerCollider(GetComponent<CapsuleCollider>() as CapsuleCollider);
+                    launcher.GetComponentInChildren<LauncherCapacityBehaviour>().SetAltitude(orbeAltitude);
+                    readyToLaunch = false;
+                    StartCoroutine(CoolDown());
+                }
             }
             else
             {
@@ -63,5 +71,12 @@ public class LaunchCapacity : MonoBehaviour {
     public void SetCapacity(CapacityEnum capacity)
     {
         this.capacityIntChosen = capacity;
+    }
+
+    IEnumerator CoolDown()
+    {
+        inCoolDown = true;
+        yield return new WaitForSeconds(coolDownTime);
+        inCoolDown = false;
     }
 }

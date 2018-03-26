@@ -56,12 +56,19 @@ MonoBehaviour:
   dL: {fileID: 0}
   dR: {fileID: 0}
   user: {fileID: 1662271840235164, guid: d7ea229bb2101014abf2c64a6adbf5a5, type: 2}
-  character1: {fileID: 1059512891779480, guid: d4607b3c6b8424b47b52f344d8b3b14b, type: 2}
+  character1: {fileID: 1350741316671686, guid: c4bb8246b9ec91c419f3cc7f8e309eaa, type: 2}
+  sombreroMaterials:
+  - {fileID: 2100000, guid: 9c334967740947042b0bb445cd1525fb, type: 2}
+  - {fileID: 2100000, guid: d5b6e4429bd3a6a49913a8126204a5d8, type: 2}
+  - {fileID: 2100000, guid: 7bf22e0aa5cedab40a21e228174fc156, type: 2}
+  - {fileID: 2100000, guid: 2fd5bcf18a2883f4a9a1fedf2d804828, type: 2}
   capacity1: {fileID: 114667926566855318, guid: 8b6ae0fe27c4ed249a869ce921fa9e3f,
     type: 2}
   capacity2: {fileID: 114096359417439230, guid: 1f461150713fe5944b4533ffeb828ca7,
     type: 2}
   capacity3: {fileID: 114602607631909320, guid: 62ee2b596038e3444b91deb202541f7c,
+    type: 2}
+  capacity4: {fileID: 114358628192098962, guid: 37f02f096878d1445bb9546d75a3f3cf,
     type: 2}
   validation: {fileID: 114083630197205810, guid: b9afcc9549806e74fb725d4b7e027b21,
     type: 2}

@@ -40,6 +40,7 @@ public class MenuManager : MonoBehaviour
     public Image capacity1;
     public Image capacity2;
     public Image capacity3;
+    public Image capacity4;
     //public Image capacity4; have to create a prefab with the same name and the good source image
     private int nbCapacity;
     public Image validation;
@@ -68,6 +69,7 @@ public class MenuManager : MonoBehaviour
         listImage.Add(capacity1);
         listImage.Add(capacity2);
         listImage.Add(capacity3);
+        listImage.Add(capacity4);
 
         nbCapacity = listImage.Count;
     }
