@@ -49,7 +49,7 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
         if(activated) {
             capacityChosen.ActivateCapacity();
 
-            if (capacityIntChosen != CapacityEnum.Freeze)
+            if (capacityIntChosen != CapacityEnum.Freeze && capacityIntChosen != CapacityEnum.Repulsion)
                 Destroy(gameObject);
             else
                 StartCoroutine(KillSelf(0.2f));

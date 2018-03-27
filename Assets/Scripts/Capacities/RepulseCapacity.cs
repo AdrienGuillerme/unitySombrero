@@ -5,101 +5,32 @@ using UnityEngine;
 public class RepulseCapacity : MonoBehaviour, ICapacity
 {
 
-    public float repulsivePower;
-    public float repulsiveRadius;
-    public float repulsiveDuration;
-    public float cooldownTime;
-
-    bool inCooldown = false;
-    bool inUse = false;
-    float timeStamp;
-
-    Vector3 repulsiveDir;
-   // string controllerName;
-
+    private bool activated, triggered;
+    private SphereCollider col;
+    // Use this for initialization
     void Start()
     {
-       //controllerName = GetComponentInParent<DontDestroy>().controllerName;
+        activated = false;
+        col = GetComponent<SphereCollider>();
     }
 
+    // Update is called once per frame
     void Update()
     {
-        //if (inCooldown)
-        //{
-        //    if(Time.time >= timeStamp)
-        //    {
-        //        inCooldown = false;
-        //    }
-        //}
-        //else if(inUse) 
-        //{
-        //    Repulsive();
-        //    if (Time.time >= timeStamp)
-        //    {
-        //        inUse = false;
-        //        timeStamp = Time.time + cooldownTime;
-        //        inCooldown = true;
-        //    }
 
-        //}
-        //else
-        //{
-        //        if (Input.GetButtonDown(controllerName + "A"))
-        //        {
-        //            timeStamp = Time.time + repulsiveDuration;
-        //            inUse = true;
-        //        }
-        // }
     }
 
     public void ActivateCapacity()
     {
-
-        Repulsive();
-        /*if (inCooldown)
+        if (!activated)
         {
-            if (Time.time >= timeStamp)
-            {
-                inCooldown = false;
-            }
-        }
-        else if (inUse)
-        {
-            Repulsive();
-            if (Time.time >= timeStamp)
-            {
-                inUse = false;
-                timeStamp = Time.time + cooldownTime;
-                inCooldown = true;
-            }
-
-        }
-        else
-        {
-            //if (Input.GetButtonDown(controllerName + "Capacity"))
-            //{
-                timeStamp = Time.time + repulsiveDuration;
-                inUse = true;
-            //}
-        }*/
-    }
-
-    private void Repulsive()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, repulsiveRadius);
-        int i = 0;
-        while(i < colliders.Length)
-        {
-            GameObject target = colliders[i].gameObject;
-            if(target.GetComponent<Rigidbody>() != null && target != gameObject)
-            {
-                Debug.Log("gameObject" + target);
-                repulsiveDir = (target.transform.position - transform.position).normalized;
-                target.transform.Translate(repulsiveDir*repulsivePower);
-            }
-            i++;
+            activated = true;
+            GameObject obj = Resources.Load("RepulseEffect") as GameObject;
+            Transform transformEffect = transform;
+            transformEffect.Rotate(new Vector3(1, 0, 0), 90);
+            GameObject freezeEffect = Instantiate(obj, transform.position, transform.rotation);
+            col.radius *= 10;
         }
     }
-
-
 }
+

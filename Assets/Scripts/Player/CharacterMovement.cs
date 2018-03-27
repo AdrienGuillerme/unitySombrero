@@ -181,16 +181,18 @@ public class CharacterMovement: MonoBehaviour
 
     IEnumerator Freeze(float speed, float time)
     {
-        // we freeze
-        float oldSpeed = this.speed;
-        Debug.Log("freeeeeeeeeeze");
-        this.speed = speed;
-        this.anim.enabled = false;
+        if(this.speed != 0)
+        {
+            // we freeze
+            float oldSpeed = this.speed;
+            this.speed = speed;
+            this.anim.enabled = false;
 
-        yield return new WaitForSeconds(time);
-        // we unfreeze
-        Debug.Log("unfreeeeeeeeeeze");
-        this.anim.enabled = true;
-        this.speed = oldSpeed;
+            yield return new WaitForSeconds(time);
+            // we unfreeze
+            this.anim.enabled = true;
+            this.speed = oldSpeed;
+        }
+        
     }
 }

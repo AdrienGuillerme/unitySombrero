@@ -30,7 +30,7 @@ public class GlyphCapacity : MonoBehaviour, ICapacity {
         string controllerName = gameObject.GetComponent<LauncherCapacityBehaviour>().GetControllerName();
         CapsuleCollider playerCollider = gameObject.GetComponent<LauncherCapacityBehaviour>().GetPlayerCollider();
 
-        //position.y -= orbeAltitude;
+        position.y -= orbeAltitude - 1;
 
         Transform transformGlyph = transform;
         transformGlyph.Rotate(new Vector3(1, 0, 0), 90);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -214,5 +215,27 @@ public class EnemyMove : MonoBehaviour
         enemyCollider.isTrigger = true;
         agent.SetDestination(transform.position);
         agent.isStopped = true;
+    }
+
+    public void SetSpeed(float speed, float time)
+    {
+        StartCoroutine(Freeze(speed, time));
+    }
+
+    IEnumerator Freeze(float speed, float time)
+    {
+        if(this.agent.speed != 0)
+        {
+            // we freeze
+            float oldSpeed = this.agent.speed;
+            this.agent.speed = speed;
+            this.anim.enabled = false;
+
+            yield return new WaitForSeconds(time);
+            // we unfreeze
+            this.anim.enabled = true;
+            this.agent.speed = oldSpeed;
+        }
+        
     }
 }
