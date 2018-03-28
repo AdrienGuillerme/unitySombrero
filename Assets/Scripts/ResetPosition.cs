@@ -11,7 +11,7 @@ public class ResetPosition : MonoBehaviour {
         foreach (GameObject user in users)
         {
             user.GetComponentInChildren<PlayerHealth>().ResetLife();
-            user.GetComponent<Transform>().SetPositionAndRotation(new Vector3(cpt*5, 0.5f, 0f), new Quaternion(0, 0, 0, 0));
+            user.GetComponent<Transform>().SetPositionAndRotation(new Vector3(cpt*5, 0.5f, -200f), new Quaternion(0, 0, 0, 0));
             cpt++;
         }
     }
