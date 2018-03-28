@@ -114,6 +114,10 @@ public class LootManager : MonoBehaviour{
 		}
 	}
 
+	public void SpawnPinata(Vector3 position){
+		spawner.SpawnOne (GetItem ("Pinata_fbx"), position);
+	}
+
 	GameObject GetItem(string name){
 		for (int i = 0; i < itemsList.Count; i++) {
 			if (itemsList[i].name == name)

@@ -3,97 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BossBehavior : MonoBehaviour {
+public class BossBehavior : EnemyMove {
 
-	[SerializeField]
-	Transform target;				// The purchased target
+	public GameObject minion;
+	Spawner spawner;
 
-	public EnemySpawner spawner;
-	int radiusArea = 10;
-	int enemiesNumber = 2;
+	int radiusArea = 15;
 	float appearanceFreq = 5f;
 	float timeLaps = 0f;
 
-	NavMeshAgent agent;
-	Vector3 initialPosition;        // The initial position... just in case the enemy has to return to
-	bool goalReached = false;       // To know if we've reached our current goal or not
-	bool goalChanged = true;        // To know if the goal has been changed
-	int cpt = 0, freq = 50;			// Used to determine a frequence to check if the target has moved
-	Vector3 goalVector;				// The goal's position
-	float damping = 5f;
+	EnemyHealth myHealth;
 
-	void Start()
-	{
-		agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
-		initialPosition = transform.position;
+	void Awake(){
+		spawner = GetComponent<Spawner> ();
+		myHealth = GetComponentInChildren<EnemyHealth> ();
 
-		// If no defined goal, stay at the initial position
-		if (target == null)
-			goalVector = initialPosition;
-		// If not go to the goal
-		else
-			SetTarget(target);
+		ChangeRanges (50f, 6f);
+		myHealth.maxHealth = 100;
+		myHealth.isBoss = true;
+		myHealth.associatedScore = 1000;
 	}
 
-	void Update()
+	public override void FixedUpdate()
 	{
-		timeLaps += Time.deltaTime;
-		if (timeLaps >= appearanceFreq) {
-			RegularSpawns (enemiesNumber);
-			timeLaps = 0;
+		base.FixedUpdate ();
+
+		/*
+		if (!myHealth.isDead) {
+			timeLaps += Time.deltaTime;
+
+			if (timeLaps >= appearanceFreq) {
+				float ratioHealth = (float) myHealth.GetCurrentHealth () / myHealth.maxHealth;
+				if (ratioHealth <= 0.25f)
+					RegularSpawns (10);
+				else {
+					if (ratioHealth <= 0.5f)
+						RegularSpawns (6);
+					else {
+						if (ratioHealth <= 0.75f)
+							RegularSpawns (3);
+						else
+							RegularSpawns (2);
+					}
+				}
+
+				timeLaps = 0;
+			}
 		}
-
-		// If the goal has been changed, define a new destination
-		if (goalChanged)
-		{
-			agent.SetDestination(goalVector);
-			goalChanged = false;
-		}
-
-		// If the goal has been reached, just wait
-		if (Vector3.Distance(goalVector, transform.position) <= agent.stoppingDistance && !goalReached)
-		{
-			goalReached = true;
-			LookAtGoal ();
-		}
-
-		if(target != null)
-			// Every 'freq' frames, we check if the target has moved
-			if (cpt == freq)
-				CheckTarget(target);
-			else
-				cpt++;
+		*/
 	}
 
-	public void SetTarget(Transform goal)
+	public override void AttackTrigger ()
 	{
-		goalChanged = true;
-		goalReached = false;
-		target = goal;
-		goalVector = target.transform.position;
-	}
-
-	// Use this to check if the current target has moved
-	public void CheckTarget(Transform target)
-	{
-		cpt = 0;
-		if (target.GetComponentInChildren<PlayerHealth>().IsDead())
-			GetComponent<Animator>().SetTrigger("LostTarget");
-		else
-			if (target.transform.position != goalVector)
-				SetTarget(target);
-	}
-
-	// Use this to rotate the agent to make look at the goal
-	void LookAtGoal()
-	{
-		Quaternion rotation = Quaternion.LookRotation(goalVector - transform.position);
-		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
+		int attNumb = Random.Range (0, 3);
+		anim.SetInteger ("AttackNumber", attNumb);
+		anim.SetTrigger("Attack");
 	}
 
 	void RegularSpawns(int num){
 		for (int i = 0; i < num; i++) {
-			spawner.SpawnAgent (new Vector3 (Random.Range (-1 * radiusArea, radiusArea), 0f, Random.Range (-1 * radiusArea, radiusArea)));
+			spawner.SpawnOne (minion, transform.position + new Vector3 (Random.Range (-1.2f * radiusArea, radiusArea), 0f, 1.2f * Random.Range (-1 * radiusArea, radiusArea)));
 		}
 	}
 }

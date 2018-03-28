@@ -930,8 +930,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1437657864400402}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -15}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 160, y: 3.5, z: -95}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4826650579158044}
@@ -939,7 +939,7 @@ Transform:
   - {fileID: 4470785788881168}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4433226758601836
 Transform:
   m_ObjectHideFlags: 1
@@ -1414,7 +1414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   anim: {fileID: 0}
-  skeleton: {fileID: 1090725046967928, guid: 84e2a527049b82d4db5ccf771f8ad02c, type: 2}
+  minion: {fileID: 1090725046967928, guid: 84e2a527049b82d4db5ccf771f8ad02c, type: 2}
 --- !u!114 &114949179201334940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1428,6 +1428,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   isDead: 0
+  isBoss: 0
+  enemiesManager: {fileID: 0}
+  associatedScore: 0
   lootManager: {fileID: 0}
 --- !u!114 &114987270180390762
 MonoBehaviour:

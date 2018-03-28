@@ -10,7 +10,7 @@ public class EnemyMove : MonoBehaviour
 
     NavMeshAgent agent;
     Vector3 goalPosition;
-    Animator anim;
+    public Animator anim;
     List<Vector3> patrolPositions = new List<Vector3>();
     Collider enemyCollider;
     PlayerHealth targetHealth;
@@ -21,8 +21,8 @@ public class EnemyMove : MonoBehaviour
     int cpt = 0, freq = 40;			// Used to determine a frequence to check if the target has moved
     int indexPatrol;
 
-    private float detectionRange = 25f;
-    private float attackTriggerRange = 3.8f;
+    float detectionRange = 25f;
+    float attackTriggerRange = 3.8f;
 
     void Start()
     {
@@ -43,7 +43,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         if (allowedToMove)
         {
@@ -81,7 +81,7 @@ public class EnemyMove : MonoBehaviour
                 float dist = Vector3.Distance(transform.position, target.position);
                 if (!targetHealth.IsDead() && dist < attackTriggerRange)
                 {
-                    anim.SetTrigger("Attack");
+					AttackTrigger ();
                 }
             }
         }
@@ -217,10 +217,19 @@ public class EnemyMove : MonoBehaviour
         agent.isStopped = true;
     }
 
+	public virtual void AttackTrigger(){
+		anim.SetTrigger("Attack");
+	}
+
     public void SetSpeed(float speed, float time)
     {
         StartCoroutine(Freeze(speed, time));
     }
+
+	public void ChangeRanges(float detectionRange, float attackTriggerRange){
+		this.detectionRange = detectionRange;
+		this.attackTriggerRange = attackTriggerRange;
+	}
 
     IEnumerator Freeze(float speed, float time)
     {

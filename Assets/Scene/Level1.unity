@@ -3877,11 +3877,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4424524630980226, guid: 9cad6d15e9d66ef4b8d3348421701a04, type: 2}
       propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4424524630980226, guid: 9cad6d15e9d66ef4b8d3348421701a04, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1437657864400402, guid: 9cad6d15e9d66ef4b8d3348421701a04, type: 2}
       propertyPath: m_IsActive
@@ -4845,7 +4841,7 @@ Prefab:
     - target: {fileID: 224391970005630384, guid: 59f320949b1ccb044b86607254238461,
         type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 224391970005630384, guid: 59f320949b1ccb044b86607254238461,
         type: 2}

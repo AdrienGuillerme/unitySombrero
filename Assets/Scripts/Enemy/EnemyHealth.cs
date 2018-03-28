@@ -12,7 +12,9 @@ public class EnemyHealth : MonoBehaviour {
 
     public int maxHealth = 3;
     public bool isDead;
+	public bool isBoss = false;
 
+	public bool isHurt = false;
 
 	public EnemiesManager enemiesManager;
     public int associatedScore;
@@ -41,6 +43,12 @@ public class EnemyHealth : MonoBehaviour {
         }
     }
 
+	void Update(){
+		if(isHurt){
+			isHurt = false;
+			GetHurt (25);
+		}
+	}
 
 	public void SetEnemiesManager(EnemiesManager m)
 	{
@@ -64,6 +72,20 @@ public class EnemyHealth : MonoBehaviour {
         }
     }
 
+	public void GetHurt(int i){
+		health -= i;
+		if (health <= 0)
+		{
+			Die();
+		}
+		else
+		{
+			animator.SetTrigger("Damaged");
+			knockback.y = 0;
+			KnockBack(knockback);
+		}
+	}
+
     void Die()
     {
         move.Stop();
@@ -83,26 +105,30 @@ public class EnemyHealth : MonoBehaviour {
 
     void LootOrNot()
     {
-        int rng = Random.Range(0, 100);
-        if (rng > 50)
-        {
-            if (rng < 75)
-            {
-                lootManager.MakeSpawn(transform.position, 0, 10);
-                return;
-            }
-            if (rng < 92)
-            {
-                lootManager.MakeSpawn(transform.position, 25, 0);
-                return;
-            }
-            if (rng < 99)
-            {
-                lootManager.MakeSpawn(transform.position, 150, 0);
-                return;
-            }
-            lootManager.MakeSpawn(transform.position, 300, 0);
-        }
+		if (isBoss) {
+			lootManager.SpawnPinata (transform.position);
+		} else {
+			int rng = Random.Range(0, 100);
+			if (rng > 50)
+			{
+				if (rng < 75)
+				{
+					lootManager.MakeSpawn(transform.position, 0, 10);
+					return;
+				}
+				if (rng < 92)
+				{
+					lootManager.MakeSpawn(transform.position, 25, 0);
+					return;
+				}
+				if (rng < 99)
+				{
+					lootManager.MakeSpawn(transform.position, 150, 0);
+					return;
+				}
+				lootManager.MakeSpawn(transform.position, 300, 0);
+			}
+		}
     }
 
     public void SetLootManager(LootManager manager)
@@ -115,4 +141,8 @@ public class EnemyHealth : MonoBehaviour {
         k = k * -30000;
         enemyRigidbody.AddForce(k);
     }
+
+	public int GetCurrentHealth(){
+		return health;
+	}
 }
