@@ -14,8 +14,6 @@ public class EnemyHealth : MonoBehaviour {
     public bool isDead;
 	public bool isBoss = false;
 
-	public bool isHurt = false;
-
 	public EnemiesManager enemiesManager;
     public int associatedScore;
 
@@ -25,12 +23,19 @@ public class EnemyHealth : MonoBehaviour {
     Vector3 knockback;
     public LootManager lootManager;
 
+	private SpriteRenderer healthBar;
+	private Vector3 healthScale;
+
     void Start () {
         enemyRigidbody = GetComponentInParent<Rigidbody>();
         animator = GetComponentInParent<Animator>();
         move = animator.GetComponent<EnemyMove>();
         isDead = false;
         health = maxHealth;
+
+		healthBar = GameObject.Find("HealthBar").GetComponent<SpriteRenderer>();
+		if(healthBar != null)
+			healthScale = healthBar.transform.localScale;
 	}
 
     void OnTriggerEnter(Collider col)
@@ -43,13 +48,6 @@ public class EnemyHealth : MonoBehaviour {
         }
     }
 
-	void Update(){
-		if(isHurt){
-			isHurt = false;
-			GetHurt (25);
-		}
-	}
-
 	public void SetEnemiesManager(EnemiesManager m)
 	{
 		enemiesManager = m;
@@ -59,6 +57,11 @@ public class EnemyHealth : MonoBehaviour {
 
     {
         health -= i;
+
+
+		if (isBoss)
+			UpdateHealthBar ();
+		
         if (health <= 0)
         {
             Die();
@@ -71,20 +74,6 @@ public class EnemyHealth : MonoBehaviour {
             KnockBack(knockback);
         }
     }
-
-	public void GetHurt(int i){
-		health -= i;
-		if (health <= 0)
-		{
-			Die();
-		}
-		else
-		{
-			animator.SetTrigger("Damaged");
-			knockback.y = 0;
-			KnockBack(knockback);
-		}
-	}
 
     void Die()
     {
@@ -144,5 +133,14 @@ public class EnemyHealth : MonoBehaviour {
 
 	public int GetCurrentHealth(){
 		return health;
+	}
+
+	public void UpdateHealthBar ()
+	{
+		// Set the health bar's colour to proportion of the way between green and red based on the player's health.
+		healthBar.material.color = Color.Lerp(Color.red, Color.red, 1 - health * 0.01f);
+
+		// Set the scale of the health bar to be proportional to the player's health.
+		healthBar.transform.localScale = new Vector3(healthScale.x * health * 0.01f, 1, 1);
 	}
 }

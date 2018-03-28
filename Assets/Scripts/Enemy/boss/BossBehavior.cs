@@ -28,7 +28,6 @@ public class BossBehavior : EnemyMove {
 	{
 		base.FixedUpdate ();
 
-		/*
 		if (!myHealth.isDead) {
 			timeLaps += Time.deltaTime;
 
@@ -50,7 +49,6 @@ public class BossBehavior : EnemyMove {
 				timeLaps = 0;
 			}
 		}
-		*/
 	}
 
 	public override void AttackTrigger ()
