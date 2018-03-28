@@ -46,7 +46,20 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(activated) {
+        // Altitude detection so the orbe stays at a constant altitude from the ground
+        RaycastHit hit;
+        Ray downRay = new Ray(transform.position, -Vector3.up);
+        if (Physics.Raycast(downRay, out hit))
+        {
+            float height = hit.distance;
+            if (height != altitude)
+            {
+                transform.Translate(new Vector3(0, altitude - height, 0));
+            }
+
+        }
+
+        if (activated) {
             capacityChosen.ActivateCapacity();
 
             if (capacityIntChosen != CapacityEnum.Freeze && capacityIntChosen != CapacityEnum.Repulsion)

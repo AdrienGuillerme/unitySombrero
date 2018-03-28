@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 4981039217762212}
   - component: {fileID: 198792535443255972}
   - component: {fileID: 199224472076899474}
+  - component: {fileID: 114301936481633388}
   m_Layer: 0
-  m_Name: Cast01_ice
+  m_Name: RepulseEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,6 +73,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &114301936481633388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1290684259297368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f10e97a5238a5214e820ca6adf7175e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 2
 --- !u!198 &198331619774517534
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -55,8 +55,14 @@ GameObject:
   - component: {fileID: 4865073377413456}
   - component: {fileID: 198546351565803620}
   - component: {fileID: 199412416825152892}
+  - component: {fileID: 114191971257271680}
+  - component: {fileID: 114861077851671182}
+  - component: {fileID: 114449426553000192}
+  - component: {fileID: 114672406415769016}
+  - component: {fileID: 114957265804917116}
+  - component: {fileID: 135623917250506790}
   m_Layer: 0
-  m_Name: Proj01_glitter (1)
+  m_Name: CapacityLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,6 +140,77 @@ Transform:
   m_Father: {fileID: 4865073377413456}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114191971257271680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715197745946474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4238606fa251940b8a30e67cdc16ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+--- !u!114 &114449426553000192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715197745946474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54a3d59439a8a849bfebfa8f21fe076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToCharacter: 5
+--- !u!114 &114672406415769016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715197745946474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730053cb963d7d34a822def87f0681c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114861077851671182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715197745946474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a54c72e12b2e244fb2ee4f830d0a981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114957265804917116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715197745946474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df099952978cc744aa9c225632a7256d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingAltitude: 10
+  nbMeteors: 25
+--- !u!135 &135623917250506790
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715197745946474}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198328545622952426
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3683,7 +3760,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 2.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
