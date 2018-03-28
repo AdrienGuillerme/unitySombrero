@@ -6,7 +6,7 @@ public class LaunchCapacity : MonoBehaviour {
 
     string controllerName;
     public CapacityEnum capacityIntChosen = CapacityEnum.Glyph;
-    public float orbeAltitude = 0.5f;
+    public float orbeAltitude = 3f;
     public float coolDownTime = 3f;
 
     private GameObject launcher;
