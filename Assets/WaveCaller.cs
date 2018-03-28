@@ -9,7 +9,10 @@ public class WaveCaller : MonoBehaviour {
     EnemiesManager relatedManager;
     public GameObject nextWave;
     public GameObject door;
+    public GameObject boss;
     public GameManager gameManager;
+
+    public bool on = false;
 	// Use this for initialization
 	void Start () {
 
@@ -18,7 +21,7 @@ public class WaveCaller : MonoBehaviour {
         {
             initVector(waveSize);
         }
-        if (relatedManager != null)
+        if (relatedManager != null && relatedManager.isActiveAndEnabled)
         {
             relatedManager.chosenPatrolPositions = chosenPositions;
             relatedManager.enabled = true;
@@ -32,8 +35,9 @@ public class WaveCaller : MonoBehaviour {
         {
             if (nextWave != null)
                 nextWave.SetActive(true);
-            else if (door != null)
-                door.SetActive(true);
+            else if (door != null) { 
+                door.GetComponentInChildren<OpenGateAnim>().GateOpen();
+            }
             else if (gameManager != null)
                 gameManager.GetType();
 

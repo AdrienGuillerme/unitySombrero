@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1812956751604900
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +43,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1942370550325718
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,12 +53,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4848119314072388}
   m_Layer: 0
-  m_Name: Wave
+  m_Name: Wave1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4025203887823632
 Transform:
   m_ObjectHideFlags: 1
@@ -119,13 +119,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1242332613917614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7136c1ac0a8443841ba1a62444ac59b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 3bf4da8c53287d145b061af0aa663021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waveSize: 0
   nextWave: {fileID: 0}
   door: {fileID: 0}
+  boss: {fileID: 0}
   gameManager: {fileID: 0}
+  on: 0
 --- !u!114 &114437385681901426
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -44,4 +44,9 @@ public class OpenGateAnim : MonoBehaviour {
         gateCam.SetActive(false);
         mainCam.SetActive(true);
     }
+
+    public void GateOpen()
+    {
+        StartCoroutine(OpenGate());
+    }
 }
