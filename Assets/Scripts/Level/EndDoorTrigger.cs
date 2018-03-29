@@ -43,6 +43,6 @@ public class EndDoorTrigger : MonoBehaviour {
 
     private void ExitLevel()
     {
-        SceneManager.LoadScene("Level1"); //TODO: Change level or use level manager
+        SceneManager.LoadScene("Credits"); //TODO: Change level or use level manager
     }
 }
