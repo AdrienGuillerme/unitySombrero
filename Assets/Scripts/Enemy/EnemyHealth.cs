@@ -13,7 +13,7 @@ public class EnemyHealth : MonoBehaviour {
     public int maxHealth = 3;
     public bool isDead;
 	public bool isBoss = false;
-
+    public GameObject pinata;
 	public EnemiesManager enemiesManager;
     public int associatedScore;
 
@@ -59,13 +59,15 @@ public class EnemyHealth : MonoBehaviour {
 
     {
         health -= i;
-
+        if (health < 0)
+            health = 0;
 
 		if (isBoss)
 			UpdateHealthBar ();
 		
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
+            
             Die();
             col.transform.GetComponentInParent<DontDestroy>().AddScore(associatedScore);
         }
@@ -96,30 +98,35 @@ public class EnemyHealth : MonoBehaviour {
 
     void LootOrNot()
     {
-		if (isBoss) {
-			lootManager.SpawnPinata (transform.position);
-		} else {
-			int rng = Random.Range(0, 100);
-			if (rng > 50)
-			{
-				if (rng < 75)
-				{
-					lootManager.MakeSpawn(transform.position, 0, 10);
-					return;
-				}
-				if (rng < 92)
-				{
-					lootManager.MakeSpawn(transform.position, 25, 0);
-					return;
-				}
-				if (rng < 99)
-				{
-					lootManager.MakeSpawn(transform.position, 150, 0);
-					return;
-				}
-				lootManager.MakeSpawn(transform.position, 300, 0);
-			}
-		}
+        if (isBoss)
+        {
+            pinata.SetActive(true);
+            //lootManager.SpawnPinata(transform.position);
+        }
+        else
+        {
+
+            int rng = Random.Range(0, 100);
+            if (rng > 50)
+            {
+                if (rng < 75)
+                {
+                    lootManager.MakeSpawn(transform.position, 0, 10);
+                    return;
+                }
+                if (rng < 92)
+                {
+                    lootManager.MakeSpawn(transform.position, 25, 0);
+                    return;
+                }
+                if (rng < 99)
+                {
+                    lootManager.MakeSpawn(transform.position, 150, 0);
+                    return;
+                }
+                lootManager.MakeSpawn(transform.position, 300, 0);
+            }
+        }
     }
 
     public void SetLootManager(LootManager manager)

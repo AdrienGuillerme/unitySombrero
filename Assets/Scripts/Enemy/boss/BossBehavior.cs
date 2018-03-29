@@ -27,29 +27,28 @@ public class BossBehavior : EnemyMove {
 	public override void FixedUpdate()
 	{
 		base.FixedUpdate ();
-        /*
 		if (!myHealth.isDead) {
 			timeLaps += Time.deltaTime;
 
 			if (timeLaps >= appearanceFreq) {
 				float ratioHealth = (float) myHealth.GetCurrentHealth () / myHealth.maxHealth;
 				if (ratioHealth <= 0.25f)
-					RegularSpawns (10);
+					RegularSpawns (5);
 				else {
 					if (ratioHealth <= 0.5f)
-						RegularSpawns (6);
+						RegularSpawns (3);
 					else {
 						if (ratioHealth <= 0.75f)
-							RegularSpawns (3);
-						else
 							RegularSpawns (2);
+						else
+							RegularSpawns (1);
 					}
 				}
 
 				timeLaps = 0;
 			}
 		}
-        */
+        
 	}
 
 	public override void AttackTrigger ()
