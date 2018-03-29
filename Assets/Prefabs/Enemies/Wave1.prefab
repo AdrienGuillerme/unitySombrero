@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4025203887823632}
   - component: {fileID: 114274333072289994}
+  - component: {fileID: 114724907718986054}
   m_Layer: 0
   m_Name: WaveCaller
   m_TagString: Untagged
@@ -43,7 +44,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1942370550325718
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +141,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentsPrefab:
-  - {fileID: 0}
+  - {fileID: 1090725046967928, guid: 84e2a527049b82d4db5ccf771f8ad02c, type: 2}
   spawnOne: 0
   chosenPatrolPositions: []
   dragons: []
+--- !u!114 &114724907718986054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1242332613917614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7136c1ac0a8443841ba1a62444ac59b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveSize: 0
+  nextWave: {fileID: 0}
+  door: {fileID: 0}
+  boss: {fileID: 0}
+  gameManager: {fileID: 0}
