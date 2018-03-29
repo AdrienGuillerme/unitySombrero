@@ -5,6 +5,7 @@ using UnityEngine;
 public class RepulseCapacity : MonoBehaviour, ICapacity
 {
 
+    public float radius = 15f;
     private bool activated, triggered;
     private SphereCollider col;
     // Use this for initialization
@@ -33,8 +34,8 @@ public class RepulseCapacity : MonoBehaviour, ICapacity
             position.y -= orbeAltitude - 1;
             transformEffect.Rotate(new Vector3(1, 0, 0), 90);
 
-            GameObject freezeEffect = Instantiate(obj, transform.position, transform.rotation);
-            col.radius *= 10;
+            GameObject repulseEffect = Instantiate(obj, transform.position, transform.rotation);
+            col.radius = radius;
         }
     }
 }
