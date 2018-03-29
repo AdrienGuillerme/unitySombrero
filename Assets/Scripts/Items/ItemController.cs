@@ -69,6 +69,11 @@ public class ItemController : MonoBehaviour {
         goal = v;
     }
 
+    public void DontRotate()
+    {
+        isRotate = false;
+    }
+
     void Rotation() {
         var v = new Vector3(0, 100, 0);
         this.transform.Rotate(v * Time.deltaTime);

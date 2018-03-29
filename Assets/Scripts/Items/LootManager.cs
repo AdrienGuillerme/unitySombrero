@@ -115,7 +115,9 @@ public class LootManager : MonoBehaviour{
 	}
 
 	public void SpawnPinata(Vector3 position){
-		spawner.SpawnOne (GetItem ("Pinata_fbx"), position);
+        GameObject pinata = GetItem("Pinata_fbx");
+        spawner.SpawnOne (pinata, position + new Vector3(0,-2,0));
+        pinata.GetComponent<ItemController>().DontRotate();
 	}
 
 	GameObject GetItem(string name){

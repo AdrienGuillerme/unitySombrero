@@ -13,6 +13,11 @@ TagManager:
   - CharacterGroup
   - Enemy
   - Gate
+  - Ennemi
+  - Lootable
+  - HealthBar
+  - Boss
+  - Pinata
   layers:
   - Default
   - TransparentFX

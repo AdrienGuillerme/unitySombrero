@@ -14,11 +14,13 @@ public class PinataBreak : MonoBehaviour {
     public int minhp = 10;
     public int hp;
 
-	void Start () {
+    void Start()
+    {
         parent = transform.parent;
         pinata_broken = parent.Find("Unicorn_Shatters").gameObject;
         pinata_normal = parent.Find("Unicorn").gameObject;
         hp = Random.Range(minhp, maxhp);
+        
     }
 	
 	void Update () {
@@ -30,6 +32,8 @@ public class PinataBreak : MonoBehaviour {
         {
             Die();
         }
+        if (endingDoor == null)
+            endingDoor = GameObject.Find("EndingDoor");
     }
 
     public void BreakPinata()
@@ -42,6 +46,7 @@ public class PinataBreak : MonoBehaviour {
     private void Die()
     {
         BreakPinata();
+       
         endingDoor.SetActive(true);
         this.enabled = false;
     }
