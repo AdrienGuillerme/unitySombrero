@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LauncherCapacityBehaviour : MonoBehaviour {
 
-    public float speed = 5f;
+    public float speed = 10f;
     private string controllerName;
     private CapsuleCollider playerCollider;
     private CapacityEnum capacityIntChosen = CapacityEnum.Glyph;
@@ -65,7 +65,11 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
             if (capacityIntChosen != CapacityEnum.Freeze && capacityIntChosen != CapacityEnum.Repulsion)
                 Destroy(gameObject);
             else
-                StartCoroutine(KillSelf(0.2f));
+            {
+                speed = 0;
+                Destroy(gameObject, 0.2f);
+            }
+                
         }
 
         transform.position += speed * transform.forward * Time.deltaTime;
@@ -93,7 +97,7 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
         }
         else if (other.gameObject.tag.Equals("EnvironmentComponent"))
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 0.2f);
         }
     }
 
@@ -115,12 +119,6 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
     public CapsuleCollider GetPlayerCollider()
     {
         return playerCollider;
-    }
-
-    IEnumerator KillSelf(float time)
-    {
-        yield return new WaitForSeconds(time);
-        Destroy(this.gameObject);
     }
 
     public void SetPlayerCollider (CapsuleCollider playerCollider)
