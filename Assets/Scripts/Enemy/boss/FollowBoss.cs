@@ -13,14 +13,14 @@ public class FollowBoss : MonoBehaviour
 	void Awake ()
 	{
 		// Setting up the reference.
-		player = GameObject.FindGameObjectWithTag("Boss").transform;
+		//player = GameObject.FindGameObjectWithTag("Boss").transform;
 		camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera> ();
 	}
 
 	void Update ()
 	{
 		// Set the position to the player's position with the offset.
-		transform.position = player.position + offset;
+		//transform.position = player.position + offset;
 		transform.LookAt (camera.transform.position);
 	}
 }

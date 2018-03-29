@@ -19,7 +19,7 @@ public class BossBehavior : EnemyMove {
 		myHealth = GetComponentInChildren<EnemyHealth> ();
 
 		ChangeRanges (50f, 6f);
-		myHealth.maxHealth = 100;
+		//myHealth.maxHealth = 100;
 		myHealth.isBoss = true;
 		myHealth.associatedScore = 1000;
 	}
@@ -27,7 +27,7 @@ public class BossBehavior : EnemyMove {
 	public override void FixedUpdate()
 	{
 		base.FixedUpdate ();
-
+        /*
 		if (!myHealth.isDead) {
 			timeLaps += Time.deltaTime;
 
@@ -49,6 +49,7 @@ public class BossBehavior : EnemyMove {
 				timeLaps = 0;
 			}
 		}
+        */
 	}
 
 	public override void AttackTrigger ()

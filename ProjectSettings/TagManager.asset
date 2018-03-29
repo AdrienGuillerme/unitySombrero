@@ -17,6 +17,7 @@ TagManager:
   - Lootable
   - HealthBar
   - Boss
+  - Pinata
   layers:
   - Default
   - TransparentFX

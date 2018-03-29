@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour {
 
-    private int health;
+    public int health;
 
 
     public int maxHealth = 3;
@@ -32,8 +32,8 @@ public class EnemyHealth : MonoBehaviour {
         move = animator.GetComponent<EnemyMove>();
         isDead = false;
         health = maxHealth;
-
-		healthBar = GameObject.Find("HealthBar").GetComponent<SpriteRenderer>();
+        if(isBoss)
+		    healthBar = GameObject.Find("HealthBar").GetComponent<SpriteRenderer>();
 		if(healthBar != null)
 			healthScale = healthBar.transform.localScale;
 	}
@@ -42,6 +42,8 @@ public class EnemyHealth : MonoBehaviour {
     {
         if (!isDead && col.gameObject.tag == "Weapons")
         {
+            if (isBoss)
+                Debug.Log("Je suis touché");
             GetHurt(1, col);
             knockback = (col.transform.position - transform.position).normalized;
            
