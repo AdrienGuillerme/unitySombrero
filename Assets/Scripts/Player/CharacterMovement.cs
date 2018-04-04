@@ -7,6 +7,7 @@ public class CharacterMovement: MonoBehaviour
 
     public float speed = 6f;            // The speed that the player will move at.
     public float speedRotation = 6f;
+    private float fixSpeed = 6f;
 
     Vector3 movement;                   // The vector to store the direction of the player's movement.
     Animator anim;                      // Reference to the animator component.
@@ -26,6 +27,7 @@ public class CharacterMovement: MonoBehaviour
         DontDestroy parentFunction = GetComponentInParent<DontDestroy>();
         controllerName = parentFunction.controllerName;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        fixSpeed = speed;
     }
 
     void Awake()
@@ -178,6 +180,8 @@ public class CharacterMovement: MonoBehaviour
     {
         StartCoroutine(Freeze(speed, time));
     }
+
+    public float getFixSpeed() { return fixSpeed; }
 
     IEnumerator Freeze(float speed, float time)
     {

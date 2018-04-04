@@ -34,7 +34,7 @@ public class Defense : MonoBehaviour
     public void ActivateDefense()
     {
         defending = true;
-        movement.speed = 2;
+        movement.speed = movement.getFixSpeed()/3;
     }
 
     public void DeactivateDefense()
@@ -42,7 +42,7 @@ public class Defense : MonoBehaviour
         if (defending)
         {
             defending = false;
-            movement.speed = 6;
+            movement.speed = movement.getFixSpeed();
             shieldTime = Time.time * 1000;
         }
     }
