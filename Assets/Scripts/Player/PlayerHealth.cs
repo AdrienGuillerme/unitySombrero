@@ -45,6 +45,10 @@ public class PlayerHealth : MonoBehaviour {
     void Update()
     {
         isRevived = false;
+        if(!isDead && transform.position.y < -500)
+        {
+            Death();
+        }
         /*
         // If the player has just been damaged...
         if (damaged)
