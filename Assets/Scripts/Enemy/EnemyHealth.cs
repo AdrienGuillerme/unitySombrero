@@ -44,8 +44,10 @@ public class EnemyHealth : MonoBehaviour {
         {
             if (isBoss)
                 Debug.Log("Je suis touché");
+            knockback = (col.GetComponentInParent<CapsuleCollider>().transform.position - transform.position);
+            knockback.y = 0;
+            knockback.Normalize();
             GetHurt(1, col);
-            knockback = (col.transform.position - transform.position).normalized;
            
         }
     }
@@ -74,7 +76,6 @@ public class EnemyHealth : MonoBehaviour {
         else
         {
             animator.SetTrigger("Damaged");
-            knockback.y = 0;
             KnockBack(knockback);
         }
     }
@@ -136,7 +137,7 @@ public class EnemyHealth : MonoBehaviour {
 
     void KnockBack(Vector3 k)
     {
-        k = k * -30000;
+        k = k * -40000;
         enemyRigidbody.AddForce(k);
     }
 

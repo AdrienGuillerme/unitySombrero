@@ -183,8 +183,9 @@ public class PlayerHealth : MonoBehaviour {
                 //Debug.Log("You hurt me!!!");
                 getHurt(10);
                 anim.SetBool("damaged", true);
-                knockback = (col.transform.position - transform.position).normalized;
+                knockback = (col.GetComponentInParent<CapsuleCollider>().transform.position - transform.position);
                 knockback.y = 0;
+                knockback.Normalize();
                 KnockBack(knockback);
             }
         }
@@ -197,8 +198,9 @@ public class PlayerHealth : MonoBehaviour {
                 Debug.Log("Attacked by a mate");
                 //getHurt(10);
                 anim.SetBool("damaged", true);
-                knockback = (col.transform.position - transform.position).normalized;
-                knockback.y = 0; 
+                knockback = (col.GetComponentInParent<MeshCollider>().transform.position - transform.position);
+                knockback.y = 0;
+                knockback.Normalize();
                 KnockBack(knockback);
             }
         } 
@@ -206,7 +208,7 @@ public class PlayerHealth : MonoBehaviour {
 
     void KnockBack(Vector3 k)
     {
-        k = k * -100000;
+        k = k * -40000;
         playerRigidbody.AddForce(k);
     }
 }
