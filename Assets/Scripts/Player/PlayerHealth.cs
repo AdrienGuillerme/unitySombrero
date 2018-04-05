@@ -7,6 +7,9 @@ public class PlayerHealth : MonoBehaviour {
     Rigidbody playerRigidbody;
     Vector3 knockback;
 
+	public AudioClip[] onHurt;
+	public AudioClip onDie;
+
     //Previously in CharacterHealth
     public int maxHealth = 100;                                 // The amount of health the player starts the game with.
     public int currentHealth;                                   // The current health the player has.
@@ -75,6 +78,9 @@ public class PlayerHealth : MonoBehaviour {
         // Set the damaged flag so the screen will flash.
         isDamaged = true;
 
+		int x = Random.Range(0, onHurt.Length);
+		AudioSource.PlayClipAtPoint (onHurt [x], transform.position);
+
         // Reduce the current health by the damage amount.
         currentHealth -= i;
         healthSlider.value = currentHealth;
@@ -101,6 +107,9 @@ public class PlayerHealth : MonoBehaviour {
         // Set the death flag so this function won't be called again.
         isDead = true;
         Debug.Log("I'm Dead");
+
+		AudioSource.PlayClipAtPoint (onDie, transform.position);
+
         anim.SetBool("death", true);
         anim.SetBool("revive", false);
         this.GetComponentInParent<DontDestroy>().SubstractScore(100);
