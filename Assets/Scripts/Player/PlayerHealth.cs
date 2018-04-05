@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour {
     public AudioClip deathClip;                                 // The audio clip to play when the player dies.
     public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
-    private GameObject healEffect;
+    public GameObject healEffect = null;
     Animator anim;                                              // Reference to the Animator component.
     AudioSource playerAudio;                                    // Reference to the AudioSource component.
     CharacterMovement characterMovement;                        // Reference to the player's movement.
@@ -38,12 +38,14 @@ public class PlayerHealth : MonoBehaviour {
         characterDefense = transform.parent.GetComponentInChildren<Defense>();
         characterShield = characterDefense.transform.GetChild(0).gameObject;
         healEffect = this.transform.Find("HealEffect").gameObject;
+        healEffect.SetActive(false);
         currentHealth = maxHealth;
         playerRigidbody = GetComponentInParent<Rigidbody>();
     }
 
     void Update()
     {
+        
         isRevived = false;
         if(!isDead && transform.position.y < -500)
         {
