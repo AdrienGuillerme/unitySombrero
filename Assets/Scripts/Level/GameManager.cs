@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     {
         //DontDestroyOnLoad(gameObject);
         playerHealths = GameObject.FindObjectsOfType<PlayerHealth>();
+        Physics.gravity = new Vector3(0, -100.0F, 0);
     }
 
     // Update is called once per frame
