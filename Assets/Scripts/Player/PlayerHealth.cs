@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour {
     public AudioClip deathClip;                                 // The audio clip to play when the player dies.
     public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
-
+    public GameObject healEffect = null;
     Animator anim;                                              // Reference to the Animator component.
     AudioSource playerAudio;                                    // Reference to the AudioSource component.
     CharacterMovement characterMovement;                        // Reference to the player's movement.
@@ -37,14 +37,20 @@ public class PlayerHealth : MonoBehaviour {
         characterAttack = transform.parent.GetComponentInChildren<Attack>();
         characterDefense = transform.parent.GetComponentInChildren<Defense>();
         characterShield = characterDefense.transform.GetChild(0).gameObject;
-
+        healEffect = this.transform.Find("HealEffect").gameObject;
+        healEffect.SetActive(false);
         currentHealth = maxHealth;
         playerRigidbody = GetComponentInParent<Rigidbody>();
     }
 
     void Update()
     {
+        
         isRevived = false;
+        if(!isDead && transform.position.y < -500)
+        {
+            Death();
+        }
         /*
         // If the player has just been damaged...
         if (damaged)
@@ -152,7 +158,8 @@ public class PlayerHealth : MonoBehaviour {
         {
             actualResPoints++;
             Debug.Log("Yay! Heal me!");
-
+            healEffect.SetActive(true);
+            StartCoroutine(EffectOff(0.3f));
             //ajouter animation de resurection
 
             //resSlider.value = (actualPoints / rezPoints) * 100;
@@ -175,6 +182,14 @@ public class PlayerHealth : MonoBehaviour {
         return this.isRevived;
     }
 
+    IEnumerator EffectOff(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        healEffect.SetActive(false);
+        //weaponTriggerL.SetActive(state);
+    }
+
+
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "EnemyWeapons" && isDead == false)
@@ -183,8 +198,9 @@ public class PlayerHealth : MonoBehaviour {
                 //Debug.Log("You hurt me!!!");
                 getHurt(10);
                 anim.SetBool("damaged", true);
-                knockback = (col.transform.position - transform.position).normalized;
+                knockback = (col.GetComponentInParent<CapsuleCollider>().transform.position - transform.position);
                 knockback.y = 0;
+                knockback.Normalize();
                 KnockBack(knockback);
             }
         }
@@ -197,8 +213,9 @@ public class PlayerHealth : MonoBehaviour {
                 Debug.Log("Attacked by a mate");
                 //getHurt(10);
                 anim.SetBool("damaged", true);
-                knockback = (col.transform.position - transform.position).normalized;
-                knockback.y = 0; 
+                knockback = (col.GetComponentInParent<MeshCollider>().transform.position - transform.position);
+                knockback.y = 0;
+                knockback.Normalize();
                 KnockBack(knockback);
             }
         } 
@@ -206,7 +223,7 @@ public class PlayerHealth : MonoBehaviour {
 
     void KnockBack(Vector3 k)
     {
-        k = k * -100000;
+        k = k * -40000;
         playerRigidbody.AddForce(k);
     }
 }
