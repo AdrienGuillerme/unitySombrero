@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class BossBehavior : EnemyMove {
 
 	public GameObject minion;
+	public AudioClip[] popingSounds;
 	Spawner spawner;
 
 	int radiusArea = 15;
@@ -60,7 +61,11 @@ public class BossBehavior : EnemyMove {
 
 	void RegularSpawns(int num){
 		for (int i = 0; i < num; i++) {
-			spawner.SpawnOne (minion, transform.position + new Vector3 (Random.Range (-1.2f * radiusArea, radiusArea), 0f, 1.2f * Random.Range (-1 * radiusArea, radiusArea)));
+			Vector3 pos = transform.position + new Vector3 (Random.Range (-1.2f * radiusArea, radiusArea), 0f, 1.2f * Random.Range (-1 * radiusArea, radiusArea));
+			spawner.SpawnOne (minion, pos);
+
+			int x = Random.Range(0, popingSounds.Length);
+			AudioSource.PlayClipAtPoint (popingSounds [x], pos);
 		}
 	}
 }

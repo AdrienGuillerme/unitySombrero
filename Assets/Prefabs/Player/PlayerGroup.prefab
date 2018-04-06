@@ -1841,6 +1841,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d4ae6224cc0d27e4f9e4d2cd02aa8a4f, type: 3}
   - {fileID: 8300000, guid: 83c26c6448584ee438ac3d5bd9d58706, type: 3}
   onDie: {fileID: 8300000, guid: 1a173547746297343bdaa602cd30a9df, type: 3}
+  onRevive: {fileID: 8300000, guid: 289eaa2d9c579574f9c5fdafbc3d6698, type: 3}
   maxHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 0}

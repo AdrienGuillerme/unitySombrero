@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour {
 
 	public AudioClip[] onHurt;
 	public AudioClip onDie;
+	public AudioClip onRevive;
 
     //Previously in CharacterHealth
     public int maxHealth = 100;                                 // The amount of health the player starts the game with.
@@ -160,6 +161,7 @@ public class PlayerHealth : MonoBehaviour {
         if (actualResPoints >= resPoints)
         {
             Live();
+			AudioSource.PlayClipAtPoint (onRevive, transform.position);
             isRevived = false;
             
         }

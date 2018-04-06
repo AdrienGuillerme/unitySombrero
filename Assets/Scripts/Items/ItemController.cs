@@ -10,6 +10,8 @@ using System.Collections.Generic;
 
 public class ItemController : MonoBehaviour {
 
+	public AudioClip pickedSound;
+
 	// Bonuses to give to the player
 	public int scoreBonus = 0;
 	public int healthBonus = 0;
@@ -41,7 +43,7 @@ public class ItemController : MonoBehaviour {
 			if (scoreBonus == 0) {
 				if (col.gameObject.GetComponent<PlayerHealth> ().IsDamaged ()) {
 					col.gameObject.GetComponent<PlayerHealth> ().GetHeal (healthBonus);
-
+					AudioSource.PlayClipAtPoint (pickedSound, transform.position);
 					Disappear ();
 				}
 			}
@@ -49,7 +51,7 @@ public class ItemController : MonoBehaviour {
 				col.gameObject.GetComponent<PlayerHealth> ().GetHeal (healthBonus);
 				Debug.Log (col.gameObject.GetComponentInParent<DontDestroy> ());
 				col.gameObject.GetComponentInParent<DontDestroy> ().AddScore (scoreBonus);
-
+				AudioSource.PlayClipAtPoint (pickedSound, transform.position);
 				Disappear ();
 			}
 		}
