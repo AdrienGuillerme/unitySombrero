@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Attack : MonoBehaviour {
+
+	public AudioClip attackSword;
+
     public GameObject weaponTriggerL;
     public GameObject weaponTriggerR;
     private AttackTriggerCollision weaponScriptL;
@@ -37,6 +40,7 @@ public class Attack : MonoBehaviour {
     {
         if (!isAttacking)
         {
+			AudioSource.PlayClipAtPoint (attackSword, transform.position);
             isAttacking = true;
             //anim.SetFloat("attackNumber", 0.2f);
             anim.SetTrigger("attack");

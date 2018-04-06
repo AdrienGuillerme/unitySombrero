@@ -1836,6 +1836,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0aa8c7cf55e34d4984449d88d480e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHurt:
+  - {fileID: 8300000, guid: 33e8697746344394188dc3eaa54b2f8d, type: 3}
+  - {fileID: 8300000, guid: d4ae6224cc0d27e4f9e4d2cd02aa8a4f, type: 3}
+  - {fileID: 8300000, guid: 83c26c6448584ee438ac3d5bd9d58706, type: 3}
+  onDie: {fileID: 8300000, guid: 1a173547746297343bdaa602cd30a9df, type: 3}
   maxHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 0}
@@ -1855,6 +1860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3daee9546fe3c3843bc9d2fea8f5dd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackSword: {fileID: 8300000, guid: 2ab87e14bb8eab84f9597f089b65d790, type: 3}
   weaponTriggerL: {fileID: 1637158688281478}
   weaponTriggerR: {fileID: 1496969791936036}
   isAttacking: 0
