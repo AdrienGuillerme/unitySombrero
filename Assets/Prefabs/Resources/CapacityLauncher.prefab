@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54a3d59439a8a849bfebfa8f21fe076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glyphSound: {fileID: 8300000, guid: 5908ae1396b77a946aced526f94a2c07, type: 3}
   distanceToCharacter: 5
 --- !u!114 &114672406415769016
 MonoBehaviour:
@@ -175,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 730053cb963d7d34a822def87f0681c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repulseSound: {fileID: 8300000, guid: 6fb8ba54dc0a6bd4b87b0cf2b303772a, type: 3}
   radius: 15
 --- !u!114 &114861077851671182
 MonoBehaviour:
@@ -187,6 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a54c72e12b2e244fb2ee4f830d0a981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  freezeSound: {fileID: 8300000, guid: 880f4f3fba8186f4cb5c3a2bfcafd7b4, type: 3}
   radius: 10
   freezeTime: 5
 --- !u!114 &114957265804917116
@@ -200,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df099952978cc744aa9c225632a7256d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meteorSound: {fileID: 8300000, guid: 652c47eddea4a7a4d92e38a5a9dd079a, type: 3}
   startingAltitude: 10
   nbMeteors: 25
 --- !u!135 &135623917250506790

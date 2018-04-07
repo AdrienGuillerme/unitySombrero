@@ -1900,6 +1900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274ea12bacf2dd14cb9a9d88df79bed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  launchCapacitySound: {fileID: 8300000, guid: ccf586d653e1dc0499f821d91343796d, type: 3}
   capacityIntChosen: 2
   orbeAltitude: 3
   coolDownTime: 3
