@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GlyphCapacity : MonoBehaviour, ICapacity {
 
-    // Use this for initialization
+    public AudioClip glyphSound;
+
     float timeStamp;
     public float distanceToCharacter = 5;
 
@@ -26,6 +27,7 @@ public class GlyphCapacity : MonoBehaviour, ICapacity {
     {
         GameObject obj = Resources.Load("Glyph") as GameObject;
         Vector3 position = transform.position;
+        AudioSource.PlayClipAtPoint(glyphSound, transform.position);
         float orbeAltitude = this.gameObject.GetComponent<LauncherCapacityBehaviour>().GetAltitude();
         string controllerName = gameObject.GetComponent<LauncherCapacityBehaviour>().GetControllerName();
         CapsuleCollider playerCollider = gameObject.GetComponent<LauncherCapacityBehaviour>().GetPlayerCollider();

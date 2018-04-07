@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FreezeCapacity : MonoBehaviour, ICapacity {
 
+    public AudioClip freezeSound;
+
     public float radius = 10f;
     public float freezeTime = 5f;
     private bool activated;
@@ -44,6 +46,7 @@ public class FreezeCapacity : MonoBehaviour, ICapacity {
             col.radius = radius;
             activated = true;
             GameObject obj = Resources.Load("FreezeEffect") as GameObject;
+            AudioSource.PlayClipAtPoint(freezeSound, transform.position);
             Transform transformEffect = transform;
             transformEffect.Rotate(new Vector3(1, 0, 0), 90);
             transformEffect.Translate(Vector3.up*2);
