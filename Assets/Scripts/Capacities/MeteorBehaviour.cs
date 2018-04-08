@@ -7,6 +7,7 @@ public class MeteorBehaviour : MonoBehaviour {
     public int damages = 50;
     public float lifeTimeAfterActivation = 0.2f;
     public float lifeTime = 5f;
+    public float forceDown = 5f;
     private bool asTouchedSomething;
     private string controllerName = "";
     private CapsuleCollider playerCollider;
@@ -15,7 +16,7 @@ public class MeteorBehaviour : MonoBehaviour {
     void Start () {
         asTouchedSomething = false;
         Rigidbody rb = this.gameObject.GetComponent<Rigidbody>();
-        rb.AddForce(new Vector3(0, -10, 0), ForceMode.VelocityChange);
+        //rb.AddForce(new Vector3(0, -forceDown, 0), ForceMode.VelocityChange);
         StartCoroutine(KillSelf(lifeTime));
     }
 	
