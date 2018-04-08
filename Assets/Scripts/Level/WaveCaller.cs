@@ -11,6 +11,8 @@ public class WaveCaller : MonoBehaviour {
     public GameObject door;
     public GameObject boss;
     public GameManager gameManager;
+    private int delay = 0;
+    private bool active = false;
 	// Use this for initialization
 	void Start () {
 
@@ -29,7 +31,7 @@ public class WaveCaller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && active)
         {
             if (nextWave != null)
                 nextWave.SetActive(true);
@@ -44,6 +46,14 @@ public class WaveCaller : MonoBehaviour {
 
             this.transform.parent.gameObject.SetActive(false);
         }
+       
+        if(delay<5)
+        {
+            delay++;
+        }
+
+        if (delay == 5 && active == false)
+            active = true;
 		
 	}
 
@@ -55,7 +65,7 @@ public class WaveCaller : MonoBehaviour {
 
         for(int i =0; i<taille; i++)
         {
-            chosenPositions[i] = transform.position + new Vector3(taille*(float)System.Math.Cos(div * i), 0, taille*(float)System.Math.Sin(div * i));
+            chosenPositions[i] = transform.position + new Vector3(taille*(3/2)*(float)System.Math.Cos(div * i), 0, taille*(3/2)*(float)System.Math.Sin(div * i));
         }
        
     }

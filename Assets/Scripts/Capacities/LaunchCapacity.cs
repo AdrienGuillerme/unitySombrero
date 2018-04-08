@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class LaunchCapacity : MonoBehaviour {
 
+    public AudioClip launchCapacitySound;
+
     string controllerName;
-    public CapacityEnum capacityIntChosen = CapacityEnum.Glyph;
+    public CapacityEnum capacityIntChosen;
     public float orbeAltitude = 3f;
     public float coolDownTime = 3f;
 
@@ -13,6 +15,8 @@ public class LaunchCapacity : MonoBehaviour {
     private float distanceToCharacter = 2f;
     private bool readyToLaunch;
     private bool inCoolDown;
+
+    private MeshRenderer sombrero;
 
     // Use this for initialization
     void Start () {
@@ -22,6 +26,9 @@ public class LaunchCapacity : MonoBehaviour {
         Debug.Log(capacityIntChosen);
         readyToLaunch = true;
         inCoolDown = false;
+        sombrero = this.transform.Find("Player/rig/spine/chest/neck/head/MexicanHat").GetComponent<MeshRenderer>();
+        sombrero.material = Resources.Load(capacityIntChosen.ToString(), typeof(Material)) as Material;
+        
     }
 	
 	// Update is called once per frame
@@ -45,6 +52,7 @@ public class LaunchCapacity : MonoBehaviour {
                 {
                     GameObject obj = Resources.Load("CapacityLauncher") as GameObject;
                     Vector3 position = transform.forward * distanceToCharacter + transform.position;
+                    AudioSource.PlayClipAtPoint(launchCapacitySound, transform.position);
                     position.y += orbeAltitude;
                     launcher = Instantiate(obj, position, transform.rotation) as GameObject;
                     launcher.GetComponentInChildren<LauncherCapacityBehaviour>().SetParent(this);
@@ -67,6 +75,12 @@ public class LaunchCapacity : MonoBehaviour {
     {
         return this.controllerName;
     }
+
+    public CapacityEnum getCapacity()
+    {
+        return this.capacityIntChosen;
+    }
+
 
     public void SetCapacity(CapacityEnum capacity)
     {

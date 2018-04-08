@@ -36,11 +36,11 @@ public class MapSelection : MonoBehaviour {
             controllers.Add(user.GetComponent<DontDestroy>().controllerName);
         }
 
-        listImage.Add(map1);
+        //listImage.Add(map1);
         listImage.Add(map2);
         listImage.Add(map3);
 
-        listName.Add(name1);
+        //listName.Add(name1);
         listName.Add(name2);
         listName.Add(name3);
 
@@ -90,7 +90,7 @@ public class MapSelection : MonoBehaviour {
                     {
                         user.gameObject.SetActive(true);
                     }*/
-                    if (cpt == 1)
+                    if (cpt == 0)
                     {
                         foreach (GameObject user in users)
                         {

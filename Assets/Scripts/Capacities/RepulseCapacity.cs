@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RepulseCapacity : MonoBehaviour, ICapacity
 {
+    public AudioClip repulseSound;
 
     public float radius = 15f;
     private bool activated, triggered;
@@ -27,6 +28,7 @@ public class RepulseCapacity : MonoBehaviour, ICapacity
         {
             activated = true;
             GameObject obj = Resources.Load("RepulseEffect") as GameObject;
+            AudioSource.PlayClipAtPoint(repulseSound, transform.position);
             float orbeAltitude = this.gameObject.GetComponent<LauncherCapacityBehaviour>().GetAltitude();
             Transform transformEffect = transform;
             Vector3 position = transformEffect.position;

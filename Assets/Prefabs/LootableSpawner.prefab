@@ -13271,6 +13271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed8f660b08f6f84c9ae62ce37ffb4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickedSound: {fileID: 8300000, guid: 4a8695f6df3440a4289dc79e8c203e4f, type: 3}
   scoreBonus: 0
   healthBonus: 0
 --- !u!114 &114224010281764398
@@ -13284,6 +13285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed8f660b08f6f84c9ae62ce37ffb4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickedSound: {fileID: 8300000, guid: 32c70e75319051743906b3c4f3159075, type: 3}
   scoreBonus: 0
   healthBonus: 0
 --- !u!114 &114259634259726080
@@ -13297,6 +13299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed8f660b08f6f84c9ae62ce37ffb4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickedSound: {fileID: 8300000, guid: 32c70e75319051743906b3c4f3159075, type: 3}
   scoreBonus: 0
   healthBonus: 0
 --- !u!114 &114391722376781868
@@ -13321,6 +13324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed8f660b08f6f84c9ae62ce37ffb4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickedSound: {fileID: 8300000, guid: 649e7d327636d464c8e3863aff6e166e, type: 3}
   scoreBonus: 0
   healthBonus: 0
 --- !u!114 &114606275820598474
@@ -13334,6 +13338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed8f660b08f6f84c9ae62ce37ffb4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickedSound: {fileID: 8300000, guid: 32c70e75319051743906b3c4f3159075, type: 3}
   scoreBonus: 0
   healthBonus: 0
 --- !u!114 &114865939580108586
