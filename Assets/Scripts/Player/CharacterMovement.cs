@@ -189,13 +189,16 @@ public class CharacterMovement: MonoBehaviour
         {
             // we freeze
             float oldSpeed = this.speed;
+            float oldRotationSpeed = this.speedRotation;
             this.speed = speed;
+            this.speedRotation = speed;
             this.anim.enabled = false;
 
             yield return new WaitForSeconds(time);
             // we unfreeze
             this.anim.enabled = true;
             this.speed = oldSpeed;
+            this.speedRotation = oldRotationSpeed;
         }
         
     }
