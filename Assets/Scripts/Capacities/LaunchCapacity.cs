@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LaunchCapacity : MonoBehaviour {
 
+    public AudioClip launchCapacitySound;
+
     string controllerName;
     public CapacityEnum capacityIntChosen;
     public float orbeAltitude = 3f;
@@ -50,6 +52,7 @@ public class LaunchCapacity : MonoBehaviour {
                 {
                     GameObject obj = Resources.Load("CapacityLauncher") as GameObject;
                     Vector3 position = transform.forward * distanceToCharacter + transform.position;
+                    AudioSource.PlayClipAtPoint(launchCapacitySound, transform.position);
                     position.y += orbeAltitude;
                     launcher = Instantiate(obj, position, transform.rotation) as GameObject;
                     launcher.GetComponentInChildren<LauncherCapacityBehaviour>().SetParent(this);

@@ -1515,6 +1515,10 @@ MonoBehaviour:
   target: {fileID: 0}
   anim: {fileID: 95916937926653060}
   minion: {fileID: 1090725046967928, guid: 84e2a527049b82d4db5ccf771f8ad02c, type: 2}
+  popingSounds:
+  - {fileID: 8300000, guid: 0a80cba919df2964eaa0ea4a0a7092e7, type: 3}
+  - {fileID: 8300000, guid: 64e5c6363784c2949bd59f2850c9e423, type: 3}
+  - {fileID: 8300000, guid: a2b841e17c61dbd43a62c62136689644, type: 3}
 --- !u!114 &114949179201334940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1526,9 +1530,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec79ffcaf9057374eaf77b5da5cd4dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHurt: {fileID: 0}
+  onDie: {fileID: 0}
+  health: 0
   maxHealth: 100
   isDead: 0
   isBoss: 1
+  pinata: {fileID: 0}
   enemiesManager: {fileID: 0}
   associatedScore: 1000
   lootManager: {fileID: 0}

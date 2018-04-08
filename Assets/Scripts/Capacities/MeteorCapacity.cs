@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MeteorCapacity : MonoBehaviour, ICapacity {
 
+    public AudioClip meteorSound;
+
     public int startingAltitude = 10;
     public int nbMeteors = 5;
     //public float impulsePower = 100;
@@ -28,6 +30,7 @@ public class MeteorCapacity : MonoBehaviour, ICapacity {
     {
         Vector3[] positions = new Vector3[nbMeteors];
         GameObject obj = Resources.Load("Rock 01\\meteor") as GameObject;
+        AudioSource.PlayClipAtPoint(meteorSound, transform.position);
         Vector3 position = transform.position;
         string controllerName = gameObject.GetComponent<LauncherCapacityBehaviour>().GetControllerName();
         CapsuleCollider playerCollider = gameObject.GetComponent<LauncherCapacityBehaviour>().GetPlayerCollider();

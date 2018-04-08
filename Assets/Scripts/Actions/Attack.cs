@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Attack : MonoBehaviour {
+
+	public AudioClip attackSword;
+
     public GameObject weaponTriggerL;
     public GameObject weaponTriggerR;
     private AttackTriggerCollision weaponScriptL;
@@ -37,6 +40,7 @@ public class Attack : MonoBehaviour {
     {
         if (!isAttacking)
         {
+			AudioSource.PlayClipAtPoint (attackSword, transform.position);
             isAttacking = true;
             //anim.SetFloat("attackNumber", 0.2f);
             anim.SetTrigger("attack");
@@ -48,7 +52,7 @@ public class Attack : MonoBehaviour {
     {
         yield return new WaitForSeconds(delay);
         weaponTriggerR.SetActive(state);
-        //weaponTriggerL.SetActive(state);
+        weaponTriggerL.SetActive(state);
     }
 
     void AnimationEnter(AnimatorStateInfo stateInfo)
@@ -69,5 +73,11 @@ public class Attack : MonoBehaviour {
                 isAttacking = false;
             }
         }
+    }
+
+    //For access by Trigger Script
+    public void DisableWeapons()
+    {
+        StartCoroutine(ChangeWeaponActive(0.0f, false));
     }
 }

@@ -26,9 +26,16 @@ public class AttackTriggerCollision : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other != selfCollider)
+        if (other != selfCollider)
         {
-            this.gameObject.SetActive(false);
+            if (parent != null)
+            {
+                parent.DisableWeapons();
+            }
+            else
+            {
+                this.gameObject.SetActive(false);
+            }
         }
     }
 

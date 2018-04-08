@@ -7,8 +7,10 @@ using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour {
 
-    public int health;
+	public AudioClip onHurt;
+	public AudioClip onDie;
 
+    public int health;
 
     public int maxHealth = 3;
     public bool isDead;
@@ -44,8 +46,10 @@ public class EnemyHealth : MonoBehaviour {
         {
             if (isBoss)
                 Debug.Log("Je suis touché");
+            knockback = (col.GetComponentInParent<CapsuleCollider>().transform.position - transform.position);
+            knockback.y = 0;
+            knockback.Normalize();
             GetHurt(1, col);
-            knockback = (col.transform.position - transform.position).normalized;
            
         }
     }
@@ -66,15 +70,14 @@ public class EnemyHealth : MonoBehaviour {
 			UpdateHealthBar ();
 		
         if (health <= 0 && !isDead)
-        {
-            
+        {   
             Die();
             col.transform.GetComponentInParent<DontDestroy>().AddScore(associatedScore);
         }
         else
         {
+			AudioSource.PlayClipAtPoint (onHurt, transform.position);
             animator.SetTrigger("Damaged");
-            knockback.y = 0;
             KnockBack(knockback);
         }
     }
@@ -83,6 +86,7 @@ public class EnemyHealth : MonoBehaviour {
     {
         move.Stop();
         enemyRigidbody.isKinematic = true;
+		AudioSource.PlayClipAtPoint (onDie, transform.position);
         //move.enabled = false;
         isDead = true;
         animator.SetTrigger("Dead");
@@ -136,7 +140,7 @@ public class EnemyHealth : MonoBehaviour {
 
     void KnockBack(Vector3 k)
     {
-        k = k * -30000;
+        k = k * -40000;
         enemyRigidbody.AddForce(k);
     }
 
