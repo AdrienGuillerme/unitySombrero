@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour
     public GameObject user;
     public GameObject character1;
 
-    public Material[] sombreroMaterials;
+    public Material sombreroMaterial;
 
     public Image capacity1;
     public Image capacity2;
@@ -46,14 +46,15 @@ public class MenuManager : MonoBehaviour
     public Image validation;
 
 
+
     // Use this for initialization
     void Start()
     {
-        if(sombreroMaterials.Length < 4)
+        /*if(sombreroMaterial.Length = 0)
         {
             Debug.Log("missing some sombrero materials");
             Application.Quit();
-        }
+        }*/
 
         listControllerToCheck.Add("Joy1");
         listControllerToCheck.Add("Joy2");
@@ -191,7 +192,7 @@ public class MenuManager : MonoBehaviour
                     {
                         GameObject newCharacter = Instantiate(character1, new Vector3(cpt*5, 0, cpt*5), new Quaternion(0, 0, 0, 0));
                         newCharacter.transform.parent = newUser.transform;
-                        newCharacter.transform.Find("Player/rig/spine/chest/neck/head/MexicanHat").GetComponent<MeshRenderer>().material = sombreroMaterials[cpt];
+                        newCharacter.transform.Find("Player/rig/spine/chest/neck/head/MexicanHat").GetComponent<MeshRenderer>().material = sombreroMaterial;
                         DontDestroy userFunction = newUser.GetComponent<DontDestroy>();
                         userFunction.controllerName = listControllerInArray[cpt];
                         //newCharacter.gameObject.SetActive(false);

@@ -8,6 +8,7 @@ public class MeteorCapacity : MonoBehaviour, ICapacity {
     public int nbMeteors = 5;
     //public float impulsePower = 100;
 
+    
     // Use this for initialization
     void Start () {
 		
