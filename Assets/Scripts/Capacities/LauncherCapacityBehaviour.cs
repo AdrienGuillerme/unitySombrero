@@ -51,10 +51,13 @@ public class LauncherCapacityBehaviour : MonoBehaviour {
         Ray downRay = new Ray(transform.position, -Vector3.up);
         if (Physics.Raycast(downRay, out hit))
         {
-            float height = hit.distance;
-            if (height != altitude)
+            if (hit.collider.tag != "Glyph")
             {
-                transform.Translate(new Vector3(0, altitude - height, 0));
+                float height = hit.distance;
+                if (height != altitude)
+                {
+                    transform.Translate(new Vector3(0, altitude - height, 0));
+                }
             }
 
         }
