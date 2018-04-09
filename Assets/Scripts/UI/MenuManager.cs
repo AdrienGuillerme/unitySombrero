@@ -190,7 +190,7 @@ public class MenuManager : MonoBehaviour
                     GameObject[] listUserInArray = listUser.ToArray();
                     foreach (GameObject newUser in listUserInArray)
                     {
-                        GameObject newCharacter = Instantiate(character1, new Vector3(cpt*5, 0, cpt*5), new Quaternion(0, 0, 0, 0));
+                        GameObject newCharacter = Instantiate(character1, new Vector3(cpt*5 +2000, 0, cpt*5 +2000), new Quaternion(0, 0, 0, 0));
                         newCharacter.transform.parent = newUser.transform;
                         newCharacter.transform.Find("Player/rig/spine/chest/neck/head/MexicanHat").GetComponent<MeshRenderer>().material = sombreroMaterial;
                         DontDestroy userFunction = newUser.GetComponent<DontDestroy>();
