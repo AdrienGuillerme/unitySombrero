@@ -8,6 +8,7 @@ public class FailMenu : MonoBehaviour {
 
     private bool isActing = false;
     private int delay = 0;
+    public bool isEnabled = false;
 
     private int indiceButton = 0;
     private int indiceOption = 0;
@@ -39,11 +40,13 @@ public class FailMenu : MonoBehaviour {
         }
         else
         {
-            foreach (string controller in listController)
+            if (isEnabled)
             {
-                float v = GetVerticalInput(controller);
-                IfVerticalButton(v, controller);
-                
+                foreach (string controller in listController)
+                {
+                    float v = GetVerticalInput(controller);
+                    IfVerticalButton(v, controller);
+                }
             }
         }
     }

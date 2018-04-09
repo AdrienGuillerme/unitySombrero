@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 
     public PlayerHealth[] playerHealths;
     public GameObject FailMenu;
+    public GameObject EventSystem;
+    private FailMenu failScript;
 
     // Use this for initialization
     void Start()
@@ -14,6 +16,7 @@ public class GameManager : MonoBehaviour
         //DontDestroyOnLoad(gameObject);
         playerHealths = GameObject.FindObjectsOfType<PlayerHealth>();
         Physics.gravity = new Vector3(0, -100.0F, 0);
+        failScript = EventSystem.GetComponent<FailMenu>();
     }
 
     // Update is called once per frame
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         Time.timeScale = 0f;
+        failScript.isEnabled = true;
         FailMenu.SetActive(true);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GlyphBehaviour : MonoBehaviour {
 
-    public float lifeTime = 10f;
+    public float lifeTime = 5f;
     public float lifeTimeAfterActivation = 1f;
     public int damages = 30;
     private bool asBeenActivated;
