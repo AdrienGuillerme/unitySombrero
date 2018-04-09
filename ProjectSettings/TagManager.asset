@@ -18,6 +18,7 @@ TagManager:
   - HealthBar
   - Boss
   - Pinata
+  - Glyph
   layers:
   - Default
   - TransparentFX

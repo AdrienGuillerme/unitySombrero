@@ -140,12 +140,12 @@ public class MenuManager : MonoBehaviour
                     if (controller == "Keyboard")
                     {
                         h = Input.GetAxisRaw("Horizontal");
-                        StartCoroutine(DoAction(0.1f, controller));
+                        StartCoroutine(DoAction(0.2f, controller));
                     }
                     else
                     {
                         h = Input.GetAxisRaw(controller + "LStickX");
-                        StartCoroutine(DoAction(0.1f, controller));
+                        StartCoroutine(DoAction(0.2f, controller));
                     }
 
                     if (h != 0)
