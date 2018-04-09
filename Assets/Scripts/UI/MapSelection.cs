@@ -61,12 +61,12 @@ public class MapSelection : MonoBehaviour {
                 if (controller == "Keyboard")
                 {
                     h = Input.GetAxisRaw("Horizontal");
-                    StartCoroutine(DoAction(0.1f));
+                    StartCoroutine(DoAction(0.15f));
                 }
                 else
                 {
                     h = Input.GetAxisRaw(controller + "LStickX");
-                    StartCoroutine(DoAction(0.1f));
+                    StartCoroutine(DoAction(0.15f));
                 }
 
                 if (h != 0)
