@@ -176,6 +176,7 @@ MonoBehaviour:
   damages: 10
   lifeTimeAfterActivation: 0.2
   lifeTime: 5
+  forceDown: 0
 --- !u!135 &135661196001594166
 SphereCollider:
   m_ObjectHideFlags: 1
