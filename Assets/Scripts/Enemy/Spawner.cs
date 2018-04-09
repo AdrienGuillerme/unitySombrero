@@ -15,8 +15,8 @@ public class Spawner : MonoBehaviour {
 	}
 
 	// Make an object appear at 'position'
-	public void SpawnOne(GameObject o, Vector3 position){
-		Instantiate (o, position, Quaternion.identity);
+	public GameObject SpawnOne(GameObject o, Vector3 position){
+		return Instantiate (o, position, Quaternion.identity);
 	}
 
 	// Make an object appear at 'position'

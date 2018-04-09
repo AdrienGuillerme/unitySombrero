@@ -14,6 +14,7 @@ public class BossBehavior : EnemyMove {
 	float timeLaps = 0f;
 
 	EnemyHealth myHealth;
+	LootManager lootManager;
 
 	void Awake(){
 		spawner = GetComponent<Spawner> ();
@@ -23,6 +24,8 @@ public class BossBehavior : EnemyMove {
 		//myHealth.maxHealth = 100;
 		myHealth.isBoss = true;
 		myHealth.associatedScore = 1000;
+
+		lootManager = GameObject.FindGameObjectWithTag ("Lootable").GetComponent<LootManager> ();
 	}
 
 	public override void FixedUpdate()
@@ -62,7 +65,8 @@ public class BossBehavior : EnemyMove {
 	void RegularSpawns(int num){
 		for (int i = 0; i < num; i++) {
 			Vector3 pos = transform.position + new Vector3 (Random.Range (-1.2f * radiusArea, radiusArea), 0f, 1.2f * Random.Range (-1 * radiusArea, radiusArea));
-			spawner.SpawnOne (minion, pos);
+			GameObject enemy = spawner.SpawnOne (minion, pos);
+			enemy.GetComponentInChildren<EnemyHealth> ().SetLootManager (lootManager);
 
 			int x = Random.Range(0, popingSounds.Length);
 			AudioSource.PlayClipAtPoint (popingSounds [x], pos);
