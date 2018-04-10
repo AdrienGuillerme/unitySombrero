@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PinataBreak : MonoBehaviour {
 
+    public AudioClip pinataSound;
+
     private Transform parent;
     private GameObject pinata_normal;
     private GameObject pinata_broken;
@@ -53,6 +55,7 @@ public class PinataBreak : MonoBehaviour {
 
     private void LoseHP(int value)
     {
+        AudioSource.PlayClipAtPoint(pinataSound, transform.position);
         this.hp -= value;
     }
 
