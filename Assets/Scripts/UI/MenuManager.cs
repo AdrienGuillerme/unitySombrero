@@ -41,13 +41,11 @@ public class MenuManager : MonoBehaviour
     public Image capacity2;
     public Image capacity3;
     public Image capacity4;
-    //public Image capacity4; have to create a prefab with the same name and the good source image
     private int nbCapacity;
     public Image validation;
 
 
 
-    // Use this for initialization
     void Start()
     {
         /*if(sombreroMaterial.Length = 0)
@@ -75,7 +73,6 @@ public class MenuManager : MonoBehaviour
         nbCapacity = listImage.Count;
     }
 
-    // Update is called once per frame
     void Update()
     {
         // try to detect new controller

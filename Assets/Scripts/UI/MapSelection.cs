@@ -99,6 +99,7 @@ public class MapSelection : MonoBehaviour {
                             DestroyObject(user.gameObject);
                         }
                     }
+                    GameObject.Destroy(GameObject.FindGameObjectWithTag("Music"));
                     SceneManager.LoadScene(listSceneName[cpt]);
                 }
             }

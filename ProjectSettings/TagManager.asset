@@ -19,6 +19,7 @@ TagManager:
   - Boss
   - Pinata
   - Glyph
+  - Music
   layers:
   - Default
   - TransparentFX
