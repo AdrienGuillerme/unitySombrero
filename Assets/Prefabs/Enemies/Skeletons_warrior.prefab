@@ -1427,7 +1427,7 @@ MonoBehaviour:
   onHurt: {fileID: 8300000, guid: 72efe62bc3c45584b8c0c2c030945f7c, type: 3}
   onDie: {fileID: 8300000, guid: 43d0e401110b98046a4660d818a32ce6, type: 3}
   health: 0
-  maxHealth: 5
+  maxHealth: 50
   isDead: 0
   isBoss: 0
   pinata: {fileID: 0}
