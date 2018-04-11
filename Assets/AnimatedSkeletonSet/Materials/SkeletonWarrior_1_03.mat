@@ -31,4 +31,4 @@ Material:
     - _StencilWriteMask: 255
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0.36764705, g: 0.36764705, b: 0.36764705, a: 0.691}
