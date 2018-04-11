@@ -120,6 +120,7 @@ public class MenuManager : MonoBehaviour
                         listUser.Add(newUser);
                         hashUser[controller] = newUser.GetComponent<DontDestroy>();
                         hashUser[controller].cptCapacity = i;
+                        hashUser[controller].controllerName = controller;
                         cptUser++;
                     }
                 }
@@ -196,7 +197,7 @@ public class MenuManager : MonoBehaviour
                         newCharacter.transform.parent = newUser.transform;
                         newCharacter.transform.Find("Player/rig/spine/chest/neck/head/MexicanHat").GetComponent<MeshRenderer>().material = sombreroMaterial;
                         DontDestroy userFunction = newUser.GetComponent<DontDestroy>();
-                        userFunction.controllerName = listControllerInArray[cpt];
+                        //userFunction.controllerName = listControllerInArray[cpt];
                         //newCharacter.gameObject.SetActive(false);
                         cpt++;
                     }
