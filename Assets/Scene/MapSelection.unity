@@ -200,6 +200,11 @@ Prefab:
       propertyPath: name2
       value: Character selection
       objectReference: {fileID: 0}
+    - target: {fileID: 114329043720774910, guid: 43e077f97653e5a4bbd2f711b0e9c63b,
+        type: 2}
+      propertyPath: clicSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1a880941fa25703478304da90472ede1, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43e077f97653e5a4bbd2f711b0e9c63b, type: 2}
   m_IsPrefabParent: 0
