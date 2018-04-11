@@ -20,6 +20,7 @@ public class MapSelection : MonoBehaviour {
 
     public GameObject objText;   
     public GameObject objMap;
+    public GameObject loading;
     private Image map;
     private Text text;
     private GameObject[] users;
@@ -102,6 +103,7 @@ public class MapSelection : MonoBehaviour {
                         }
                     }
                     GameObject.Destroy(GameObject.FindGameObjectWithTag("Music"));
+                    loading.SetActive(true);
                     SceneManager.LoadScene(listSceneName[cpt]);
                 }
             }
