@@ -210,14 +210,14 @@ public class PlayerHealth : MonoBehaviour {
         Debug.Log(controllerName);
         if (controllerName.Equals("Joy1"))
             playerIndex = PlayerIndex.One;
-        else if (controllerName.Equals("Joy2"))
-            playerIndex = PlayerIndex.Two;
         else if (controllerName.Equals("Joy3"))
+            playerIndex = PlayerIndex.Two;
+        else if (controllerName.Equals("Joy2"))
             playerIndex = PlayerIndex.Three;
         else
             playerIndex = PlayerIndex.Four;
 
-        GamePad.SetVibration(playerIndex, 1, 1);
+        GamePad.SetVibration(playerIndex, 0.7f, 0.7f);
         yield return new WaitForSeconds(delay);
         GamePad.SetVibration(PlayerIndex.One, 0, 0);
     }
