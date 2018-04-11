@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class MapSelection : MonoBehaviour {
 
+    public AudioClip clicSound;
+
     public Image map1;
     public string name1;
     public string scene1;
@@ -18,6 +20,7 @@ public class MapSelection : MonoBehaviour {
 
     public GameObject objText;   
     public GameObject objMap;
+    public GameObject loading;
     private Image map;
     private Text text;
     private GameObject[] users;
@@ -87,11 +90,11 @@ public class MapSelection : MonoBehaviour {
 
                 if (Input.GetButton(controller + "Action"))
                 {
-                  
-                   /* foreach(GameObject user in users)
-                    {
-                        user.gameObject.SetActive(true);
-                    }*/
+                    AudioSource.PlayClipAtPoint(clicSound, transform.position);
+                    /* foreach(GameObject user in users)
+                     {
+                         user.gameObject.SetActive(true);
+                     }*/
                     if (cpt == nbMap - 1)
                     {
                         foreach (GameObject user in users)
@@ -100,6 +103,7 @@ public class MapSelection : MonoBehaviour {
                         }
                     }
                     GameObject.Destroy(GameObject.FindGameObjectWithTag("Music"));
+                    loading.SetActive(true);
                     SceneManager.LoadScene(listSceneName[cpt]);
                 }
             }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XInputDotNetPure;
 
 public class PlayerHealth : MonoBehaviour {
     Rigidbody playerRigidbody;
@@ -45,6 +46,7 @@ public class PlayerHealth : MonoBehaviour {
         healEffect.SetActive(false);
         currentHealth = maxHealth;
         playerRigidbody = GetComponentInParent<Rigidbody>();
+        GamePad.SetVibration(PlayerIndex.One, 0, 0);
     }
 
     void Update()
@@ -81,7 +83,7 @@ public class PlayerHealth : MonoBehaviour {
 
 		int x = Random.Range(0, onHurt.Length);
 		AudioSource.PlayClipAtPoint (onHurt [x], transform.position);
-
+        StartCoroutine(Vibrate(0.3f));
         // Reduce the current health by the damage amount.
         currentHealth -= i;
         healthSlider.value = currentHealth;
@@ -110,6 +112,7 @@ public class PlayerHealth : MonoBehaviour {
         Debug.Log("I'm Dead");
 
 		AudioSource.PlayClipAtPoint (onDie, transform.position);
+        GamePad.SetVibration(PlayerIndex.One, 0, 0);
 
         anim.SetBool("death", true);
         anim.SetBool("revive", false);
@@ -198,6 +201,25 @@ public class PlayerHealth : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         healEffect.SetActive(false);
         //weaponTriggerL.SetActive(state);
+    }
+
+    IEnumerator Vibrate(float delay)
+    {
+        string controllerName = GetComponentInParent<DontDestroy>().controllerName;
+        PlayerIndex playerIndex;
+        Debug.Log(controllerName);
+        if (controllerName.Equals("Joy1"))
+            playerIndex = PlayerIndex.One;
+        else if (controllerName.Equals("Joy2"))
+            playerIndex = PlayerIndex.Two;
+        else if (controllerName.Equals("Joy3"))
+            playerIndex = PlayerIndex.Three;
+        else
+            playerIndex = PlayerIndex.Four;
+
+        GamePad.SetVibration(playerIndex, 1, 1);
+        yield return new WaitForSeconds(delay);
+        GamePad.SetVibration(PlayerIndex.One, 0, 0);
     }
 
 
