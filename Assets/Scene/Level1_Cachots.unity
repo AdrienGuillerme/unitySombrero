@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3973,18 +3973,13 @@ Prefab:
       value: 
       objectReference: {fileID: 2144089794}
     - target: {fileID: 1949220129898610, guid: b4190f43c8c57544bbbd571997474f09, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1949220129898610, guid: b4190f43c8c57544bbbd571997474f09, type: 2}
       propertyPath: m_Name
       value: Pinata
       objectReference: {fileID: 0}
-    - target: {fileID: 114814996499317004, guid: b4190f43c8c57544bbbd571997474f09,
-        type: 2}
-      propertyPath: pinataSound
-      value: 
-      objectReference: {fileID: 8300000, guid: c7e28ffac8b06e4469364cec57943704, type: 3}
+    - target: {fileID: 1949220129898610, guid: b4190f43c8c57544bbbd571997474f09, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4190f43c8c57544bbbd571997474f09, type: 2}
   m_IsPrefabParent: 0
@@ -25616,7 +25611,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8352edf7b08271e4f9bd19f0b6cca3f3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
