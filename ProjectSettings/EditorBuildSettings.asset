@@ -15,11 +15,8 @@ EditorBuildSettings:
     path: Assets/Scene/MapSelection.unity
     guid: a47f0c420a97f034f915cf9a7c1a04a8
   - enabled: 1
-    path: Assets/Scene/Level1.unity
-    guid: b052f61d1307ebb4398298581f0ee6bf
+    path: Assets/Scene/Level1_Cachots.unity
+    guid: ad7d60846acd67b44844798f93d8a9ec
   - enabled: 1
     path: Assets/Scene/Credits.unity
     guid: a56409796adc02e48a8bd7492b06214a
-  - enabled: 1
-    path: Assets/Scene/Level1_Cachots.unity
-    guid: ad7d60846acd67b44844798f93d8a9ec
