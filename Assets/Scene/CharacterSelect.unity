@@ -172,6 +172,11 @@ Prefab:
       propertyPath: dR
       value: 
       objectReference: {fileID: 1409965940}
+    - target: {fileID: 114886206012556490, guid: db3a05565cbe23a44b528042e5870367,
+        type: 2}
+      propertyPath: clicSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1a880941fa25703478304da90472ede1, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db3a05565cbe23a44b528042e5870367, type: 2}
   m_IsPrefabParent: 0

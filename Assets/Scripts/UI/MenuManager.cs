@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public AudioClip clicSound;
+
     List<string> listControllerToCheck = new List<string>();
     List<string> listControllerToChooseCapacity = new List<string>();
     List<string> listControllerUsed = new List<string>();
@@ -86,6 +88,7 @@ public class MenuManager : MonoBehaviour
                 {
                     if (Input.GetButton(controller + "Action"))
                     {
+                        AudioSource.PlayClipAtPoint(clicSound, transform.position);
                         StartCoroutine(DoAction(0.2f, controller));
 
                         listControllerToChooseCapacity.Add(controller);
@@ -165,6 +168,7 @@ public class MenuManager : MonoBehaviour
 
                     if (Input.GetButton(controller + "Action"))
                     {
+                        AudioSource.PlayClipAtPoint(clicSound, transform.position);
                         ChooseCapacity(controller);
                         OtherCapacity(controller, listControllerInArray);
                     }
@@ -183,6 +187,7 @@ public class MenuManager : MonoBehaviour
 
                 if (Input.GetButton(controller + "Start"))
                 {
+                    AudioSource.PlayClipAtPoint(clicSound, transform.position);
                     int cpt = 0;
                     GameObject[] listUserInArray = listUser.ToArray();
                     foreach (GameObject newUser in listUserInArray)

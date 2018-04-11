@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class MapSelection : MonoBehaviour {
 
+    public AudioClip clicSound;
+
     public Image map1;
     public string name1;
     public string scene1;
@@ -87,11 +89,11 @@ public class MapSelection : MonoBehaviour {
 
                 if (Input.GetButton(controller + "Action"))
                 {
-                  
-                   /* foreach(GameObject user in users)
-                    {
-                        user.gameObject.SetActive(true);
-                    }*/
+                    AudioSource.PlayClipAtPoint(clicSound, transform.position);
+                    /* foreach(GameObject user in users)
+                     {
+                         user.gameObject.SetActive(true);
+                     }*/
                     if (cpt == nbMap - 1)
                     {
                         foreach (GameObject user in users)
