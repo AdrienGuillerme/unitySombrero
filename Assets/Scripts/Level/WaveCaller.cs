@@ -6,8 +6,10 @@ public class WaveCaller : MonoBehaviour {
 
     private Vector3[] chosenPositions;
     public int waveSize;
+    public float dispersionFactor;
     EnemiesManager relatedManager;
     public GameObject nextWave;
+    public GameObject optionnalWave;
     public GameObject door;
     public GameObject boss;
     public GameManager gameManager;
@@ -15,7 +17,8 @@ public class WaveCaller : MonoBehaviour {
     private bool active = false;
 	// Use this for initialization
 	void Start () {
-
+        if (dispersionFactor == 0)
+            dispersionFactor = 2f;
         relatedManager = transform.parent.GetComponentInChildren<EnemiesManager>(true);
         if(waveSize != 0)
         {
@@ -35,6 +38,8 @@ public class WaveCaller : MonoBehaviour {
         {
             if (nextWave != null)
                 nextWave.SetActive(true);
+            if (optionnalWave != null)
+                optionnalWave.SetActive(true);
             if (door != null) { 
                 door.GetComponentInChildren<OpenGateAnim>().GateOpen();
             }
@@ -65,7 +70,7 @@ public class WaveCaller : MonoBehaviour {
 
         for(int i =0; i<taille; i++)
         {
-            chosenPositions[i] = transform.position + new Vector3(taille*(3/2)*(float)System.Math.Cos(div * i), 0, taille*(3/2)*(float)System.Math.Sin(div * i));
+            chosenPositions[i] = transform.position + new Vector3(taille*dispersionFactor*(float)System.Math.Cos(div * i), 0, taille*dispersionFactor*(float)System.Math.Sin(div * i));
         }
        
     }

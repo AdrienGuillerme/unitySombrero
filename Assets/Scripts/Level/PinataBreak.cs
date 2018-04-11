@@ -5,6 +5,7 @@ using UnityEngine;
 public class PinataBreak : MonoBehaviour {
 
     public AudioClip pinataSound;
+    public AudioClip victory;
 
     private Transform parent;
     private GameObject pinata_normal;
@@ -47,6 +48,7 @@ public class PinataBreak : MonoBehaviour {
 
     private void Die()
     {
+        AudioSource.PlayClipAtPoint(victory, transform.position);
         BreakPinata();
        
         endingDoor.SetActive(true);
