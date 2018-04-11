@@ -95,7 +95,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Chargement
+  m_Text: Loading
 --- !u!114 &114417922564704516
 MonoBehaviour:
   m_ObjectHideFlags: 1

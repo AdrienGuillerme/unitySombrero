@@ -218,7 +218,7 @@ public class MenuManager : MonoBehaviour
         listImageUsed.Add(listImage[hashUser[controller].cptCapacity]);
 
         hashText[controller].enabled = true;
-        hashText[controller].text = "Appuyer sur start";
+        hashText[controller].text = "Press Start";
 
         foreach (Image image in hashUserImages[controller])
         {
