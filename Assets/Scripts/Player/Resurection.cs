@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using XInputDotNetPure;
 using UnityEngine.UI;
 
 public class Resurection : MonoBehaviour
@@ -96,25 +95,6 @@ public class Resurection : MonoBehaviour
     {
         if (characterHealth == health)
             characterHealth = null;
-    }
-
-    IEnumerator Vibrate(float delay)
-    {
-        string controllerName = GetComponentInParent<DontDestroy>().controllerName;
-        PlayerIndex playerIndex;
-        Debug.Log(controllerName);
-        if (controllerName.Equals("Joy1"))
-            playerIndex = PlayerIndex.One;
-        else if (controllerName.Equals("Joy3"))
-            playerIndex = PlayerIndex.Two;
-        else if (controllerName.Equals("Joy2"))
-            playerIndex = PlayerIndex.Three;
-        else
-            playerIndex = PlayerIndex.Four;
-
-        GamePad.SetVibration(playerIndex, 0.5f, 0.5f);
-        yield return new WaitForSeconds(delay);
-        GamePad.SetVibration(PlayerIndex.One, 0, 0);
     }
 }
 
