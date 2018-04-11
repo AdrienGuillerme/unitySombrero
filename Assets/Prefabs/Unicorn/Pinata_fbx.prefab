@@ -3976,7 +3976,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1949220129898610}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -4.2165885, y: 0.24721014, z: 15.413382}
+  m_LocalPosition: {x: 191.91852, y: 3.000716, z: -97.89274}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4469480636895638}
@@ -12847,8 +12847,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 0, b: 0.47586203, a: 1}
-  m_Intensity: 6
-  m_Range: 6
+  m_Intensity: 30
+  m_Range: 30
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -12884,6 +12884,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e025809d26e70af4d91dee3ff895db49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pinataSound: {fileID: 8300000, guid: c7e28ffac8b06e4469364cec57943704, type: 3}
+  victory: {fileID: 0}
   endingDoor: {fileID: 0}
   breakPinata: 0
   maxhp: 100
