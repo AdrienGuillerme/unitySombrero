@@ -223,7 +223,8 @@ public class MenuManager : MonoBehaviour
         {
             if (image.name == "Capacity")
             {
-                image.sprite = validation.sprite;
+                image.enabled = false;
+               //image.sprite = validation.sprite;
             }
             else if (image.name.Contains("Arrow"))
             {
