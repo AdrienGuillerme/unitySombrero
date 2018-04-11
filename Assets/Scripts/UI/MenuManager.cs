@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public AudioClip clicSound;
+
     List<string> listControllerToCheck = new List<string>();
     List<string> listControllerToChooseCapacity = new List<string>();
     List<string> listControllerUsed = new List<string>();
@@ -41,13 +43,11 @@ public class MenuManager : MonoBehaviour
     public Image capacity2;
     public Image capacity3;
     public Image capacity4;
-    //public Image capacity4; have to create a prefab with the same name and the good source image
     private int nbCapacity;
     public Image validation;
 
 
 
-    // Use this for initialization
     void Start()
     {
         /*if(sombreroMaterial.Length = 0)
@@ -75,7 +75,6 @@ public class MenuManager : MonoBehaviour
         nbCapacity = listImage.Count;
     }
 
-    // Update is called once per frame
     void Update()
     {
         // try to detect new controller
@@ -89,6 +88,7 @@ public class MenuManager : MonoBehaviour
                 {
                     if (Input.GetButton(controller + "Action"))
                     {
+                        AudioSource.PlayClipAtPoint(clicSound, transform.position);
                         StartCoroutine(DoAction(0.2f, controller));
 
                         listControllerToChooseCapacity.Add(controller);
@@ -168,6 +168,7 @@ public class MenuManager : MonoBehaviour
 
                     if (Input.GetButton(controller + "Action"))
                     {
+                        AudioSource.PlayClipAtPoint(clicSound, transform.position);
                         ChooseCapacity(controller);
                         OtherCapacity(controller, listControllerInArray);
                     }
@@ -186,11 +187,12 @@ public class MenuManager : MonoBehaviour
 
                 if (Input.GetButton(controller + "Start"))
                 {
+                    AudioSource.PlayClipAtPoint(clicSound, transform.position);
                     int cpt = 0;
                     GameObject[] listUserInArray = listUser.ToArray();
                     foreach (GameObject newUser in listUserInArray)
                     {
-                        GameObject newCharacter = Instantiate(character1, new Vector3(cpt*5, 0, cpt*5), new Quaternion(0, 0, 0, 0));
+                        GameObject newCharacter = Instantiate(character1, new Vector3(cpt*5 +2000, 0, cpt*5 +2000), new Quaternion(0, 0, 0, 0));
                         newCharacter.transform.parent = newUser.transform;
                         newCharacter.transform.Find("Player/rig/spine/chest/neck/head/MexicanHat").GetComponent<MeshRenderer>().material = sombreroMaterial;
                         DontDestroy userFunction = newUser.GetComponent<DontDestroy>();
@@ -221,7 +223,8 @@ public class MenuManager : MonoBehaviour
         {
             if (image.name == "Capacity")
             {
-                image.sprite = validation.sprite;
+                image.enabled = false;
+               //image.sprite = validation.sprite;
             }
             else if (image.name.Contains("Arrow"))
             {

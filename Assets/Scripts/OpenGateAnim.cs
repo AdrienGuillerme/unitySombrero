@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OpenGateAnim : MonoBehaviour {
 
+    public AudioClip openGateSound;
+
     public GameObject gateCam;
     public GameObject mainCam;
 
@@ -29,6 +31,7 @@ public class OpenGateAnim : MonoBehaviour {
         mainCam.SetActive(false);
         gateCam.SetActive(true);
         doorAnim.Play("OpenGate");
+        AudioSource.PlayClipAtPoint(openGateSound, transform.position);
         yield return new WaitForSeconds(1.5f);
         gateCam.SetActive(false);
         mainCam.SetActive(true);

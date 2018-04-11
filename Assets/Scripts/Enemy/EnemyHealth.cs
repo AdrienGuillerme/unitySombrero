@@ -12,7 +12,7 @@ public class EnemyHealth : MonoBehaviour {
 
     public int health;
 
-    public int maxHealth = 3;
+    public int maxHealth = 50;
     public bool isDead;
 	public bool isBoss = false;
     public GameObject pinata;
@@ -49,7 +49,7 @@ public class EnemyHealth : MonoBehaviour {
             knockback = (col.GetComponentInParent<CapsuleCollider>().transform.position - transform.position);
             knockback.y = 0;
             knockback.Normalize();
-            GetHurt(1, col);
+            GetHurt(20, col);
            
         }
     }

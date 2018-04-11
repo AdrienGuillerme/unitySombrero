@@ -6,14 +6,17 @@ using UnityEngine.UI;
 
 public class MapSelection : MonoBehaviour {
 
+    public AudioClip clicSound;
+
     public Image map1;
     public string name1;
+    public string scene1;
     public Image map2;
     public string name2;
-    public Image map3;
-    public string name3;
+    public string scene2;
     List<Image> listImage = new List<Image>();
     List<string> listName = new List<string>();
+    List<string> listSceneName = new List<string>();
 
     public GameObject objText;   
     public GameObject objMap;
@@ -36,13 +39,14 @@ public class MapSelection : MonoBehaviour {
             controllers.Add(user.GetComponent<DontDestroy>().controllerName);
         }
 
-        //listImage.Add(map1);
+        listImage.Add(map1);
         listImage.Add(map2);
-        listImage.Add(map3);
 
-        //listName.Add(name1);
+        listName.Add(name1);
         listName.Add(name2);
-        listName.Add(name3);
+
+        listSceneName.Add(scene1);
+        listSceneName.Add(scene2);
 
         nbMap = listImage.Count;
         map = objMap.GetComponent<Image>();
@@ -85,19 +89,20 @@ public class MapSelection : MonoBehaviour {
 
                 if (Input.GetButton(controller + "Action"))
                 {
-                  
-                   /* foreach(GameObject user in users)
-                    {
-                        user.gameObject.SetActive(true);
-                    }*/
-                    if (cpt == 0)
+                    AudioSource.PlayClipAtPoint(clicSound, transform.position);
+                    /* foreach(GameObject user in users)
+                     {
+                         user.gameObject.SetActive(true);
+                     }*/
+                    if (cpt == nbMap - 1)
                     {
                         foreach (GameObject user in users)
                         {
                             DestroyObject(user.gameObject);
                         }
                     }
-                    SceneManager.LoadScene(listName[cpt]);
+                    GameObject.Destroy(GameObject.FindGameObjectWithTag("Music"));
+                    SceneManager.LoadScene(listSceneName[cpt]);
                 }
             }
            

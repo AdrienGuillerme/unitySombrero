@@ -61,7 +61,7 @@ public class CameraFollow : MonoBehaviour
              }
              else
              {
-                 if (Mathf.Max(Mathf.Abs(lastPlayer.x- newPlayer.x),Mathf.Abs(lastPlayer.z- newPlayer.z)) > 15)
+                 if (Mathf.Max(Mathf.Abs(lastPlayer.x- newPlayer.x),Mathf.Abs(lastPlayer.z- newPlayer.z)) > 30)
                  {
                      notYet = 1;
 
