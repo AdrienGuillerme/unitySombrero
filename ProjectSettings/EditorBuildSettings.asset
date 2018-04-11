@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scene/TitleScreen.unity
+    guid: 78f8512ecabdfcf4ab55582da1e3120d
+  - enabled: 1
     path: Assets/Scene/CharacterSelect.unity
     guid: 1a9bb095ff26dc34dae9c4e12be60980
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scene/MapSelection.unity
     guid: a47f0c420a97f034f915cf9a7c1a04a8
@@ -20,6 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/Credits.unity
     guid: a56409796adc02e48a8bd7492b06214a
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scene/Level1_Cachots.unity
+    guid: ad7d60846acd67b44844798f93d8a9ec
