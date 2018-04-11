@@ -519,7 +519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1730991425709960
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 114949179201334940}
   m_Layer: 0
   m_Name: SkeletonWarrior_005
-  m_TagString: Untagged
+  m_TagString: Ennemi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -992,8 +992,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1437657864400402}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 160, y: 3.5, z: -95}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4826650579158044}
@@ -1533,7 +1533,7 @@ MonoBehaviour:
   onHurt: {fileID: 8300000, guid: 72efe62bc3c45584b8c0c2c030945f7c, type: 3}
   onDie: {fileID: 8300000, guid: 43d0e401110b98046a4660d818a32ce6, type: 3}
   health: 0
-  maxHealth: 100
+  maxHealth: 3
   isDead: 0
   isBoss: 1
   pinata: {fileID: 0}

@@ -2220,7 +2220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1954868742199964
 GameObject:
   m_ObjectHideFlags: 1
@@ -12885,9 +12885,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pinataSound: {fileID: 8300000, guid: c7e28ffac8b06e4469364cec57943704, type: 3}
-  victory: {fileID: 0}
+  victory: {fileID: 8300000, guid: 6374771c46cdf8e44b3e0b2a3125e3db, type: 3}
   endingDoor: {fileID: 0}
   breakPinata: 0
-  maxhp: 100
-  minhp: 10
+  maxhp: 250
+  minhp: 200
   hp: 0
