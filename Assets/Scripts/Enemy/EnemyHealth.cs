@@ -12,7 +12,7 @@ public class EnemyHealth : MonoBehaviour {
 
     public int health;
 
-    public int maxHealth = 50;
+    public int maxHealth;
     public bool isDead;
 	public bool isBoss = false;
     public GameObject pinata;
