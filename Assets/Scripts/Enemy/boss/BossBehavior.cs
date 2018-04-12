@@ -10,7 +10,7 @@ public class BossBehavior : EnemyMove {
 	Spawner spawner;
 
 	int radiusArea = 15;
-	float appearanceFreq = 5f;
+	float appearanceFreq = 7f;
 	float timeLaps = 0f;
 
 	EnemyHealth myHealth;
