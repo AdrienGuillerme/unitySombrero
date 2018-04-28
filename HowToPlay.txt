@@ -1,0 +1,8 @@
+XBox Controller :
+
+LStick : movement
+RStick : orientation
+RT     : attack
+LT     : shield
+RB     : special capacity
+A      : resurect 
